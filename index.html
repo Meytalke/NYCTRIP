@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl" id="html-root">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>New York Trip 2026 🇺🇸</title>
+    <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        :root {
+            --bg-color: #0b0f19;
+            --card-bg: #161e2e;
+            --accent-primary: #ec4899; 
+            --accent-harry: #10b981;    
+            --accent-flight: #3b82f6;   
+            --accent-mustsee: #06b6d4;  
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { background-color: var(--bg-color); color: var(--text-main); padding: 12px; font-family: 'Assistant', sans-serif; }
+        html[dir="ltr"] body { font-family: 'Poppins', sans-serif; }
+        .container { max-width: 650px; margin: 0 auto; }
+
+        .user-bar { background: #1e293b; padding: 12px; border-radius: 12px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #334155; }
+        .user-bar select { padding: 6px 10px; background: #0f172a; border: 1px solid #475569; color: white; border-radius: 6px; font-size: 0.9rem; }
+
+        .lang-toggle-btn { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; display: block; margin: 0 auto 10px auto; }
+        header { text-align: center; margin-bottom: 20px; background: linear-gradient(135deg, #1e1b4b, #2e1065); padding: 20px 15px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); border: 1px solid #4c1d95; }
+        header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 5px; background: linear-gradient(to left, #f472b6, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        header p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
+        .countdown-container { display: flex; justify-content: center; gap: 10px; }
+        .countdown-box { background: rgba(255, 255, 255, 0.06); padding: 8px 0; border-radius: 12px; width: 75px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
+        .countdown-box span { display: block; font-size: 1.5rem; font-weight: 700; color: #fff; }
+        .countdown-box label { font-size: 0.75rem; color: var(--text-muted); }
+
+        .info-scroll-container { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 25px; }
+        .info-card { flex: 0 0 85%; background: var(--card-bg); padding: 16px; border-radius: 14px; border-top: 4px solid var(--accent-flight); }
+        .info-card h3 { font-size: 0.95rem; margin-bottom: 6px; color: var(--text-muted); }
+        .info-card p { font-weight: 600; font-size: 1rem; color: #fff; }
+
+        .day-row { background: var(--card-bg); border-radius: 16px; padding: 16px; margin-bottom: 18px; }
+        .day-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2d3748; padding-bottom: 8px; margin-bottom: 12px; }
+        .day-title { font-size: 1.1rem; font-weight: 700; color: #38bdf8; }
+        .day-date { color: var(--text-muted); font-size: 0.85rem; }
+
+        .event-list { display: flex; flex-direction: column; gap: 10px; }
+        .event-item { display: flex; align-items: center; padding: 12px; border-radius: 10px; background: rgba(15, 23, 42, 0.5); position: relative; }
+        
+        html[dir="rtl"] .event-item { border-right: 4px solid #64748b; }
+        html[dir="ltr"] .event-item { border-left: 4px solid #64748b; }
+        html[dir="rtl"] .event-item.flight { border-right-color: var(--accent-flight); }
+        html[dir="ltr"] .event-item.flight { border-left-color: var(--accent-flight); }
+        html[dir="rtl"] .event-item.harry { border-right-color: var(--accent-harry); }
+        html[dir="ltr"] .event-item.harry { border-left-color: var(--accent-harry); }
+        html[dir="rtl"] .event-item.mustsee { border-right-color: var(--accent-mustsee); }
+        html[dir="ltr"] .event-item.mustsee { border-left-color: var(--accent-mustsee); }
+        html[dir="rtl"] .event-item.custom { border-right-color: #a855f7; }
+        html[dir="ltr"] .event-item.custom { border-left-color: #a855f7; }
+
+        .event-icon { font-size: 1.2rem; width: 24px; text-align: center; }
+        html[dir="rtl"] .event-icon { margin-left: 12px; }
+        html[dir="ltr"] .event-icon { margin-right: 12px; }
+
+        .event-item.flight .event-icon { color: var(--accent-flight); }
+        .event-item.harry .event-icon { color: var(--accent-harry); }
+        .event-item.mustsee .event-icon { color: var(--accent-mustsee); }
+        .event-item.custom .event-icon { color: #a855f7; }
+
+        .event-details { flex-grow: 1; }
+        .event-time { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; display: block; }
+        .event-name { font-weight: 600; font-size: 0.95rem; display: block; }
+        .created-by-badge { font-size: 0.7rem; color: var(--accent-mustsee); display: block; margin-top: 2px; }
+
+        .delete-btn { background: transparent; border: none; color: #ef4444; padding: 8px; cursor: pointer; }
+        .add-event-section { background: var(--card-bg); padding: 20px; border-radius: 16px; margin-top: 25px; border: 1px solid #334155; }
+        .add-event-section h2 { margin-bottom: 12px; font-size: 1.2rem; color: #f472b6; }
+        .form-grid { display: flex; flex-direction: column; gap: 10px; }
+        input, select, button { padding: 12px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: #fff; font-size: 0.95rem; width: 100%; }
+        button.btn-submit { background: linear-gradient(to left, #ec4899, #8b5cf6); border: none; font-weight: 700; cursor: pointer; }
+
+        @media (min-width: 600px) {
+            .info-scroll-container { overflow-x: visible; display: grid; grid-template-columns: repeat(3, 1fr); }
+            .info-card { flex: none; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="user-bar">
+        <span id="ui-user-label">👤 שותף מעדכן:</span>
+        <select id="user-select" onchange="saveCurrentUser()">
+            <option value="מיטל">מיטל</option>
+            <option value="צילה">צילה</option>
+            <option value="שינדר">שינדר</option>
+        </select>
+    </div>
+    
+    <button class="lang-toggle-btn" onclick="toggleLanguage()" id="lang-btn">English 🇺🇸</button>
+
+    <header>
+        <h1 id="ui-title">NEW YORK 2026 🇺🇸</h1>
+        <p id="ui-subtitle">לוח הטיול המשותף שלכם</p>
+        <div class="countdown-container">
+            <div class="countdown-box"><span id="days">00</span><label id="lbl-days">ימים</label></div>
+            <div class="countdown-box"><span id="hours">00</span><label id="lbl-hours">שעות</label></div>
+            <div class="countdown-box"><span id="minutes">00</span><label id="lbl-min">דקות</label></div>
+        </div>
+    </header>
+
+    <div class="info-scroll-container">
+        <div class="info-card" style="border-top-color: #a855f7;">
+            <h3>🏨 מקום לינה / Hotel</h3>
+            <p>Renaissance NY Harlem<br><span style="font-size:0.8rem; font-weight:400; color:#cbd5e1;">233 W 125th St</span></p>
+        </div>
+        <div class="info-card">
+            <h3>✈️ טיסת הלוך / Outbound</h3>
+            <p>25.09 | 11:00 United (UA85) TLV</p>
+        </div>
+        <div class="info-card" style="border-top-color: #e11d48;">
+            <h3>✈️ חזור / Return</h3>
+            <p>04.10 | 22:50 United (UA90) EWR</p>
+        </div>
+    </div>
+
+    <div class="timeline" id="timeline-container"></div>
+
+    <div class="add-event-section">
+        <h2 id="ui-form-title">➕ הוספת תוכנית ללוז המשותף</h2>
+        <div class="form-grid">
+            <select id="form-date"></select>
+            <input type="text" id="form-name-he" placeholder="שם בעברית (למשל: תצפית סאמיט)" required>
+            <input type="text" id="form-name-en" placeholder="English Name (e.g., Summit One Vanderbilt)" required>
+            <input type="text" id="form-time" placeholder="שעה (למשל: 19:30)">
+            <button class="btn-submit" onclick="addCustomEvent()" id="ui-form-btn">הוסף ללוז של כולם</button>
+        </div>
+    </div>
+</div>
+
+<script>
+    const API_URL = "https://new-york-trip-backend.onrender.com/api/events";
+
+    let currentLang = 'he';
+    let currentUser = localStorage.getItem('nyc_trip_user') || 'מיטל';
+
+    const translations = {
+        he: {
+            btn: "English 🇺🇸", title: "NEW YORK 2026 🇺🇸", subtitle: "לוח הטיול המשותף שלכם",
+            days: "ימים", hours: "שעות", min: "דקות", formTitle: "➕ הוספת תוכנית ללוז המשותף",
+            formBtn: "הוסף ללוז של כולם", emptyDay: "יום חופשי - זמן מעולה לחקור!", flexible: "גמיש",
+            addedBy: "נוסף ע״י: "
+        },
+        en: {
+            btn: "עברית 🇮🇱", title: "NEW YORK 2026 🇺🇸", subtitle: "Your Shared Dashboard",
+            days: "Days", hours: "Hours", min: "Min", formTitle: "➕ Add Activity to Shared Schedule",
+            formBtn: "Add to Everyone's Trip", emptyDay: "Free day - Great time to explore!", flexible: "Flexible",
+            addedBy: "Added by: "
+        }
+    };
+
+    const tripDays = [
+        { date: "2026-09-25", he: { label: "יום ו׳", desc: "25.09 - נחיתה והאורות של מידטאון 🚕" }, en: { label: "Fri", desc: "25.09 - Arrival & Midtown Lights" } },
+        { date: "2026-09-26", he: { label: "יום ש׳", desc: "26.09 - סנטרל פארק, אמנות והארי סטיילס 🍉" }, en: { label: "Sat", desc: "26.09 - Central Park, Art & Harry Styles" } },
+        { date: "2026-09-27", he: { label: "יום א׳", desc: "27.09 - יום ברוקלין ונופים פוטוגניים 🌉" }, en: { label: "Sun", desc: "27.09 - Brooklyn & Photogenic Views" } },
+        { date: "2026-09-28", he: { label: "יום ב׳", desc: "28.09 - היסטוריה, פסל החירות ומוזיאון בחינם 🗽" }, en: { label: "Mon", desc: "28.09 - History, Statue of Liberty & Free Museum" } },
+        { date: "2026-09-29", he: { label: "יום ג׳", desc: "29.09 - יום צ'לסי, ווסט וילג' והיי ליין 🏙️" }, en: { label: "Tue", desc: "29.09 - Chelsea, West Village & The High Line" } },
+        { date: "2026-09-30", he: { label: "יום ד׳", desc: "30.09 - מרכז העיר והופעה שנייה של הארי 🍉" }, en: { label: "Wed", desc: "30.09 - UN, Hudson Yards & Harry Styles Night 2" } },
+        { date: "2026-10-01", he: { label: "יום ה׳", desc: "01.10 - תצפיות גבוהות במיוחד 🌆" }, en: { label: "Thu", desc: "01.10 - High Observation Decks" } },
+        { date: "2026-10-02", he: { label: "יום ו׳", desc: "02.10 - סוהו, שופינג ומוזיאון MoMA בחינם 🖼️" }, en: { label: "Fri", desc: "02.10 - SoHo Shopping & MoMA Free Entry" } },
+        { date: "2026-10-03", he: { label: "יום ש׳", desc: "03.10 - ברודווי, תיאטרון ואוכל משובח 🎭" }, en: { label: "Sat", desc: "03.10 - Broadway, Theater & Fine Dining" } },
+        { date: "2026-10-04", he: { label: "יום א׳", desc: "04.10 - פרידה מניו יורק וטיסה חזרה ✈️" }, en: { label: "Sun", desc: "04.10 - Farewell NY & Flight Home" } }
+    ];
+
+const defaultStaticEvents = [
+    // 25.09 - נחיתה
+    { date: "2026-09-25", time: "11:00", nameHe: "✈️ המראה מתל אביב (UA85)", nameEn: "Departure from TLV", type: "flight", isStatic: true },
+    { date: "2026-09-25", time: "15:50", nameHe: "✈️ נחיתה ב-Newark (EWR)", nameEn: "Landing at EWR", type: "flight", isStatic: true },
+    { date: "2026-09-25", time: "16:30", nameHe: "🚕 איסוף מזוודות ונסיעה למלון בהארלם", nameEn: "Transit to Renaissance Harlem", type: "transit", isStatic: true },
+    { date: "2026-09-25", time: "19:00", nameHe: "🚶 טיימס סקוור ורחוב 42", nameEn: "Times Square & 42nd St", type: "mustsee", isStatic: true },
+    { date: "2026-09-25", time: "23:45", nameHe: "✨ תערוכת Midnight Moment בטיימס סקוור", nameEn: "Midnight Moment at Times Square", type: "custom", isStatic: true },
+
+    // 26.09 - סנטרל פארק והארי
+    { date: "2026-09-26", time: "10:00", nameHe: "🌳 סנטרל פארק (Strawberry Fields, Bethesda Terrace)", nameEn: "Central Park Walk", type: "mustsee", isStatic: true },
+    { date: "2026-09-26", time: "12:30", nameHe: "🏛️ מוזיאון המטרופוליטן לאמנות (The Met)", nameEn: "The Met Museum", type: "mustsee", isStatic: true },
+    { date: "2026-09-26", time: "16:30", nameHe: "🏨 התרעננות במלון לקראת ההופעה", nameEn: "Rest at Hotel", type: "custom", isStatic: true },
+    { date: "2026-09-26", time: "19:30", nameHe: "🎤 הופעה משותפת: HARRY STYLES Live! 🍉", nameEn: "Live Concert: HARRY STYLES!", type: "harry", isStatic: true },
+
+    // 27.09 - ברוקלין 
+    { date: "2026-09-27", time: "10:00", nameHe: "🛍️ שוק הפשפשים של ברוקלין (DUMBO)", nameEn: "Brooklyn Flea Market (DUMBO)", type: "custom", isStatic: true },
+    { date: "2026-09-27", time: "13:00", nameHe: "🎨 ויליאמסבורג (חנויות וינטג' ושוק האוכל Smorgasburg)", nameEn: "Williamsburg & Smorgasburg", type: "mustsee", isStatic: true },
+    { date: "2026-09-27", time: "16:00", nameHe: "🌉 חציית גשר ברוקלין ברגל לכיוון מנהטן", nameEn: "Walk Brooklyn Bridge to Manhattan", type: "mustsee", isStatic: true },
+
+    // 28.09 - היסטוריה ופסל החירות
+    { date: "2026-09-28", time: "10:00", nameHe: "📈 וול סטריט ופסל השור המסתער", nameEn: "Wall Street & Charging Bull", type: "mustsee", isStatic: true },
+    { date: "2026-09-28", time: "13:00", nameHe: "💧 אנדרטת 11 בספטמבר (הבריכות) ו-Oculus", nameEn: "9/11 Memorial & Oculus", type: "mustsee", isStatic: true },
+    { date: "2026-09-28", time: "15:30", nameHe: "🏛️ מוזיאון 9/11 (שעות כניסה בחינם!)", nameEn: "9/11 Museum (Free Hours!)", type: "mustsee", isStatic: true },
+    { date: "2026-09-28", time: "18:00", nameHe: "⛴️ מעבורת סטטן איילנד בשקיעה (תצפית חינם על פסל החירות)", nameEn: "Staten Island Ferry (Sunset)", type: "mustsee", isStatic: true },
+
+    // 29.09 - צ'לסי והיי ליין
+    { date: "2026-09-29", time: "10:00", nameHe: "☕ הליכה בגריניץ' וילג' ובווסט וילג'", nameEn: "Greenwich & West Village", type: "custom", isStatic: true },
+    { date: "2026-09-29", time: "13:00", nameHe: "🌮 צהריים: Chelsea Market (מומלץ: Los Tacos No. 1)", nameEn: "Lunch: Chelsea Market", type: "mustsee", isStatic: true },
+    { date: "2026-09-29", time: "14:30", nameHe: "🛤️ הליכה בפארק התלוי - ההיי ליין (The High Line)", nameEn: "The High Line Park", type: "mustsee", isStatic: true },
+    { date: "2026-09-29", time: "16:00", nameHe: "🖼️ מוזיאון וויטני לאמנות או מוזיאון רובין", nameEn: "Whitney Museum / Rubin Museum", type: "custom", isStatic: true },
+
+    // 30.09 - מרכז העיר והארי 2
+    { date: "2026-09-30", time: "10:00", nameHe: "🇺🇳 סיור בבניין האו\"ם (יש להזמין כרטיס מראש)", nameEn: "UN Headquarters Tour", type: "mustsee", isStatic: true },
+    { date: "2026-09-30", time: "13:00", nameHe: "🏙️ הדסון יארדס (Hudson Yards) ומבנה ה-Vessel", nameEn: "Hudson Yards & Vessel", type: "mustsee", isStatic: true },
+    { date: "2026-09-30", time: "16:30", nameHe: "🏨 התרעננות במלון בהארלם", nameEn: "Rest at Hotel", type: "custom", isStatic: true },
+    { date: "2026-09-30", time: "19:30", nameHe: "🎤 הופעה שנייה: HARRY STYLES Live! 🍉", nameEn: "Live Concert: HARRY STYLES!", type: "harry", isStatic: true },
+
+    // 01.10 - תצפיות
+    { date: "2026-10-01", time: "10:00", nameHe: "🏢 בניין האמפייר סטייט (Empire State Building)", nameEn: "Empire State Building", type: "mustsee", isStatic: true },
+    { date: "2026-10-01", time: "13:00", nameHe: "🌷 מרכז רוקפלר (Rockefeller Center) וגני Channel", nameEn: "Rockefeller Center", type: "mustsee", isStatic: true },
+    { date: "2026-10-01", time: "16:30", nameHe: "🌇 תצפית שקיעה: Top of the Rock או Summit", nameEn: "Sunset Deck: Top of the Rock", type: "mustsee", isStatic: true },
+
+    // 02.10 - שופינג ו-MoMA
+    { date: "2026-10-02", time: "10:00", nameHe: "🛍️ סיבוב בשדרה החמישית (5th Avenue)", nameEn: "5th Avenue Shopping", type: "custom", isStatic: true },
+    { date: "2026-10-02", time: "13:00", nameHe: "👗 שכונת סוהו (SoHo) - בוטיקים וגלריות", nameEn: "SoHo Boutiques", type: "mustsee", isStatic: true },
+    { date: "2026-10-02", time: "16:00", nameHe: "🖼️ מוזיאון MoMA (כניסה בחינם! שישי הראשון בחודש)", nameEn: "MoMA Museum (Free Entry!)", type: "mustsee", isStatic: true },
+
+    // 03.10 - ברודווי ואוכל
+    { date: "2026-10-03", time: "10:00", nameHe: "🎟️ דוכן TKTS לקניית כרטיסים מוזלים להצגה להערב", nameEn: "TKTS Booth for Broadway", type: "custom", isStatic: true },
+    { date: "2026-10-03", time: "13:00", nameHe: "🚡 רכבל רוזוולט או פארק Gantry Plaza בלונג איילנד", nameEn: "Roosevelt Tramway / Gantry Plaza", type: "mustsee", isStatic: true },
+    { date: "2026-10-03", time: "19:30", nameHe: "🎭 מחזמר בברודווי (Lion King, Wicked וכו')", nameEn: "Broadway Musical", type: "custom", isStatic: true },
+    { date: "2026-10-03", time: "22:30", nameHe: "🎷 ארוחת ערב יוקרתית או מועדון ג'אז (Comedy Cellar)", nameEn: "Dinner / Jazz Club", type: "custom", isStatic: true },
+
+    // 04.10 - חזרה
+    { date: "2026-10-04", time: "10:00", nameHe: "🥞 צ'ק-אאוט וארוחת בראנץ' אחרונה (או פיקניק מפונק)", nameEn: "Check-out & Farewell Brunch", type: "custom", isStatic: true },
+    { date: "2026-10-04", time: "12:00", nameHe: "🛍️ השלמות וקניות אחרונות", nameEn: "Final Shopping", type: "custom", isStatic: true },
+    { date: "2026-10-04", time: "18:30", nameHe: "🚕 נסיעה לשדה התעופה EWR ממרכז העיר", nameEn: "Transit to EWR", type: "transit", isStatic: true },
+    { date: "2026-10-04", time: "22:50", nameHe: "✈️ המראה חזרה לישראל (UA90)", nameEn: "Flight to Tel Aviv (UA90)", type: "flight", isStatic: true }
+];
+
+    document.getElementById('user-select').value = currentUser;
+
+    function saveCurrentUser() {
+        currentUser = document.getElementById('user-select').value;
+        localStorage.setItem('nyc_trip_user', currentUser);
+        fetchEvents();
+    }
+
+    function toggleLanguage() {
+        currentLang = currentLang === 'he' ? 'en' : 'he';
+        const root = document.getElementById('html-root');
+        root.setAttribute('dir', currentLang === 'en' ? 'ltr' : 'rtl');
+        updateUIStrings();
+        fetchEvents();
+        populateDateDropdown();
+    }
+
+    function updateUIStrings() {
+        const t = translations[currentLang];
+        document.getElementById('lang-btn').innerText = t.btn;
+        document.getElementById('ui-title').innerText = t.title;
+        document.getElementById('ui-subtitle').innerText = t.subtitle;
+        document.getElementById('lbl-days').innerText = t.days;
+        document.getElementById('lbl-hours').innerText = t.hours;
+        document.getElementById('lbl-min').innerText = t.min;
+        document.getElementById('ui-form-title').innerText = t.formTitle;
+        document.getElementById('ui-form-btn').innerText = t.formBtn;
+    }
+
+    function populateDateDropdown() {
+        const dropdown = document.getElementById('form-date');
+        dropdown.innerHTML = '';
+        tripDays.forEach(day => {
+            const option = document.createElement('option');
+            option.value = day.date;
+            option.innerText = day[currentLang].desc;
+            dropdown.appendChild(option);
+        });
+    }
+
+    async function fetchEvents() {
+        renderTimeline(defaultStaticEvents);
+        try {
+            const res = await fetch(API_URL);
+            const serverEvents = await res.json();
+            const dynamicEvents = serverEvents.filter(e => !e.isStatic);
+            const combinedEvents = [...defaultStaticEvents, ...dynamicEvents];
+            renderTimeline(combinedEvents);
+        } catch (err) {
+            console.error("Error fetching data from server, showing default schedule:", err);
+        }
+    }
+
+    function renderTimeline(allEvents) {
+        const container = document.getElementById('timeline-container');
+        container.innerHTML = '';
+        const t = translations[currentLang];
+
+        tripDays.forEach(day => {
+            const dayEvents = allEvents.filter(e => e.date === day.date);
+            dayEvents.sort((a,b) => a.time.localeCompare(b.time));
+
+            let dayHtml = `
+                <div class="day-row">
+                    <div class="day-header">
+                        <span class="day-title">${day[currentLang].desc}</span>
+                        <span class="day-date">${day[currentLang].label}</span>
+                    </div>
+                    <div class="event-list">
+            `;
+
+            if (dayEvents.length === 0) {
+                dayHtml += `<p style="color: var(--text-muted); font-size:0.85rem;">${t.emptyDay}</p>`;
+            } else {
+                dayEvents.forEach(ev => {
+                    let icon = 'fa-star';
+                    if (ev.type === 'flight') icon = 'fa-plane';
+                    if (ev.type === 'harry') icon = 'fa-microphone';
+                    if (ev.type === 'mustsee') icon = 'fa-map-location-dot';
+                    if (ev.type === 'custom') icon = 'fa-masks-theater';
+                    if (ev.type === 'transit') icon = 'fa-taxi';
+
+                    const displayTime = ev.time || t.flexible;
+                    const displayName = currentLang === 'he' ? ev.nameHe : ev.nameEn;
+                    const showDelete = !ev.isStatic;
+
+                    dayHtml += `
+                        <div class="event-item ${ev.type}">
+                            <div class="event-icon"><i class="fa-solid ${icon}"></i></div>
+                            <div class="event-details">
+                                <span class="event-time">${displayTime}</span>
+                                <span class="event-name">${displayName}</span>
+                                ${!ev.isStatic ? `<span class="created-by-badge">${t.addedBy}${ev.createdBy}</span>` : ''}
+                            </div>
+                            ${showDelete ? `<button class="delete-btn" onclick="deleteEvent('${ev._id}')"><i class="fa-solid fa-trash"></i></button>` : ''}
+                        </div>
+                    `;
+                });
+            }
+
+            dayHtml += `</div></div>`;
+            container.innerHTML += dayHtml;
+        });
+    }
+
+    async function addCustomEvent() {
+        const date = document.getElementById('form-date').value;
+        const nameHe = document.getElementById('form-name-he').value;
+        const nameEn = document.getElementById('form-name-en').value;
+        const time = document.getElementById('form-time').value;
+
+        if (!nameHe || !nameEn) return alert('חובה למלא שם בשתי השפות');
+
+        const newEvent = {
+            date, nameHe, nameEn,
+            time: time || "גמיש",
+            type: "custom",
+            createdBy: currentUser
+        };
+
+        try {
+            const res = await fetch(API_URL, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(newEvent)
+            });
+            const data = await res.json();
+            if (!res.ok) return alert(data.error);
+
+            document.getElementById('form-name-he').value = '';
+            document.getElementById('form-name-en').value = '';
+            document.getElementById('form-time').value = '';
+            fetchEvents();
+        } catch (err) {
+            console.error("Error creating event:", err);
+        }
+    }
+
+    async function deleteEvent(id) {
+        if (!confirm('האם אתה בטוח שברצונך למחוק אירוע זה מלוח הזמנים של כולם?')) return;
+        
+        try {
+            const res = await fetch(`${API_URL}/${id}`, {
+                method: 'DELETE',
+                headers: { 'Content-Type': 'application/json' }
+            });
+            const data = await res.json();
+            if (!res.ok) alert(data.error);
+            fetchEvents();
+        } catch (err) {
+            console.error("Error deleting event:", err);
+        }
+    }
+
+    const flightDate = new Date("September 25, 2026 11:00:00").getTime();
+    function updateCountdown() {
+        const now = new Date().getTime();
+        const diff = flightDate - now;
+        if (diff < 0) return;
+        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
+        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    }
+
+    updateUIStrings();
+    populateDateDropdown();
+    fetchEvents();
+    updateCountdown();
+    setInterval(updateCountdown, 60000);
+</script>
+
+</body>
+</html>
