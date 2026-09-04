@@ -24,9 +24,6 @@
         html[dir="ltr"] body { font-family: 'Poppins', sans-serif; }
         .container { max-width: 650px; margin: 0 auto; }
 
-        .user-bar { background: #1e293b; padding: 12px; border-radius: 12px; margin-bottom: 15px; display: flex; justify-content: space-between; align-items: center; border: 1px solid #334155; }
-        .user-bar select { padding: 6px 10px; background: #0f172a; border: 1px solid #475569; color: white; border-radius: 6px; font-size: 0.9rem; }
-
         .lang-toggle-btn { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; display: block; margin: 0 auto 10px auto; }
         header { text-align: center; margin-bottom: 20px; background: linear-gradient(135deg, #1e1b4b, #2e1065); padding: 20px 15px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); border: 1px solid #4c1d95; }
         header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 5px; background: linear-gradient(to left, #f472b6, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
@@ -72,14 +69,6 @@
         .event-details { flex-grow: 1; }
         .event-time { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; display: block; }
         .event-name { font-weight: 600; font-size: 0.95rem; display: block; }
-        .created-by-badge { font-size: 0.7rem; color: var(--accent-mustsee); display: block; margin-top: 2px; }
-
-        .delete-btn { background: transparent; border: none; color: #ef4444; padding: 8px; cursor: pointer; }
-        .add-event-section { background: var(--card-bg); padding: 20px; border-radius: 16px; margin-top: 25px; border: 1px solid #334155; }
-        .add-event-section h2 { margin-bottom: 12px; font-size: 1.2rem; color: #f472b6; }
-        .form-grid { display: flex; flex-direction: column; gap: 10px; }
-        input, select, button { padding: 12px; border-radius: 10px; border: 1px solid #334155; background: #0f172a; color: #fff; font-size: 0.95rem; width: 100%; }
-        button.btn-submit { background: linear-gradient(to left, #ec4899, #8b5cf6); border: none; font-weight: 700; cursor: pointer; }
 
         @media (min-width: 600px) {
             .info-scroll-container { overflow-x: visible; display: grid; grid-template-columns: repeat(3, 1fr); }
@@ -90,16 +79,6 @@
 <body>
 
 <div class="container">
-    
-    <!-- <div class="user-bar">
-        <span id="ui-user-label">👤 שותף מעדכן:</span>
-        <select id="user-select" onchange="saveCurrentUser()">
-            <option value="מיטל">מיטל</option>
-            <option value="צילה">צילה</option>
-            <option value="שינדר">שינדר</option>
-        </select>
-    </div> -->
-    
     <button class="lang-toggle-btn" onclick="toggleLanguage()" id="lang-btn">English 🇺🇸</button>
 
     <header>
@@ -128,37 +107,19 @@
     </div>
 
     <div class="timeline" id="timeline-container"></div>
-
-    <!-- <div class="add-event-section">
-        <h2 id="ui-form-title">➕ הוספת תוכנית ללוז המשותף</h2>
-        <div class="form-grid">
-            <select id="form-date"></select>
-            <input type="text" id="form-name-he" placeholder="שם בעברית (למשל: תצפית סאמיט)" required>
-            <input type="text" id="form-name-en" placeholder="English Name (e.g., Summit One Vanderbilt)" required>
-            <input type="text" id="form-time" placeholder="שעה (למשל: 19:30)">
-            <button class="btn-submit" onclick="addCustomEvent()" id="ui-form-btn">הוסף ללוז של כולם</button>
-        </div>
-    </div> -->
 </div>
 
 <script>
-    const API_URL = "https://new-york-trip-backend.onrender.com/api/events";
-
     let currentLang = 'he';
-    let currentUser = localStorage.getItem('nyc_trip_user') || 'מיטל';
 
     const translations = {
         he: {
             btn: "English 🇺🇸", title: "NEW YORK 2026 🇺🇸", subtitle: "לוח הטיול המשותף שלכם",
-            days: "ימים", hours: "שעות", min: "דקות", formTitle: "➕ הוספת תוכנית ללוז המשותף",
-            formBtn: "הוסף ללוז של כולם", emptyDay: "יום חופשי - זמן מעולה לחקור!", flexible: "גמיש",
-            addedBy: "נוסף ע״י: "
+            days: "ימים", hours: "שעות", min: "דקות", emptyDay: "יום חופשי - זמן מעולה לחקור!", flexible: "גמיש"
         },
         en: {
             btn: "עברית 🇮🇱", title: "NEW YORK 2026 🇺🇸", subtitle: "Your Shared Dashboard",
-            days: "Days", hours: "Hours", min: "Min", formTitle: "➕ Add Activity to Shared Schedule",
-            formBtn: "Add to Everyone's Trip", emptyDay: "Free day - Great time to explore!", flexible: "Flexible",
-            addedBy: "Added by: "
+            days: "Days", hours: "Hours", min: "Min", emptyDay: "Free day - Great time to explore!", flexible: "Flexible"
         }
     };
 
@@ -175,81 +136,62 @@
         { date: "2026-10-04", he: { label: "יום א׳", desc: "04.10 - פרידה מניו יורק וטיסה חזרה ✈️" }, en: { label: "Sun", desc: "04.10 - Farewell NY & Flight Home" } }
     ];
 
-const defaultStaticEvents = [
-    // 25.09 - נחיתה
-    { date: "2026-09-25", time: "11:00", nameHe: "✈️ המראה מתל אביב (UA85)", nameEn: "Departure from TLV", type: "flight", isStatic: true },
-    { date: "2026-09-25", time: "15:50", nameHe: "✈️ נחיתה ב-Newark (EWR)", nameEn: "Landing at EWR", type: "flight", isStatic: true },
-    { date: "2026-09-25", time: "16:30", nameHe: "🚕 איסוף מזוודות ונסיעה למלון בהארלם", nameEn: "Transit to Renaissance Harlem", type: "transit", isStatic: true },
-    { date: "2026-09-25", time: "19:00", nameHe: "🚶 טיימס סקוור ורחוב 42", nameEn: "Times Square & 42nd St", type: "mustsee", isStatic: true },
-    { date: "2026-09-25", time: "23:45", nameHe: "✨ תערוכת Midnight Moment בטיימס סקוור", nameEn: "Midnight Moment at Times Square", type: "custom", isStatic: true },
+    const defaultStaticEvents = [
+        { date: "2026-09-25", time: "11:00", nameHe: "✈️ המראה מתל אביב (UA85)", nameEn: "Departure from TLV", type: "flight" },
+        { date: "2026-09-25", time: "15:50", nameHe: "✈️ נחיתה ב-Newark (EWR)", nameEn: "Landing at EWR", type: "flight" },
+        { date: "2026-09-25", time: "16:30", nameHe: "🚕 איסוף מזוודות ונסיעה למלון בהארלם", nameEn: "Transit to Renaissance Harlem", type: "transit" },
+        { date: "2026-09-25", time: "19:00", nameHe: "🚶 טיימס סקוור ורחוב 42", nameEn: "Times Square & 42nd St", type: "mustsee" },
+        { date: "2026-09-25", time: "23:45", nameHe: "✨ תערוכת Midnight Moment בטיימס סקוור", nameEn: "Midnight Moment at Times Square", type: "custom" },
 
-    // 26.09 - סנטרל פארק והארי
-    { date: "2026-09-26", time: "10:00", nameHe: "🌳 סנטרל פארק (Strawberry Fields, Bethesda Terrace)", nameEn: "Central Park Walk", type: "mustsee", isStatic: true },
-    { date: "2026-09-26", time: "12:30", nameHe: "🏛️ מוזיאון המטרופוליטן לאמנות (The Met)", nameEn: "The Met Museum", type: "mustsee", isStatic: true },
-    { date: "2026-09-26", time: "16:30", nameHe: "🏨 התרעננות במלון לקראת ההופעה", nameEn: "Rest at Hotel", type: "custom", isStatic: true },
-    { date: "2026-09-26", time: "19:30", nameHe: "🎤 הופעה משותפת: HARRY STYLES Live! 🍉", nameEn: "Live Concert: HARRY STYLES!", type: "harry", isStatic: true },
+        { date: "2026-09-26", time: "10:00", nameHe: "🌳 סנטרל פארק (Strawberry Fields, Bethesda Terrace)", nameEn: "Central Park Walk", type: "mustsee" },
+        { date: "2026-09-26", time: "12:30", nameHe: "🏛️ מוזיאון המטרופוליטן לאמנות (The Met)", nameEn: "The Met Museum", type: "mustsee" },
+        { date: "2026-09-26", time: "16:30", nameHe: "🏨 התרעננות במלון לקראת ההופעה", nameEn: "Rest at Hotel", type: "custom" },
+        { date: "2026-09-26", time: "19:30", nameHe: "🎤 הופעה משותפת: HARRY STYLES Live! 🍉", nameEn: "Live Concert: HARRY STYLES!", type: "harry" },
 
-    // 27.09 - ברוקלין 
-    { date: "2026-09-27", time: "10:00", nameHe: "🛍️ שוק הפשפשים של ברוקלין (DUMBO)", nameEn: "Brooklyn Flea Market (DUMBO)", type: "custom", isStatic: true },
-    { date: "2026-09-27", time: "13:00", nameHe: "🎨 ויליאמסבורג (חנויות וינטג' ושוק האוכל Smorgasburg)", nameEn: "Williamsburg & Smorgasburg", type: "mustsee", isStatic: true },
-    { date: "2026-09-27", time: "16:00", nameHe: "🌉 חציית גשר ברוקלין ברגל לכיוון מנהטן", nameEn: "Walk Brooklyn Bridge to Manhattan", type: "mustsee", isStatic: true },
+        { date: "2026-09-27", time: "10:00", nameHe: "🛍️ שוק הפשפשים של ברוקלין (DUMBO)", nameEn: "Brooklyn Flea Market (DUMBO)", type: "custom" },
+        { date: "2026-09-27", time: "13:00", nameHe: "🎨 ויליאמסבורג (חנויות וינטג' ושוק האוכל Smorgasburg)", nameEn: "Williamsburg & Smorgasburg", type: "mustsee" },
+        { date: "2026-09-27", time: "16:00", nameHe: "🌉 חציית גשר ברוקלין ברגל לכיוון מנהטן", nameEn: "Walk Brooklyn Bridge to Manhattan", type: "mustsee" },
 
-    // 28.09 - היסטוריה ופסל החירות
-    { date: "2026-09-28", time: "10:00", nameHe: "📈 וול סטריט ופסל השור המסתער", nameEn: "Wall Street & Charging Bull", type: "mustsee", isStatic: true },
-    { date: "2026-09-28", time: "13:00", nameHe: "💧 אנדרטת 11 בספטמבר (הבריכות) ו-Oculus", nameEn: "9/11 Memorial & Oculus", type: "mustsee", isStatic: true },
-    { date: "2026-09-28", time: "15:30", nameHe: "🏛️ מוזיאון 9/11 (שעות כניסה בחינם!)", nameEn: "9/11 Museum (Free Hours!)", type: "mustsee", isStatic: true },
-    { date: "2026-09-28", time: "18:00", nameHe: "⛴️ מעבורת סטטן איילנד בשקיעה (תצפית חינם על פסל החירות)", nameEn: "Staten Island Ferry (Sunset)", type: "mustsee", isStatic: true },
+        { date: "2026-09-28", time: "10:00", nameHe: "📈 וול סטריט ופסל השור המסתער", nameEn: "Wall Street & Charging Bull", type: "mustsee" },
+        { date: "2026-09-28", time: "13:00", nameHe: "💧 אנדרטת 11 בספטמבר (הבריכות) ו-Oculus", nameEn: "9/11 Memorial & Oculus", type: "mustsee" },
+        { date: "2026-09-28", time: "15:30", nameHe: "🏛️ מוזיאון 9/11 (שעות כניסה בחינם!)", nameEn: "9/11 Museum (Free Hours!)", type: "mustsee" },
+        { date: "2026-09-28", time: "18:00", nameHe: "⛴️ מעבורת סטטן איילנד בשקיעה (תצפית חינם על פסל החירות)", nameEn: "Staten Island Ferry (Sunset)", type: "mustsee" },
 
-    // 29.09 - צ'לסי והיי ליין
-    { date: "2026-09-29", time: "10:00", nameHe: "☕ הליכה בגריניץ' וילג' ובווסט וילג'", nameEn: "Greenwich & West Village", type: "custom", isStatic: true },
-    { date: "2026-09-29", time: "13:00", nameHe: "🌮 צהריים: Chelsea Market (מומלץ: Los Tacos No. 1)", nameEn: "Lunch: Chelsea Market", type: "mustsee", isStatic: true },
-    { date: "2026-09-29", time: "14:30", nameHe: "🛤️ הליכה בפארק התלוי - ההיי ליין (The High Line)", nameEn: "The High Line Park", type: "mustsee", isStatic: true },
-    { date: "2026-09-29", time: "16:00", nameHe: "🖼️ מוזיאון וויטני לאמנות או מוזיאון רובין", nameEn: "Whitney Museum / Rubin Museum", type: "custom", isStatic: true },
+        { date: "2026-09-29", time: "10:00", nameHe: "☕ הליכה בגריניץ' וילג' ובווסט וילג'", nameEn: "Greenwich & West Village", type: "custom" },
+        { date: "2026-09-29", time: "13:00", nameHe: "🌮 צהריים: Chelsea Market (מומלץ: Los Tacos No. 1)", nameEn: "Lunch: Chelsea Market", type: "mustsee" },
+        { date: "2026-09-29", time: "14:30", nameHe: "🛤️ הליכה בפארק התלוי - ההיי ליין (The High Line)", nameEn: "The High Line Park", type: "mustsee" },
+        { date: "2026-09-29", time: "16:00", nameHe: "🖼️ מוזיאון וויטני לאמנות או מוזיאון רובין", nameEn: "Whitney Museum / Rubin Museum", type: "custom" },
 
-    // 30.09 - מרכז העיר והארי 2
-    { date: "2026-09-30", time: "10:00", nameHe: "🇺🇳 סיור בבניין האו\"ם (יש להזמין כרטיס מראש)", nameEn: "UN Headquarters Tour", type: "mustsee", isStatic: true },
-    { date: "2026-09-30", time: "13:00", nameHe: "🏙️ הדסון יארדס (Hudson Yards) ומבנה ה-Vessel", nameEn: "Hudson Yards & Vessel", type: "mustsee", isStatic: true },
-    { date: "2026-09-30", time: "16:30", nameHe: "🏨 התרעננות במלון בהארלם", nameEn: "Rest at Hotel", type: "custom", isStatic: true },
-    { date: "2026-09-30", time: "19:30", nameHe: "🎤 הופעה שנייה: HARRY STYLES Live! 🍉", nameEn: "Live Concert: HARRY STYLES!", type: "harry", isStatic: true },
+        { date: "2026-09-30", time: "10:00", nameHe: "🇺🇳 סיור בבניין האו\"ם (יש להזמין כרטיס מראש)", nameEn: "UN Headquarters Tour", type: "mustsee" },
+        { date: "2026-09-30", time: "13:00", nameHe: "🏙️ הדסון יארדס (Hudson Yards) ומבנה ה-Vessel", nameEn: "Hudson Yards & Vessel", type: "mustsee" },
+        { date: "2026-09-30", time: "16:30", nameHe: "🏨 התרעננות במלון בהארלם", nameEn: "Rest at Hotel", type: "custom" },
+        { date: "2026-09-30", time: "19:30", nameHe: "🎤 הופעה שנייה: HARRY STYLES Live! 🍉", nameEn: "Live Concert: HARRY STYLES!", type: "harry" },
 
-    // 01.10 - תצפיות
-    { date: "2026-10-01", time: "10:00", nameHe: "🏢 בניין האמפייר סטייט (Empire State Building)", nameEn: "Empire State Building", type: "mustsee", isStatic: true },
-    { date: "2026-10-01", time: "13:00", nameHe: "🌷 מרכז רוקפלר (Rockefeller Center) וגני Channel", nameEn: "Rockefeller Center", type: "mustsee", isStatic: true },
-    { date: "2026-10-01", time: "16:30", nameHe: "🌇 תצפית שקיעה: Top of the Rock או Summit", nameEn: "Sunset Deck: Top of the Rock", type: "mustsee", isStatic: true },
+        { date: "2026-10-01", time: "10:00", nameHe: "🏢 בניין האמפייר סטייט (Empire State Building)", nameEn: "Empire State Building", type: "mustsee" },
+        { date: "2026-10-01", time: "13:00", nameHe: "🌷 מרכז רוקפלר (Rockefeller Center) וגני Channel", nameEn: "Rockefeller Center", type: "mustsee" },
+        { date: "2026-10-01", time: "16:30", nameHe: "🌇 תצפית שקיעה: Top of the Rock או Summit", nameEn: "Sunset Deck: Top of the Rock", type: "mustsee" },
 
-    // 02.10 - שופינג ו-MoMA
-    { date: "2026-10-02", time: "10:00", nameHe: "🛍️ סיבוב בשדרה החמישית (5th Avenue)", nameEn: "5th Avenue Shopping", type: "custom", isStatic: true },
-    { date: "2026-10-02", time: "13:00", nameHe: "👗 שכונת סוהו (SoHo) - בוטיקים וגלריות", nameEn: "SoHo Boutiques", type: "mustsee", isStatic: true },
-    { date: "2026-10-02", time: "16:00", nameHe: "🖼️ מוזיאון MoMA (כניסה בחינם! שישי הראשון בחודש)", nameEn: "MoMA Museum (Free Entry!)", type: "mustsee", isStatic: true },
+        { date: "2026-10-02", time: "10:00", nameHe: "🛍️ סיבוב בשדרה החמישית (5th Avenue)", nameEn: "5th Avenue Shopping", type: "custom" },
+        { date: "2026-10-02", time: "13:00", nameHe: "👗 שכונת סוהו (SoHo) - בוטיקים וגלריות", nameEn: "SoHo Boutiques", type: "mustsee" },
+        { date: "2026-10-02", time: "16:00", nameHe: "🖼️ מוזיאון MoMA (כניסה בחינם! שישי הראשון בחודש)", nameEn: "MoMA Museum (Free Entry!)", type: "mustsee" },
 
-    // 03.10 - ברודווי ואוכל
-    { date: "2026-10-03", time: "10:00", nameHe: "🎟️ דוכן TKTS לקניית כרטיסים מוזלים להצגה להערב", nameEn: "TKTS Booth for Broadway", type: "custom", isStatic: true },
-    { date: "2026-10-03", time: "13:00", nameHe: "🚡 רכבל רוזוולט או פארק Gantry Plaza בלונג איילנד", nameEn: "Roosevelt Tramway / Gantry Plaza", type: "mustsee", isStatic: true },
-    { date: "2026-10-03", time: "19:30", nameHe: "🎭 מחזמר בברודווי (Lion King, Wicked וכו')", nameEn: "Broadway Musical", type: "custom", isStatic: true },
-    { date: "2026-10-03", time: "22:30", nameHe: "🎷 ארוחת ערב יוקרתית או מועדון ג'אז (Comedy Cellar)", nameEn: "Dinner / Jazz Club", type: "custom", isStatic: true },
+        { date: "2026-10-03", time: "10:00", nameHe: "🎟️ דוכן TKTS לקניית כרטיסים מוזלים להצגה להערב", nameEn: "TKTS Booth for Broadway", type: "custom" },
+        { date: "2026-10-03", time: "13:00", nameHe: "🚡 רכבל רוזוולט או פארק Gantry Plaza בלונג איילנד", nameEn: "Roosevelt Tramway / Gantry Plaza", type: "mustsee" },
+        { date: "2026-10-03", time: "19:30", nameHe: "🎭 מחזמר בברודווי (Lion King, Wicked וכו')", nameEn: "Broadway Musical", type: "custom" },
+        { date: "2026-10-03", time: "22:30", nameHe: "🎷 ארוחת ערב יוקרתית או מועדון ג'אז (Comedy Cellar)", nameEn: "Dinner / Jazz Club", type: "custom" },
 
-    // 04.10 - חזרה
-    { date: "2026-10-04", time: "10:00", nameHe: "🥞 צ'ק-אאוט וארוחת בראנץ' אחרונה (או פיקניק מפונק)", nameEn: "Check-out & Farewell Brunch", type: "custom", isStatic: true },
-    { date: "2026-10-04", time: "12:00", nameHe: "🛍️ השלמות וקניות אחרונות", nameEn: "Final Shopping", type: "custom", isStatic: true },
-    { date: "2026-10-04", time: "18:30", nameHe: "🚕 נסיעה לשדה התעופה EWR ממרכז העיר", nameEn: "Transit to EWR", type: "transit", isStatic: true },
-    { date: "2026-10-04", time: "22:50", nameHe: "✈️ המראה חזרה לישראל (UA90)", nameEn: "Flight to Tel Aviv (UA90)", type: "flight", isStatic: true }
-];
-
-    document.getElementById('user-select').value = currentUser;
-
-    function saveCurrentUser() {
-        currentUser = document.getElementById('user-select').value;
-        localStorage.setItem('nyc_trip_user', currentUser);
-        fetchEvents();
-    }
+        { date: "2026-10-04", time: "10:00", nameHe: "🥞 צ'ק-אאוט וארוחת בראנץ' אחרונה (או פיקניק מפונק)", nameEn: "Check-out & Farewell Brunch", type: "custom" },
+        { date: "2026-10-04", time: "12:00", nameHe: "🛍️ השלמות וקניות אחרונות", nameEn: "Final Shopping", type: "custom" },
+        { date: "2026-10-04", time: "18:30", nameHe: "🚕 נסיעה לשדה התעופה EWR ממרכז העיר", nameEn: "Transit to EWR", type: "transit" },
+        { date: "2026-10-04", time: "22:50", nameHe: "✈️ המראה חזרה לישראל (UA90)", nameEn: "Flight to Tel Aviv (UA90)", type: "flight" }
+    ];
 
     function toggleLanguage() {
         currentLang = currentLang === 'he' ? 'en' : 'he';
         const root = document.getElementById('html-root');
         root.setAttribute('dir', currentLang === 'en' ? 'ltr' : 'rtl');
         updateUIStrings();
-        fetchEvents();
-        populateDateDropdown();
+        renderTimeline();
     }
 
     function updateUIStrings() {
@@ -260,41 +202,15 @@ const defaultStaticEvents = [
         document.getElementById('lbl-days').innerText = t.days;
         document.getElementById('lbl-hours').innerText = t.hours;
         document.getElementById('lbl-min').innerText = t.min;
-        document.getElementById('ui-form-title').innerText = t.formTitle;
-        document.getElementById('ui-form-btn').innerText = t.formBtn;
     }
 
-    function populateDateDropdown() {
-        const dropdown = document.getElementById('form-date');
-        dropdown.innerHTML = '';
-        tripDays.forEach(day => {
-            const option = document.createElement('option');
-            option.value = day.date;
-            option.innerText = day[currentLang].desc;
-            dropdown.appendChild(option);
-        });
-    }
-
-    async function fetchEvents() {
-        renderTimeline(defaultStaticEvents);
-        try {
-            const res = await fetch(API_URL);
-            const serverEvents = await res.json();
-            const dynamicEvents = serverEvents.filter(e => !e.isStatic);
-            const combinedEvents = [...defaultStaticEvents, ...dynamicEvents];
-            renderTimeline(combinedEvents);
-        } catch (err) {
-            console.error("Error fetching data from server, showing default schedule:", err);
-        }
-    }
-
-    function renderTimeline(allEvents) {
+    function renderTimeline() {
         const container = document.getElementById('timeline-container');
         container.innerHTML = '';
         const t = translations[currentLang];
 
         tripDays.forEach(day => {
-            const dayEvents = allEvents.filter(e => e.date === day.date);
+            const dayEvents = defaultStaticEvents.filter(e => e.date === day.date);
             dayEvents.sort((a,b) => a.time.localeCompare(b.time));
 
             let dayHtml = `
@@ -319,7 +235,6 @@ const defaultStaticEvents = [
 
                     const displayTime = ev.time || t.flexible;
                     const displayName = currentLang === 'he' ? ev.nameHe : ev.nameEn;
-                    const showDelete = !ev.isStatic;
 
                     dayHtml += `
                         <div class="event-item ${ev.type}">
@@ -327,9 +242,7 @@ const defaultStaticEvents = [
                             <div class="event-details">
                                 <span class="event-time">${displayTime}</span>
                                 <span class="event-name">${displayName}</span>
-                                ${!ev.isStatic ? `<span class="created-by-badge">${t.addedBy}${ev.createdBy}</span>` : ''}
                             </div>
-                            ${showDelete ? `<button class="delete-btn" onclick="deleteEvent('${ev._id}')"><i class="fa-solid fa-trash"></i></button>` : ''}
                         </div>
                     `;
                 });
@@ -338,55 +251,6 @@ const defaultStaticEvents = [
             dayHtml += `</div></div>`;
             container.innerHTML += dayHtml;
         });
-    }
-
-    async function addCustomEvent() {
-        const date = document.getElementById('form-date').value;
-        const nameHe = document.getElementById('form-name-he').value;
-        const nameEn = document.getElementById('form-name-en').value;
-        const time = document.getElementById('form-time').value;
-
-        if (!nameHe || !nameEn) return alert('חובה למלא שם בשתי השפות');
-
-        const newEvent = {
-            date, nameHe, nameEn,
-            time: time || "גמיש",
-            type: "custom",
-            createdBy: currentUser
-        };
-
-        try {
-            const res = await fetch(API_URL, {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(newEvent)
-            });
-            const data = await res.json();
-            if (!res.ok) return alert(data.error);
-
-            document.getElementById('form-name-he').value = '';
-            document.getElementById('form-name-en').value = '';
-            document.getElementById('form-time').value = '';
-            fetchEvents();
-        } catch (err) {
-            console.error("Error creating event:", err);
-        }
-    }
-
-    async function deleteEvent(id) {
-        if (!confirm('האם אתה בטוח שברצונך למחוק אירוע זה מלוח הזמנים של כולם?')) return;
-        
-        try {
-            const res = await fetch(`${API_URL}/${id}`, {
-                method: 'DELETE',
-                headers: { 'Content-Type': 'application/json' }
-            });
-            const data = await res.json();
-            if (!res.ok) alert(data.error);
-            fetchEvents();
-        } catch (err) {
-            console.error("Error deleting event:", err);
-        }
     }
 
     const flightDate = new Date("September 25, 2026 11:00:00").getTime();
@@ -400,8 +264,7 @@ const defaultStaticEvents = [
     }
 
     updateUIStrings();
-    populateDateDropdown();
-    fetchEvents();
+    renderTimeline();
     updateCountdown();
     setInterval(updateCountdown, 60000);
 </script>
