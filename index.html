@@ -3,270 +3,1224 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
     <title>New York Trip 2026 🇺🇸</title>
+
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;600;800&family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+
     <style>
         :root {
             --bg-color: #0b0f19;
             --card-bg: #161e2e;
-            --accent-primary: #ec4899; 
-            --accent-harry: #10b981;    
-            --accent-flight: #3b82f6;   
-            --accent-mustsee: #06b6d4;  
+            --accent-primary: #ec4899;
+            --accent-harry: #10b981;
+            --accent-flight: #3b82f6;
+            --accent-mustsee: #06b6d4;
+            --accent-food: #f59e0b;
             --text-main: #f8fafc;
             --text-muted: #94a3b8;
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; }
-        body { background-color: var(--bg-color); color: var(--text-main); padding: 12px; font-family: 'Assistant', sans-serif; }
-        html[dir="ltr"] body { font-family: 'Poppins', sans-serif; }
-        .container { max-width: 650px; margin: 0 auto; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
-        .lang-toggle-btn { background: linear-gradient(135deg, #3b82f6, #8b5cf6); color: white; border: none; padding: 6px 14px; border-radius: 20px; font-weight: bold; cursor: pointer; display: block; margin: 0 auto 10px auto; }
-        header { text-align: center; margin-bottom: 20px; background: linear-gradient(135deg, #1e1b4b, #2e1065); padding: 20px 15px; border-radius: 16px; box-shadow: 0 8px 24px rgba(0,0,0,0.4); border: 1px solid #4c1d95; }
-        header h1 { font-size: 2rem; font-weight: 800; margin-bottom: 5px; background: linear-gradient(to left, #f472b6, #38bdf8); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
-        header p { color: var(--text-muted); font-size: 0.95rem; margin-bottom: 15px; }
-        .countdown-container { display: flex; justify-content: center; gap: 10px; }
-        .countdown-box { background: rgba(255, 255, 255, 0.06); padding: 8px 0; border-radius: 12px; width: 75px; border: 1px solid rgba(255,255,255,0.1); text-align: center; }
-        .countdown-box span { display: block; font-size: 1.5rem; font-weight: 700; color: #fff; }
-        .countdown-box label { font-size: 0.75rem; color: var(--text-muted); }
+        body {
+            background: var(--bg-color);
+            color: var(--text-main);
+            padding: 15px;
+            font-family: 'Assistant', sans-serif;
+        }
 
-        .info-scroll-container { display: flex; gap: 12px; overflow-x: auto; padding-bottom: 10px; margin-bottom: 25px; }
-        .info-card { flex: 0 0 85%; background: var(--card-bg); padding: 16px; border-radius: 14px; border-top: 4px solid var(--accent-flight); }
-        .info-card h3 { font-size: 0.95rem; margin-bottom: 6px; color: var(--text-muted); }
-        .info-card p { font-weight: 600; font-size: 1rem; color: #fff; }
+        html[dir="ltr"] body {
+            font-family: 'Poppins', sans-serif;
+        }
 
-        .day-row { background: var(--card-bg); border-radius: 16px; padding: 16px; margin-bottom: 18px; }
-        .day-header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #2d3748; padding-bottom: 8px; margin-bottom: 12px; }
-        .day-title { font-size: 1.1rem; font-weight: 700; color: #38bdf8; }
-        .day-date { color: var(--text-muted); font-size: 0.85rem; }
+        .container {
+            max-width: 760px;
+            margin: 0 auto;
+        }
 
-        .event-list { display: flex; flex-direction: column; gap: 10px; }
-        .event-item { display: flex; align-items: center; padding: 12px; border-radius: 10px; background: rgba(15, 23, 42, 0.5); position: relative; }
+        /* Language */
+        .lang-toggle-btn {
+            background: linear-gradient(135deg, #3b82f6, #8b5cf6);
+            color: white;
+            border: none;
+            padding: 7px 16px;
+            border-radius: 20px;
+            font-weight: bold;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto 15px;
+        }
+
+        /* Header */
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+            background: linear-gradient(135deg, #1e1b4b, #2e1065);
+            padding: 25px 15px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            border: 1px solid #4c1d95;
+        }
+
+        header h1 {
+            font-size: 2.2rem;
+            font-weight: 800;
+            margin-bottom: 5px;
+            background: linear-gradient(to left, #f472b6, #38bdf8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        header p {
+            color: var(--text-muted);
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        /* Countdown */
+        .countdown-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .countdown-box {
+            background: rgba(255,255,255,0.08);
+            padding: 10px 0;
+            border-radius: 14px;
+            width: 80px;
+            border: 1px solid rgba(255,255,255,0.15);
+            text-align: center;
+        }
+
+        .countdown-box span {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: 800;
+        }
+
+        .countdown-box label {
+            font-size: 0.8rem;
+            color: #cbd5e1;
+        }
+
+        /* Info */
+        .info-scroll-container {
+            display: flex;
+            gap: 12px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 25px;
+        }
+
+        .info-card {
+            flex: 0 0 85%;
+            background: var(--card-bg);
+            padding: 18px;
+            border-radius: 16px;
+            border-top: 4px solid var(--accent-flight);
+        }
+
+        .info-card h3 {
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+            color: var(--text-muted);
+        }
+
+        .info-card p {
+            font-weight: 600;
+            font-size: 1.1rem;
+            line-height: 1.4;
+        }
+
+        /* Quick Tips */
+        .quick-tips {
+            background: rgba(16, 185, 129, 0.1);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 16px;
+            padding: 15px;
+            margin-bottom: 20px;
+        }
         
+        .quick-tips h3 {
+            color: #34d399;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .quick-tips ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        .quick-tips li {
+            font-size: 0.9rem;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+            position: relative;
+            padding-right: 20px;
+        }
+        html[dir="ltr"] .quick-tips li {
+            padding-right: 0;
+            padding-left: 20px;
+        }
+
+        .quick-tips li::before {
+            content: "💡";
+            position: absolute;
+            right: 0;
+        }
+        html[dir="ltr"] .quick-tips li::before {
+            right: auto;
+            left: 0;
+        }
+
+        /* Tabs */
+        .tabs {
+            display: flex;
+            gap: 10px;
+            margin-bottom: 20px;
+            background: #1e293b;
+            padding: 6px;
+            border-radius: 12px;
+        }
+
+        .tab-btn {
+            flex: 1;
+            padding: 12px;
+            background: transparent;
+            border: none;
+            color: var(--text-muted);
+            font-size: 1.05rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            font-family: inherit;
+        }
+
+        .tab-btn.active {
+            background: linear-gradient(135deg, #ec4899, #8b5cf6);
+            color: white;
+            box-shadow: 0 4px 12px rgba(236,72,153,0.3);
+        }
+
+        .tab-content {
+            display: none;
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        /* Day Selector */
+        .day-selector {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            scrollbar-width: none;
+        }
+        .day-selector::-webkit-scrollbar {
+            display: none;
+        }
+        .day-pill {
+            background: #1e293b;
+            color: var(--text-muted);
+            border: 1px solid #334155;
+            padding: 10px 18px;
+            border-radius: 20px;
+            white-space: nowrap;
+            font-weight: 700;
+            font-size: 0.95rem;
+            cursor: pointer;
+            transition: 0.2s;
+            font-family: inherit;
+        }
+        .day-pill.active {
+            background: var(--accent-flight);
+            color: #fff;
+            border-color: #60a5fa;
+            box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+        }
+        .not-vacation-msg {
+            background: rgba(245, 158, 11, 0.1);
+            border: 1px solid rgba(245, 158, 11, 0.3);
+            color: #fde68a;
+            padding: 12px;
+            border-radius: 12px;
+            margin-bottom: 15px;
+            text-align: center;
+            font-size: 0.95rem;
+            font-weight: 600;
+        }
+
+        /* Day cards */
+        .day-row {
+            background: var(--card-bg);
+            border-radius: 16px;
+            padding: 18px;
+            margin-bottom: 20px;
+            border: 1px solid #334155;
+            animation: fadeIn 0.4s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .day-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #2d3748;
+            padding-bottom: 10px;
+            margin-bottom: 15px;
+            gap: 10px;
+        }
+
+        .day-title {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        .day-date {
+            color: var(--text-muted);
+            font-size: 0.85rem;
+            font-weight: 600;
+            background: #0f172a;
+            padding: 4px 10px;
+            border-radius: 20px;
+            white-space: nowrap;
+        }
+
+        .category-header {
+            font-size: 1.3rem;
+            font-weight: 800;
+            color: #f472b6;
+            margin-bottom: 15px;
+        }
+
+        .event-list {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+        }
+
+        .event-item {
+            display: flex;
+            align-items: flex-start;
+            padding: 15px;
+            border-radius: 12px;
+            background: rgba(15,23,42,0.6);
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
         html[dir="rtl"] .event-item { border-right: 4px solid #64748b; }
         html[dir="ltr"] .event-item { border-left: 4px solid #64748b; }
-        html[dir="rtl"] .event-item.flight { border-right-color: var(--accent-flight); }
-        html[dir="ltr"] .event-item.flight { border-left-color: var(--accent-flight); }
-        html[dir="rtl"] .event-item.harry { border-right-color: var(--accent-harry); }
-        html[dir="ltr"] .event-item.harry { border-left-color: var(--accent-harry); }
-        html[dir="rtl"] .event-item.mustsee { border-right-color: var(--accent-mustsee); }
-        html[dir="ltr"] .event-item.mustsee { border-left-color: var(--accent-mustsee); }
-        html[dir="rtl"] .event-item.custom { border-right-color: #a855f7; }
-        html[dir="ltr"] .event-item.custom { border-left-color: #a855f7; }
 
-        .event-icon { font-size: 1.2rem; width: 24px; text-align: center; }
-        html[dir="rtl"] .event-icon { margin-left: 12px; }
-        html[dir="ltr"] .event-icon { margin-right: 12px; }
+        .event-item.flight { border-right-color: var(--accent-flight); }
+        .event-item.harry { border-right-color: var(--accent-harry); }
+        .event-item.mustsee { border-right-color: var(--accent-mustsee); }
+        .event-item.food { border-right-color: var(--accent-food); }
+        .event-item.custom { border-right-color: #a855f7; }
+        .event-item.transit { border-right-color: #94a3b8; }
+
+        .event-icon {
+            font-size: 1.4rem;
+            width: 30px;
+            text-align: center;
+            margin-top: 2px;
+        }
+
+        html[dir="rtl"] .event-icon { margin-left: 15px; }
+        html[dir="ltr"] .event-icon { margin-right: 15px; }
 
         .event-item.flight .event-icon { color: var(--accent-flight); }
         .event-item.harry .event-icon { color: var(--accent-harry); }
         .event-item.mustsee .event-icon { color: var(--accent-mustsee); }
+        .event-item.food .event-icon { color: var(--accent-food); }
         .event-item.custom .event-icon { color: #a855f7; }
+        .event-item.transit .event-icon { color: #94a3b8; }
 
-        .event-details { flex-grow: 1; }
-        .event-time { font-size: 0.8rem; color: var(--text-muted); font-weight: 600; display: block; }
-        .event-name { font-weight: 600; font-size: 0.95rem; display: block; }
+        .event-details {
+            flex-grow: 1;
+            width: 100%;
+        }
 
+        .event-time {
+            font-size: 0.85rem;
+            color: #a78bfa;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .event-name {
+            font-weight: 700;
+            font-size: 1.05rem;
+            display: block;
+            margin-bottom: 4px;
+        }
+
+        .event-desc {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.45;
+            display: block;
+            white-space: pre-line;
+        }
+
+        /* Sub-places link cards */
+        .event-places-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-top: 15px;
+            border-top: 1px dashed rgba(255,255,255,0.15);
+            padding-top: 15px;
+        }
+
+        .place-link-group {
+            background: rgba(0,0,0,0.25);
+            padding: 12px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+
+        .place-name-label {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #e2e8f0;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        
+        .place-name-label::before {
+            content: '📌';
+            font-size: 0.85rem;
+        }
+
+        .links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .link-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            text-decoration: none;
+            color: #e2e8f0;
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 6px 10px;
+            border-radius: 8px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transition: 0.2s;
+        }
+
+        .link-btn:hover {
+            transform: translateY(-2px);
+            background: #1e293b;
+        }
+
+        .link-btn.map { color: #bbf7d0; border-color: #166534; }
+        .link-btn.official { color: #bae6fd; border-color: #155e75; }
+        .link-btn.ticket { color: #fde68a; border-color: #92400e; }
+        .link-btn.search { color: #f8fafc; border-color: #475569; }
+
+        .cost-box {
+            display: inline-flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 8px;
+            padding: 5px 8px;
+            border-radius: 6px;
+            background: rgba(245, 158, 11, 0.08);
+            border: 1px solid rgba(245, 158, 11, 0.22);
+            color: #fde68a;
+            font-size: 0.8rem;
+        }
+
+        .cost-box.free { background: rgba(16, 185, 129, 0.08); border-color: rgba(16, 185, 129, 0.25); color: #a7f3d0; }
+        .cost-box.special { background: rgba(139, 92, 246, 0.08); border-color: rgba(139, 92, 246, 0.25); color: #ddd6fe; }
+
+        .cost-label { font-weight: 700; }
+        .cost-note { color: #cbd5e1; font-weight: 400; }
+
+        /* Desktop */
         @media (min-width: 600px) {
-            .info-scroll-container { overflow-x: visible; display: grid; grid-template-columns: repeat(3, 1fr); }
+            .info-scroll-container {
+                overflow-x: visible;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+            }
             .info-card { flex: none; }
+            .container { padding: 20px; }
         }
     </style>
 </head>
+
 <body>
 
 <div class="container">
-    <button class="lang-toggle-btn" onclick="toggleLanguage()" id="lang-btn">English 🇺🇸</button>
+
+    <button class="lang-toggle-btn" onclick="toggleLanguage()" id="lang-btn">
+        English 🇺🇸
+    </button>
 
     <header>
         <h1 id="ui-title">NEW YORK 2026 🇺🇸</h1>
-        <p id="ui-subtitle">לוח הטיול המשותף שלכם</p>
+        <p id="ui-subtitle">הטיול של מיטל, צילה ושינדר</p>
+
         <div class="countdown-container">
-            <div class="countdown-box"><span id="days">00</span><label id="lbl-days">ימים</label></div>
-            <div class="countdown-box"><span id="hours">00</span><label id="lbl-hours">שעות</label></div>
-            <div class="countdown-box"><span id="minutes">00</span><label id="lbl-min">דקות</label></div>
+            <div class="countdown-box">
+                <span id="days">00</span>
+                <label id="lbl-days">ימים</label>
+            </div>
+
+            <div class="countdown-box">
+                <span id="hours">00</span>
+                <label id="lbl-hours">שעות</label>
+            </div>
+
+            <div class="countdown-box">
+                <span id="minutes">00</span>
+                <label id="lbl-min">דקות</label>
+            </div>
         </div>
     </header>
-
-    <div class="info-scroll-container">
-        <div class="info-card" style="border-top-color: #a855f7;">
-            <h3>🏨 מקום לינה / Hotel</h3>
-            <p>Renaissance NY Harlem<br><span style="font-size:0.8rem; font-weight:400; color:#cbd5e1;">233 W 125th St</span></p>
-        </div>
-        <div class="info-card">
-            <h3>✈️ טיסת הלוך / Outbound</h3>
-            <p>25.09 | 11:00 United (UA85) TLV</p>
-        </div>
-        <div class="info-card" style="border-top-color: #e11d48;">
-            <h3>✈️ חזור / Return</h3>
-            <p>04.10 | 22:50 United (UA90) EWR</p>
-        </div>
+    
+    <div class="quick-tips" id="ui-quick-tips">
+        <h3><i class="fa-solid fa-lightbulb"></i> טיפים של מקומיים (וחיסכון!)</h3>
+        <ul>
+            <li>השתמשו בכרטיס אשראי או Apple Pay למעבר מהיר (OMNY) בסאבווי - משלמים 2.90$ לנסיעה, ולאחר 12 נסיעות שאר השבוע בחינם!</li>
+            <li>כדי לחסוך הליכה בתחנת Times Square העמוסה, כדאי לרדת בתחנת Bryant Park וללכת במעבר התת-קרקעי הממוזג.</li>
+            <li>אל תקנו אוכל יקר ברחוב - קפצו ל-Trader Joe's כדי לאסוף ארוחות מוכנות וטריות בפחות מ-8$ לפיקניקים בפארקים.</li>
+            <li>מעבורת ה-NYC Ferry עולה רק 4.50$ וזו דרך מדהימה לראות את קו הרקיע בלי לשלם עשרות דולרים על שייט תיירותי.</li>
+        </ul>
     </div>
 
-    <div class="timeline" id="timeline-container"></div>
+    <div class="info-scroll-container">
+
+        <div class="info-card" style="border-top-color:#a855f7">
+            <h3>🏨 מקום לינה</h3>
+            <p>
+                Delta Hotels Times Sq<br>
+                <span style="font-size:.85rem;font-weight:400;color:#cbd5e1">
+                    340 W 40th St
+                </span>
+            </p>
+        </div>
+
+        <div class="info-card">
+            <h3>✈️ טיסת הלוך</h3>
+            <p>
+                25.09 | 11:00<br>
+                <span style="font-size:.85rem;font-weight:400;color:#cbd5e1">
+                    United (UA85) TLV → EWR
+                </span>
+            </p>
+        </div>
+
+        <div class="info-card" style="border-top-color:#e11d48">
+            <h3>✈️ טיסת חזור</h3>
+            <p>
+                04.10 | 22:50<br>
+                <span style="font-size:.85rem;font-weight:400;color:#cbd5e1">
+                    United (UA90) EWR → TLV
+                </span>
+            </p>
+        </div>
+
+    </div>
+
+    <div class="tabs">
+        <button class="tab-btn active" onclick="switchTab('daily')" id="tab-daily">
+            לו"ז יומי 🗓️
+        </button>
+
+        <button class="tab-btn" onclick="switchTab('flow')" id="tab-flow">
+            רשימת Must Do 🗽
+        </button>
+    </div>
+
+    <div id="daily-tab" class="tab-content active"></div>
+    <div id="flow-tab" class="tab-content"></div>
+
 </div>
 
 <script>
-    let currentLang = 'he';
 
-    const translations = {
-        he: {
-            btn: "English 🇺🇸", title: "NEW YORK 2026 🇺🇸", subtitle: "לוח הטיול המשותף שלכם",
-            days: "ימים", hours: "שעות", min: "דקות", emptyDay: "יום חופשי - זמן מעולה לחקור!", flexible: "גמיש"
-        },
-        en: {
-            btn: "עברית 🇮🇱", title: "NEW YORK 2026 🇺🇸", subtitle: "Your Shared Dashboard",
-            days: "Days", hours: "Hours", min: "Min", emptyDay: "Free day - Great time to explore!", flexible: "Flexible"
+let currentLang = 'he';
+let selectedDayIndex = 'all'; // Default fallback
+let isDuringTrip = false;
+
+const translations = {
+    he: {
+        btn: "English 🇺🇸",
+        title: "NEW YORK 2026 🇺🇸",
+        subtitle: "הטיול של מיטל, צילה ושינדר",
+        days: "ימים",
+        hours: "שעות",
+        min: "דקות",
+        tabDaily: 'לו"ז יומי 🗓️',
+        tabFlow: "רשימת Must Do 🗽",
+        tipsTitle: 'טיפים של מקומיים (וחיסכון!)',
+        tipsContent: `
+            <li>השתמשו בכרטיס אשראי או Apple Pay למעבר מהיר (OMNY) בסאבווי - משלמים 2.90$ לנסיעה, ולאחר 12 נסיעות שאר השבוע בחינם!</li>
+            <li>כדי לחסוך הליכה בתחנת Times Square העמוסה, כדאי לרדת בתחנת Bryant Park וללכת במעבר התת-קרקעי הממוזג.</li>
+            <li>אל תקנו אוכל יקר ברחוב - קפצו ל-Trader Joe's כדי לאסוף ארוחות מוכנות וטריות בפחות מ-8$ לפיקניקים בפארקים.</li>
+            <li>מעבורת ה-NYC Ferry עולה רק 4.50$ וזו דרך מדהימה לראות את קו הרקיע בלי לשלם עשרות דולרים על שייט תיירותי.</li>
+        `,
+        notVacationMsg: (dateStr) => `היום ה-${dateStr}, כנראה שאתן עדיין לא בניו יורק! מציג את כל הימים:`,
+        linksTitle: "מידע וניווט:",
+        allDays: "כל הימים"
+    },
+    en: {
+        btn: "עברית 🇮🇱",
+        title: "NEW YORK 2026 🇺🇸",
+        subtitle: "Meytal, Tsila & Shinder's Trip",
+        days: "Days",
+        hours: "Hours",
+        min: "Min",
+        tabDaily: "Daily Itinerary 🗓️",
+        tabFlow: "Must Do List 🗽",
+        tipsTitle: 'Local Tips & Savings!',
+        tipsContent: `
+            <li>Use a credit card or Apple Pay to tap (OMNY) on the subway - $2.90 per ride, after 12 rides the rest of the week is free!</li>
+            <li>To avoid the crowded Times Square subway station, get off at Bryant Park and walk the underground tunnel.</li>
+            <li>Skip expensive street food - grab fresh pre-made meals under $8 at Trader Joe's for park picnics.</li>
+            <li>Take the regular NYC Ferry commuter boat for just $4.50 instead of an expensive tourist cruise for skyline views.</li>
+        `,
+        notVacationMsg: (dateStr) => `Today is ${dateStr}, you're probably not in NYC yet! Showing all days:`,
+        linksTitle: "Details & Navigation:",
+        allDays: "All Days"
+    }
+};
+
+
+/* ============================
+   PLACE DATA & LINKS
+============================ */
+
+function maps(query) {
+    return "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(query);
+}
+
+const placeLinks = {
+    "Ben Gurion Airport": { costType: "special", map: maps("Ben Gurion Airport TLV") },
+    "Newark Liberty Airport": { costType: "special", map: maps("Newark Liberty International Airport EWR") },
+    "Delta Hotels Times Square": { costType: "special", official: "https://www.marriott.com/en-us/hotels/nycmq-delta-hotels-new-york-times-square/overview/", map: maps("Delta Hotels by Marriott New York Times Square 340 W 40th St") },
+    "Penn Station": { costType: "special", map: maps("Penn Station New York") },
+    
+    "Times Square": { cost: "🆓 חינם", costType: "free", official: "https://www.timessquarenyc.org/", map: maps("Times Square New York") },
+    "Bryant Park": { cost: "🆓 חינם", costType: "free", official: "https://bryantpark.org/", map: maps("Bryant Park New York") },
+    "NY Public Library": { cost: "🆓 חינם", costType: "free", costNote: "Rose Main Reading Room", official: "https://www.nypl.org/locations/schwarzman", map: maps("New York Public Library Stephen A Schwarzman Building") },
+    "Grand Central Terminal": { cost: "🆓 חינם", costType: "free", official: "https://grandcentralterminal.com/visit/", map: maps("Grand Central Terminal New York") },
+    "Central Park": { cost: "🆓 חינם", costType: "free", official: "https://www.centralparknyc.org/", map: maps("Central Park New York") },
+    "Bethesda Terrace": { cost: "🆓 חינם", costType: "free", map: maps("Bethesda Terrace Central Park") },
+    "Bow Bridge": { cost: "🆓 חינם", costType: "free", map: maps("Bow Bridge Central Park") },
+    "Strawberry Fields": { cost: "🆓 חינם", costType: "free", official: "https://www.centralparknyc.org/locations/strawberry-fields", map: maps("Strawberry Fields Central Park") },
+    "Rockefeller Center": { cost: "🆓 חינם להסתובב", costType: "free", map: maps("Rockefeller Center New York") },
+    "Top of the Rock": { cost: "💵 החל מ-$43", costType: "paid", official: "https://www.rockefellercenter.com/", ticket: "https://www.rockefellercenter.com/tickets/top-of-the-rock-observation-deck/", map: maps("Top of the Rock New York") },
+    "Empire State Building": { cost: "💵 החל מ-$44", costType: "paid", costNote: "לתצפית, חינם מבחוץ", official: "https://www.esbnyc.com/", ticket: "https://www.esbnyc.com/tickets", map: maps("Empire State Building New York") },
+    "Fifth Avenue": { cost: "🆓 חינם", costType: "free", map: maps("Fifth Avenue New York") },
+    "Madison Square Garden": { cost: "🎟️ תלוי באירוע", costType: "paid", official: "https://www.msg.com/madison-square-garden", map: maps("Madison Square Garden New York") },
+    "Statue of Liberty": { cost: "💵 כ-$25", costType: "paid", costNote: "מומלץ להזמין מראש", official: "https://www.nps.gov/stli/", ticket: "https://www.statuecitycruises.com/", map: maps("Statue of Liberty New York") },
+    "Staten Island Ferry": { cost: "🆓 חינם לגמרי!", costType: "free", costNote: "אופציה חינמית לראות את הפסל", map: maps("Staten Island Ferry Whitehall Terminal") },
+    "Wall Street": { cost: "🆓 חינם", costType: "free", map: maps("Wall Street New York") },
+    "Charging Bull": { cost: "🆓 חינם", costType: "free", map: maps("Charging Bull New York") },
+    "9/11 Memorial": { cost: "🆓 חינם", costType: "free", official: "https://www.911memorial.org/", map: maps("9/11 Memorial New York") },
+    "9/11 Museum": { cost: "💵 כ-$33", costType: "paid", costNote: "🆓 חינם בשני בערב בהזמנה מראש", official: "https://www.911memorial.org/visit/museum", ticket: "https://visit.911memorial.org/", map: maps("9/11 Memorial Museum New York") },
+    "One World Trade Center": { cost: "💵 החל מ-$43 לתצפית", costType: "paid", official: "https://www.oneworldobservatory.com/", ticket: "https://www.oneworldobservatory.com/buy-tickets/", map: maps("One World Trade Center New York") },
+    "Oculus": { cost: "🆓 חינם", costType: "free", official: "https://www.westfield.com/en/united-states/oculus", map: maps("Oculus New York") },
+    "Brooklyn Bridge": { cost: "🆓 חינם", costType: "free", map: maps("Brooklyn Bridge New York") },
+    "Pebble Beach": { cost: "🆓 חינם", costType: "free", map: maps("Pebble Beach Brooklyn New York") },
+    "DUMBO": { cost: "🆓 חינם", costType: "free", map: maps("DUMBO Brooklyn New York") },
+    "Brooklyn Heights Promenade": { cost: "🆓 חינם", costType: "free", map: maps("Brooklyn Heights Promenade New York") },
+    "Brooklyn Bridge Park": { cost: "🆓 חינם", costType: "free", map: maps("Brooklyn Bridge Park") },
+    "Chinatown": { cost: "🆓 חינם", costType: "free", map: maps("Chinatown Manhattan New York") },
+    "Little Italy": { cost: "🆓 חינם", costType: "free", map: maps("Little Italy Manhattan New York") },
+    "Greenwich Village": { cost: "🆓 חינם", costType: "free", map: maps("Greenwich Village New York") },
+    "West Village": { cost: "🆓 חינם", costType: "free", map: maps("West Village New York") },
+    "Chelsea Market": { cost: "🆓 חינם", costType: "free", official: "https://www.chelseamarket.com/", map: maps("Chelsea Market New York") },
+    "High Line": { cost: "🆓 חינם", costType: "free", official: "https://www.thehighline.org/", map: maps("High Line New York") },
+    "Little Island": { cost: "🆓 חינם", costType: "free", official: "https://littleisland.org/", map: maps("Little Island New York") },
+    "Hudson Yards": { cost: "🆓 חינם", costType: "free", official: "https://www.hudsonyardsnewyork.com/", map: maps("Hudson Yards New York") },
+    "Vessel": { cost: "🆓 חינם מבחוץ", costType: "free", map: maps("Vessel Hudson Yards New York") },
+    "Edge": { cost: "💵 החל מ-$40", costType: "paid", official: "https://www.edgenyc.com/", ticket: "https://www.edgenyc.com/en/tickets", map: maps("Edge Hudson Yards New York") },
+    "Pier 57": { cost: "🆓 חינם", costType: "free", costNote: "פארק גג פתוח מ-6 בבוקר", map: maps("Pier 57 Rooftop Park New York") },
+    "Hunter's Point South Park": { cost: "🆓 חינם", costType: "free", costNote: "תצפית פנורמית מדהימה", map: maps("Hunter's Point South Park New York") },
+    "Exchange Place": { cost: "💵 דמי נסיעה (2.75$)", costType: "special", costNote: "תצפית קו רקיע מניו ג'רזי", map: maps("Exchange Place Jersey City") },
+    "United Nations": { cost: "💵 כ-$26", costType: "paid", costNote: "לסיור מודרך פנימי", official: "https://www.un.org/en/visit", ticket: "https://visit.un.org/tickets", map: maps("United Nations Headquarters New York") },
+    "The Met": { cost: "💵 $30", costType: "paid", official: "https://www.metmuseum.org/", ticket: "https://www.metmuseum.org/visit", map: maps("The Metropolitan Museum of Art New York") },
+    "MoMA": { cost: "💵 $30", costType: "paid", official: "https://www.moma.org/", ticket: "https://www.moma.org/tickets/", map: maps("Museum of Modern Art New York") },
+    "Guggenheim": { cost: "💵 $30", costType: "paid", official: "https://www.guggenheim.org/", map: maps("Guggenheim Museum New York") },
+    "Frick Collection": { cost: "💵 $22", costType: "paid", official: "https://www.frick.org/", map: maps("Frick Collection New York") },
+    "SUMMIT One Vanderbilt": { cost: "💵 החל מ-$43", costType: "paid", official: "https://summitov.com/", ticket: "https://summitov.com/tickets/", map: maps("SUMMIT One Vanderbilt") },
+    "Flatiron Building": { cost: "🆓 חינם מבחוץ", costType: "free", map: maps("Flatiron Building New York") },
+    "Madison Square Park": { cost: "🆓 חינם", costType: "free", map: maps("Madison Square Park New York") },
+    "Union Square": { cost: "🆓 חינם", costType: "free", map: maps("Union Square New York") },
+    "NoHo": { cost: "🆓 חינם", costType: "free", map: maps("NoHo Manhattan New York") },
+    "SoHo": { cost: "🆓 חינם", costType: "free", map: maps("SoHo Manhattan New York") },
+    "Roosevelt Island Tram": { cost: "💵 $2.90 (OMNY)", costType: "paid", costNote: "חוויה מעולה וזולה", map: maps("Roosevelt Island Tramway New York") },
+    "NYC Ferry": { cost: "💵 $4.50 לכיוון", costType: "special", costNote: "שייט נוף מדהים בזול", map: maps("NYC Ferry Pier New York") },
+    "Roosevelt Island": { cost: "🆓 חינם", costType: "free", map: maps("Roosevelt Island New York") },
+    "Columbus Circle": { cost: "🆓 חינם", costType: "free", map: maps("Columbus Circle New York") },
+    "Broadway": { cost: "🎟️ בתשלום", costType: "paid", costNote: "לחפש הנחות ב-TKTS", official: "https://www.broadway.com/", map: maps("Broadway Theatre District New York") },
+    "TKTS Lincoln Center": { cost: "💵 עד 50% הנחה", costType: "special", costNote: "פחות תור מטיימס סקוור", map: maps("TKTS Lincoln Center New York") },
+    "PleasingLand": { cost: "🆓 חינם (קניות בתשלום)", costType: "free", map: maps("433 Broadway New York") },
+    "Together, Together Pop-Up": { cost: "🆓 חינם", costType: "free", map: maps("22 E 2nd Street New York") },
+    "Together, Together Shop & Go": { cost: "🆓 חינם", costType: "free", map: maps("55 Great Jones Street New York") },
+    "Disney Store": { cost: "🆓 חינם", costType: "free", map: maps("Disney Store Times Square New York") },
+    "LEGO Store": { cost: "🆓 חינם", costType: "free", map: maps("LEGO Store Fifth Avenue New York") },
+    "FAO Schwarz": { cost: "🆓 חינם", costType: "free", map: maps("FAO Schwarz New York") },
+    "Carrie Bradshaw's brownstone": { cost: "🆓 חינם מבחוץ", costType: "free", map: maps("66 Perry St New York") },
+    "NY or Nowhere": { cost: "💵 קניות", costType: "paid", map: maps("NY or Nowhere New York") },
+    "St. Patrick's Cathedral": { cost: "🆓 חינם", costType: "free", map: maps("St Patrick's Cathedral New York") },
+    "Koreatown": { cost: "🆓 חינם", costType: "free", map: maps("Koreatown Manhattan New York") },
+
+    /* FOOD */
+    "Trader Joe's": { cost: "💵 ארוחות בפחות מ-$8", costType: "paid", costNote: "מעולה לפיקניקים ולחיסכון", map: maps("Trader Joe's New York") },
+    "Joe's Pizza": { cost: "💵 כ-4$ למשולש", costType: "paid", official: "https://www.joespizzanyc.com/", map: maps("Joe's Pizza Times Square New York") },
+    "Bravo Kosher Pizza": { cost: "💵 זול וכשר", costType: "paid", official: "https://www.bravokosherpizza.com/", map: maps("Bravo Kosher Pizza New York") },
+    "Liberty Bagels": { cost: "💵 מחיר נוח וכשר", costType: "paid", official: "https://www.libertybagels.com/", map: maps("Liberty Bagels Midtown New York") },
+    "Pastrami Queen": { cost: "💵 כ-$25-$30 לכריך (כשר)", costType: "paid", official: "https://www.pastramiqueen.com/", map: maps("Pastrami Queen Moynihan Train Hall New York") },
+    "Modern Bread and Bagel": { cost: "💵 חלבי כשר (ללא גלוטן)", costType: "paid", official: "https://www.modernbreadandbagel.com/", map: maps("Modern Bread and Bagel New York") },
+    "Kosher Deluxe": { cost: "💵 מהיר וזול יחסית (כשר)", costType: "paid", official: "https://www.kosherdeluxe.com/", map: maps("Kosher Deluxe New York") },
+    "Levain Bakery": { cost: "💵 כ-$5.50 לעוגיה", costType: "paid", costNote: "סניף W 74th St כשר חלבי", official: "https://levainbakery.com/", map: maps("Levain Bakery West 74th Street New York") }
+};
+
+
+/* ============================
+   RENDER LINKS LOGIC
+============================ */
+
+function attachLinks(placesArray) {
+    if (!placesArray || placesArray.length === 0) return "";
+    
+    let html = '<div class="event-places-container">';
+    
+    placesArray.forEach(placeKey => {
+        const links = placeLinks[placeKey];
+        if(!links) return; 
+
+        html += `<div class="place-link-group">`;
+        html += `<div class="place-name-label">${placeKey}</div>`;
+        
+        if (links.cost) {
+            html += `<div class="cost-box ${links.costType || ""}">
+                        <span class="cost-label">${links.cost}</span>
+                        ${links.costNote ? `<span class="cost-note">• ${links.costNote}</span>` : ""}
+                     </div>`;
         }
-    };
 
-    const tripDays = [
-        { date: "2026-09-25", he: { label: "יום ו׳", desc: "25.09 - נחיתה והאורות של מידטאון 🚕" }, en: { label: "Fri", desc: "25.09 - Arrival & Midtown Lights" } },
-        { date: "2026-09-26", he: { label: "יום ש׳", desc: "26.09 - סנטרל פארק, אמנות והארי סטיילס 🍉" }, en: { label: "Sat", desc: "26.09 - Central Park, Art & Harry Styles" } },
-        { date: "2026-09-27", he: { label: "יום א׳", desc: "27.09 - יום ברוקלין ונופים פוטוגניים 🌉" }, en: { label: "Sun", desc: "27.09 - Brooklyn & Photogenic Views" } },
-        { date: "2026-09-28", he: { label: "יום ב׳", desc: "28.09 - היסטוריה, פסל החירות ומוזיאון בחינם 🗽" }, en: { label: "Mon", desc: "28.09 - History, Statue of Liberty & Free Museum" } },
-        { date: "2026-09-29", he: { label: "יום ג׳", desc: "29.09 - יום צ'לסי, ווסט וילג' והיי ליין 🏙️" }, en: { label: "Tue", desc: "29.09 - Chelsea, West Village & The High Line" } },
-        { date: "2026-09-30", he: { label: "יום ד׳", desc: "30.09 - מרכז העיר והופעה שנייה של הארי 🍉" }, en: { label: "Wed", desc: "30.09 - UN, Hudson Yards & Harry Styles Night 2" } },
-        { date: "2026-10-01", he: { label: "יום ה׳", desc: "01.10 - תצפיות גבוהות במיוחד 🌆" }, en: { label: "Thu", desc: "01.10 - High Observation Decks" } },
-        { date: "2026-10-02", he: { label: "יום ו׳", desc: "02.10 - סוהו, שופינג ומוזיאון MoMA בחינם 🖼️" }, en: { label: "Fri", desc: "02.10 - SoHo Shopping & MoMA Free Entry" } },
-        { date: "2026-10-03", he: { label: "יום ש׳", desc: "03.10 - ברודווי, תיאטרון ואוכל משובח 🎭" }, en: { label: "Sat", desc: "03.10 - Broadway, Theater & Fine Dining" } },
-        { date: "2026-10-04", he: { label: "יום א׳", desc: "04.10 - פרידה מניו יורק וטיסה חזרה ✈️" }, en: { label: "Sun", desc: "04.10 - Farewell NY & Flight Home" } }
-    ];
+        html += `<div class="links">`;
+        
+        if (links.map) {
+            html += `<a class="link-btn map" href="${links.map}" target="_blank">📍 ניווט / Maps</a>`;
+        }
+        
+        const searchQuery = encodeURIComponent(placeKey + " New York");
+        html += `<a class="link-btn search" href="https://www.google.com/search?q=${searchQuery}" target="_blank">🔍 חיפוש בגוגל</a>`;
 
-    const defaultStaticEvents = [
-        { date: "2026-09-25", time: "11:00", nameHe: "✈️ המראה מתל אביב (UA85)", nameEn: "Departure from TLV", type: "flight" },
-        { date: "2026-09-25", time: "15:50", nameHe: "✈️ נחיתה ב-Newark (EWR)", nameEn: "Landing at EWR", type: "flight" },
-        { date: "2026-09-25", time: "16:30", nameHe: "🚕 איסוף מזוודות ונסיעה למלון בהארלם", nameEn: "Transit to Renaissance Harlem", type: "transit" },
-        { date: "2026-09-25", time: "19:00", nameHe: "🚶 טיימס סקוור ורחוב 42", nameEn: "Times Square & 42nd St", type: "mustsee" },
-        { date: "2026-09-25", time: "23:45", nameHe: "✨ תערוכת Midnight Moment בטיימס סקוור", nameEn: "Midnight Moment at Times Square", type: "custom" },
+        if (links.official) {
+            html += `<a class="link-btn official" href="${links.official}" target="_blank">🌐 אתר</a>`;
+        }
+        if (links.ticket) {
+            html += `<a class="link-btn ticket" href="${links.ticket}" target="_blank">🎟️ כרטיסים</a>`;
+        }
 
-        { date: "2026-09-26", time: "10:00", nameHe: "🌳 סנטרל פארק (Strawberry Fields, Bethesda Terrace)", nameEn: "Central Park Walk", type: "mustsee" },
-        { date: "2026-09-26", time: "12:30", nameHe: "🏛️ מוזיאון המטרופוליטן לאמנות (The Met)", nameEn: "The Met Museum", type: "mustsee" },
-        { date: "2026-09-26", time: "16:30", nameHe: "🏨 התרעננות במלון לקראת ההופעה", nameEn: "Rest at Hotel", type: "custom" },
-        { date: "2026-09-26", time: "19:30", nameHe: "🎤 הופעה משותפת: HARRY STYLES Live! 🍉", nameEn: "Live Concert: HARRY STYLES!", type: "harry" },
+        html += `</div></div>`;
+    });
+    
+    html += '</div>';
+    return html;
+}
 
-        { date: "2026-09-27", time: "10:00", nameHe: "🛍️ שוק הפשפשים של ברוקלין (DUMBO)", nameEn: "Brooklyn Flea Market (DUMBO)", type: "custom" },
-        { date: "2026-09-27", time: "13:00", nameHe: "🎨 ויליאמסבורג (חנויות וינטג' ושוק האוכל Smorgasburg)", nameEn: "Williamsburg & Smorgasburg", type: "mustsee" },
-        { date: "2026-09-27", time: "16:00", nameHe: "🌉 חציית גשר ברוקלין ברגל לכיוון מנהטן", nameEn: "Walk Brooklyn Bridge to Manhattan", type: "mustsee" },
 
-        { date: "2026-09-28", time: "10:00", nameHe: "📈 וול סטריט ופסל השור המסתער", nameEn: "Wall Street & Charging Bull", type: "mustsee" },
-        { date: "2026-09-28", time: "13:00", nameHe: "💧 אנדרטת 11 בספטמבר (הבריכות) ו-Oculus", nameEn: "9/11 Memorial & Oculus", type: "mustsee" },
-        { date: "2026-09-28", time: "15:30", nameHe: "🏛️ מוזיאון 9/11 (שעות כניסה בחינם!)", nameEn: "9/11 Museum (Free Hours!)", type: "mustsee" },
-        { date: "2026-09-28", time: "18:00", nameHe: "⛴️ מעבורת סטטן איילנד בשקיעה (תצפית חינם על פסל החירות)", nameEn: "Staten Island Ferry (Sunset)", type: "mustsee" },
+/* ============================
+   DAILY SCHEDULE 
+============================ */
 
-        { date: "2026-09-29", time: "10:00", nameHe: "☕ הליכה בגריניץ' וילג' ובווסט וילג'", nameEn: "Greenwich & West Village", type: "custom" },
-        { date: "2026-09-29", time: "13:00", nameHe: "🌮 צהריים: Chelsea Market (מומלץ: Los Tacos No. 1)", nameEn: "Lunch: Chelsea Market", type: "mustsee" },
-        { date: "2026-09-29", time: "14:30", nameHe: "🛤️ הליכה בפארק התלוי - ההיי ליין (The High Line)", nameEn: "The High Line Park", type: "mustsee" },
-        { date: "2026-09-29", time: "16:00", nameHe: "🖼️ מוזיאון וויטני לאמנות או מוזיאון רובין", nameEn: "Whitney Museum / Rubin Museum", type: "custom" },
+const dailySchedule = [
+    {
+        date: "2026-09-25",
+        he: { label: "יום שישי", title: "נחיתה, התארגנות וטיימס סקוור" },
+        en: { label: "Friday", title: "Arrival & Times Square" },
+        events: [
+            { time: "11:00", nameHe: 'המראה מנתב"ג (UA85)', nameEn: "Departure from TLV", descHe: "מתחילות את הטיול! 🇺🇸", descEn: "The trip begins! 🇺🇸", type: "flight", icon: "fa-plane-departure", places: ["Ben Gurion Airport"] },
+            { time: "15:50", nameHe: "נחיתה בניוארק (EWR)", nameEn: "Landing at EWR", descHe: "מעבר ביקורת גבולות ואיסוף מזוודות.", descEn: "Passport control & luggage.", type: "flight", icon: "fa-plane-arrival", places: ["Newark Liberty Airport"] },
+            { time: "16:45", nameHe: "נסיעה למלון", nameEn: "Transit to Hotel", descHe: "רכבת NJ Transit מניוארק ישירות ל־Penn Station והליכה של 5 דקות למלון (סה״כ כ־45 דקות).", descEn: "NJ Transit to Penn Station, then 5 min walk to hotel.", type: "transit", icon: "fa-train-subway", places: ["Penn Station", "Delta Hotels Times Square"] },
+            { time: "17:45", nameHe: "התמקמות במלון", nameEn: "Check-in", descHe: "המלון במיקום מושלם! צ'ק-אין והתרעננות קצרה.", descEn: "Check in and refresh.", type: "custom", icon: "fa-bed", places: ["Delta Hotels Times Square"] },
+            { time: "19:00", nameHe: "Times Square + חנויות דגל", nameEn: "Times Square", descHe: "הליכה של דקות בודדות מהמלון ללב העניינים. אופציות לשוטטות: Disney Store או LEGO Store.", descEn: "Short walk to Times Square.", type: "mustsee", icon: "fa-city", places: ["Times Square", "Disney Store", "LEGO Store"] },
+            { time: "20:30", nameHe: "ארוחת ערב – אופציות לבחירה", nameEn: "Dinner – Options", descHe: "אופציה א' (המומלצת): Joe's Pizza - המשולש הכי אייקוני בניו יורק.\nאופציה ב' (לשומרי כשרות): Bravo Kosher Pizza.", descEn: "Option A: Joe's Pizza. Option B: Bravo Kosher Pizza.", type: "food", icon: "fa-pizza-slice", places: ["Joe's Pizza", "Bravo Kosher Pizza"] },
+            { time: "22:00", nameHe: "Grand Central / Bryant Park", nameEn: "Grand Central / Bryant Park", descHe: "אם יש כוח: הליכה לילית קצרה לראות את הפארק והתחנה מוארים.", descEn: "Night walk to see Grand Central.", type: "mustsee", icon: "fa-train", places: ["Bryant Park", "Grand Central Terminal"] },
+            { time: "23:57", nameHe: "Midnight Moment ✨", nameEn: "Midnight Moment", descHe: "חזרה לטיימס סקוור לרגע של חצות (כל המסכים הופכים לאמנות), ומשם למיטה.", descEn: "Digital art takeover on all screens.", type: "custom", icon: "fa-bolt", places: ["Times Square"] }
+        ]
+    },
+    {
+        date: "2026-09-26",
+        he: { label: "יום שבת", title: "השדרה החמישית, סנטרל פארק והארי סטיילס!" },
+        en: { label: "Saturday", title: "5th Ave, Central Park & Harry Styles" },
+        events: [
+            { time: "09:00", nameHe: "Central Park בבוקר", nameEn: "Central Park Morning", descHe: "🚇 סאבווי (1/2/3) צפונה. הליכה קלאסית וחינמית: Strawberry Fields, מזרקת Bethesda ו-Bow Bridge.", descEn: "Subway 1/2/3 north. Walk Bethesda Terrace & Bow Bridge.", type: "mustsee", icon: "fa-tree", places: ["Central Park", "Strawberry Fields", "Bethesda Terrace", "Bow Bridge"] },
+            { time: "11:00", nameHe: "אופציות להמשך הבוקר", nameEn: "Morning Options", descHe: "אופציה א': Rockefeller Center + FAO Schwarz (חנויות ותצפית חינמית).\nאופציה ב': סיור אמנות במוזיאון The Met.", descEn: "Option A: Rockefeller Center. Option B: The Met Museum.", type: "mustsee", icon: "fa-building", places: ["Rockefeller Center", "FAO Schwarz", "The Met"] },
+            { time: "12:30", nameHe: "Fifth Avenue שופינג", nameEn: "Fifth Avenue", descHe: "הליכה דרומה לאורך השדרה החמישית. קתדרלת St. Patrick (חינם) ושופינג.", descEn: "Walk south along Fifth Avenue.", type: "mustsee", icon: "fa-church", places: ["Fifth Avenue", "St. Patrick's Cathedral"] },
+            { time: "13:30", nameHe: "הפסקת צהריים / קפה", nameEn: "Lunch / Coffee Break", descHe: "זמן לאכול משהו קליל במידטאון (אפשר לאסוף ארוחה מ-Trader Joe's לפיקניק).", descEn: "Quick lunch break.", type: "food", icon: "fa-shopping-basket", places: ["Trader Joe's"] },
+            { time: "14:30", nameHe: "Madison Square Garden + מרצ׳", nameEn: "MSG + Merch", descHe: "🚶 המלון נמצא פחות מ-10 דקות הליכה מ-MSG! זמן מעולה לקנות מרצ' ולנוח במלון בלי לחץ.", descEn: "Hotel is a 10 min walk from MSG.", type: "harry", icon: "fa-ticket", places: ["Madison Square Garden", "Delta Hotels Times Square"] },
+            { time: "19:30", nameHe: "Harry Styles 🍉", nameEn: "Harry Styles 🍉", descHe: "הופעה ראשונה ב־Madison Square Garden. ערב מטורף!", descEn: "Night 1 at Madison Square Garden.", type: "harry", icon: "fa-microphone", places: ["Madison Square Garden"] }
+        ]
+    },
+    {
+        date: "2026-09-27",
+        he: { label: "יום ראשון", title: "ברוקלין על מלא 🌉" },
+        en: { label: "Sunday", title: "Full Brooklyn Day 🌉" },
+        events: [
+            { time: "09:00", nameHe: "נסיעה לברוקלין במעבורת NYC Ferry", nameEn: "NYC Ferry to Brooklyn", descHe: "⛴ במקום סאבווי, קחו את ספינת הנוסעים NYC Ferry (עולה 4.50$ בלבד). נוף מטורף במחיר רצפה.", descEn: "Take the NYC Ferry for cheap skyline views.", type: "transit", icon: "fa-ferry", places: ["NYC Ferry"] },
+            { time: "10:00", nameHe: "DUMBO (Pebble Beach)", nameEn: "DUMBO (Pebble Beach)", descHe: "💡 דלגו על Washington St העמוסה ולכו לפארק Pebble Beach לפריימים מושלמים של הגשר בלי תיירים שמסתירים.", descEn: "Skip the crowded Washington St and head to Pebble Beach.", type: "mustsee", icon: "fa-camera", places: ["DUMBO", "Pebble Beach"] },
+            { time: "11:30", nameHe: "Brooklyn Bridge Park / Heights", nameEn: "Brooklyn Parks", descHe: "🚶 הליכה לאורך טיילת Brooklyn Heights Promenade (נוף חינמי ומעלף למנהטן תחתית).", descEn: "Walk along Brooklyn Heights Promenade.", type: "mustsee", icon: "fa-tree", places: ["Brooklyn Bridge Park", "Brooklyn Heights Promenade"] },
+            { time: "13:00", nameHe: "ארוחת צהריים", nameEn: "Lunch", descHe: "ארוחת צהריים או פיקניק מול קו הרקיע.", descEn: "Picnic with pre-bought food.", type: "food", icon: "fa-utensils", places: ["Trader Joe's"] },
+            { time: "14:30", nameHe: "חציית גשר ברוקלין", nameEn: "Brooklyn Bridge", descHe: "חציית הגשר ברגל בחזרה למנהטן. הליכה מדהימה (וחינמית).", descEn: "Walking the bridge back to Manhattan.", type: "mustsee", icon: "fa-bridge", places: ["Brooklyn Bridge"] },
+            { time: "16:00", nameHe: "אופציות להמשך (מנהטן תחתית)", nameEn: "Afternoon Options", descHe: "אופציה א': שיטוט ב-Chinatown ו-Little Italy.\nאופציה ב': קניות ברחובות SoHo.", descEn: "Option A: Chinatown & Little Italy. Option B: SoHo shopping.", type: "custom", icon: "fa-store", places: ["Chinatown", "Little Italy", "SoHo"] },
+            { time: "18:30", nameHe: "ארוחת ערב", nameEn: "Dinner", descHe: "חזרה צפונה ב-Subway וארוחת ערב באזור המלון.", descEn: "Dinner back near the hotel.", type: "food", icon: "fa-utensils", places: ["Delta Hotels Times Square"] }
+        ]
+    },
+    {
+        date: "2026-09-28",
+        he: { label: "יום שני", title: "דאונטאון, היסטוריה ואנדרטת התאומים" },
+        en: { label: "Monday", title: "Downtown, History & 9/11" },
+        events: [
+            { time: "08:00", nameHe: "ארוחת בוקר – Liberty Bagels", nameEn: "Breakfast – Liberty Bagels", descHe: "נסיעה דרומה ועצירה ב-Liberty Bagels (כשר וזול יחסית) לבייגל עם סלמון.", descEn: "Kosher Bagel breakfast before downtown.", type: "food", icon: "fa-circle-notch", places: ["Liberty Bagels"] },
+            { time: "09:30", nameHe: "פסל החירות – אופציות לבחירה", nameEn: "Statue of Liberty - Options", descHe: "אופציה א' (חינם!): שייט הלוך-חזור ב-Staten Island Ferry שחולף קרוב לפסל.\nאופציה ב' (תשלום): סיור רשמי וירידה לאי הפסל ול-Ellis Island.", descEn: "Option A (Free): Staten Island Ferry. Option B (Paid): Official Liberty Island ferry.", type: "mustsee", icon: "fa-landmark", places: ["Staten Island Ferry", "Statue of Liberty", "Ellis Island"] },
+            { time: "11:45", nameHe: "Wall Street + Charging Bull", nameEn: "Wall Street + Charging Bull", descHe: "הלב הפיננסי של ניו יורק ופסל השור המסתער. חינם להסתובב.", descEn: "Financial heart of NYC.", type: "mustsee", icon: "fa-chart-line", places: ["Wall Street", "Charging Bull"] },
+            { time: "13:00", nameHe: "9/11 Memorial + Oculus", nameEn: "9/11 Memorial + Oculus", descHe: "הבריכות הענקיות במקום בו עמדו התאומים. משם הליכה לתחנת ה-Oculus היפהפייה.", descEn: "The memorial pools and Oculus hub.", type: "mustsee", icon: "fa-water", places: ["9/11 Memorial", "Oculus"] },
+            { time: "14:15", nameHe: "One World Trade Center", nameEn: "One World Trade Center", descHe: "מגדל החירות. מספיק להתרשם מבחוץ בחינם במקום לעלות לתצפית.", descEn: "Freedom Tower - great to see from outside.", type: "mustsee", icon: "fa-building", places: ["One World Trade Center"] },
+            { time: "15:30", nameHe: "אופציה נוספת: Exchange Place", nameEn: "Exchange Place Views", descHe: "רכבת PATH תחנה אחת לניו ג'רזי (2.75$) - תצפית פסיכית על קו הרקיע של מנהטן מרחוק.", descEn: "1 PATH stop for amazing NYC skyline views.", type: "custom", icon: "fa-camera", places: ["Exchange Place"] },
+            { time: "17:30", nameHe: "9/11 Museum (כניסה בחינם!)", nameEn: "9/11 Museum (Free Hours!)", descHe: "בימי שני הכניסה למוזיאון בחינם! **חובה** להזמין כרטיסים באתר מראש לשעות האלו.", descEn: "Free entry hours! Must book online in advance.", type: "mustsee", icon: "fa-building", places: ["9/11 Museum"] },
+            { time: "19:30", nameHe: "חזרה וארוחת ערב", nameEn: "Return & Dinner", descHe: "סאבווי ישיר מדאונטאון עד למלון בטיימס סקוור.", descEn: "Direct subway back to Times Square.", type: "transit", icon: "fa-utensils", places: ["Delta Hotels Times Square"] }
+        ]
+    },
+    {
+        date: "2026-09-29",
+        he: { label: "יום שלישי", title: "Hudson Yards, High Line והוילג'" },
+        en: { label: "Tuesday", title: "Hudson Yards, High Line & Village" },
+        events: [
+            { time: "09:30", nameHe: "Hudson Yards + The Vessel", nameEn: "Hudson Yards + The Vessel", descHe: "מתחילים במתחם הדסון יארדס. צילומים חינמיים מחוץ למבנה ה-Vessel.", descEn: "Hudson Yards and the Vessel.", type: "mustsee", icon: "fa-stairs", places: ["Hudson Yards", "Vessel"] },
+            { time: "10:30", nameHe: "High Line (היי ליין)", nameEn: "High Line", descHe: "הליכה יפהפייה וחינמית דרומה על הפארק התלוי.", descEn: "Walk south along the elevated park.", type: "mustsee", icon: "fa-route", places: ["High Line"] },
+            { time: "12:00", nameHe: "אופציות מנוחה ואוכל (צ'לסי)", nameEn: "Rest & Lunch Options", descHe: "אופציה א': סיבוב ב-Chelsea Market, ואז ארוחה ב-Modern Bread and Bagel הכשר.\nאופציה ב': מנוחה חינמית בפארק הגג של Pier 57 על הנהר.", descEn: "Option A: Chelsea Market & Kosher lunch. Option B: Free Pier 57 Rooftop.", type: "food", icon: "fa-bread-slice", places: ["Chelsea Market", "Modern Bread and Bagel", "Pier 57"] },
+            { time: "14:00", nameHe: "Little Island", nameEn: "Little Island", descHe: "ממשיכים לטייל על טיילת הנהר ונכנסים לאי הפארק המלאכותי והחינמי.", descEn: "The unique floating park on the river.", type: "mustsee", icon: "fa-water", places: ["Little Island"] },
+            { time: "15:00", nameHe: "Greenwich Village", nameEn: "Greenwich Village", descHe: "הליכה בשכונה הפוטוגנית אל דירתה של קארי בראדשו.", descEn: "Walk to Carrie Bradshaw's apartment.", type: "custom", icon: "fa-camera", places: ["Greenwich Village", "Carrie Bradshaw's brownstone"] },
+            { time: "16:00", nameHe: "Bleecker Street + NY or Nowhere", nameEn: "Bleecker Street + NY or Nowhere", descHe: "רחוב הקניות המקסים של הוילג'.", descEn: "Charming shopping street.", type: "mustsee", icon: "fa-bag-shopping", places: ["NY or Nowhere"] },
+            { time: "17:00", nameHe: "Washington Square Park", nameEn: "Washington Square Park", descHe: "הפארק שבו כולם יושבים בערב. הרבה צעירים ומוזיקת רחוב - חינם לגמרי.", descEn: "Sit back and enjoy the free street music and vibes.", type: "mustsee", icon: "fa-tree", places: ["Washington Square Park"] },
+            { time: "18:30", nameHe: "ארוחת ערב ב-West Village", nameEn: "Dinner", descHe: "למצוא מסעדה כשרה באזור, או חזרה צפונה למלון.", descEn: "Dinner in the area.", type: "food", icon: "fa-utensils", places: ["West Village"] }
+        ]
+    },
+    {
+        date: "2026-09-30",
+        he: { label: "יום רביעי", title: "מידטאון מזרח, האו\"ם והארי סטיילס 2" },
+        en: { label: "Wednesday", title: "Midtown East, UN & Harry Styles 2" },
+        events: [
+            { time: "09:00", nameHe: "United Nations (בניין האו\"ם)", nameEn: "United Nations", descHe: "נסיעה מזרחה ל-UN. תצפית חינמית על הבניין והדגלים (או סיור מודרך בתשלום אם הזמנתן).", descEn: "See the UN building and flags.", type: "mustsee", icon: "fa-landmark-flag", places: ["United Nations"] },
+            { time: "10:30", nameHe: "Grand Central Terminal", nameEn: "Grand Central Terminal", descHe: "הליכה לתחנת הרכבת המרשימה. אל תשכחו להרים את הראש ולראות את תקרת הכוכבים (חינם).", descEn: "Look up at the celestial ceiling!", type: "mustsee", icon: "fa-train", places: ["Grand Central Terminal"] },
+            { time: "11:30", nameHe: "Chrysler Building + Bryant Park", nameEn: "Chrysler & Bryant Park", descHe: "צילום של בניין קרייזלר, ומנוחה קלה בפארק בראיינט הסמוך.", descEn: "Photos of Chrysler building and rest at Bryant Park.", type: "custom", icon: "fa-building", places: ["Bryant Park"] },
+            { time: "12:30", nameHe: "NY Public Library", nameEn: "NY Public Library", descHe: "כניסה חינמית לספרייה הציבורית ולחדר הקריאה המפורסם (Rose Main Reading Room).", descEn: "Free entry to the famous Rose Main Reading Room.", type: "mustsee", icon: "fa-book", places: ["NY Public Library"] },
+            { time: "13:30", nameHe: "ארוחת צהריים במידטאון", nameEn: "Kosher Lunch", descHe: "ארוחה כשרה וזולה באזור כדי לאגור כוחות לערב.", descEn: "Kosher lunch break before heading to the hotel.", type: "food", icon: "fa-utensils", places: ["Kosher Deluxe"] },
+            { time: "14:30", nameHe: "Madison Square Garden + מרצ׳", nameEn: "Madison Square Garden + Merch", descHe: "🚶 הליכה חזרה למלון (או ישירות ל-MSG). מנוחה ארוכה לפני ההופעה.", descEn: "Rest before the show.", type: "harry", icon: "fa-ticket", places: ["Delta Hotels Times Square", "Madison Square Garden"] },
+            { time: "19:30", nameHe: "Harry Styles 🍉 (לילה 2)", nameEn: "Harry Styles 🍉", descHe: "הופעה שנייה משותפת לכולן ב-Madison Square Garden!", descEn: "Night 2!", type: "harry", icon: "fa-microphone", places: ["Madison Square Garden"] }
+        ]
+    },
+    {
+        date: "2026-10-01",
+        he: { label: "יום חמישי", title: "הפופ-אפים של הארי, פלאטאיירון ופסטרמה" },
+        en: { label: "Thursday", title: "Harry Pop-Ups, Flatiron & Pastrami" },
+        events: [
+            { time: "09:30", nameHe: "Empire State Building", nameEn: "Empire State Building", descHe: "🚶 הליכה מהמלון (15 דקות). תמונות מבחוץ של הסמל הקלאסי של העיר (חינם).", descEn: "15 min walk from hotel. Classic NYC icon.", type: "mustsee", icon: "fa-building", places: ["Empire State Building"] },
+            { time: "10:30", nameHe: "Flatiron Building + Madison Sq Park", nameEn: "Flatiron + Madison Sq Park", descHe: "המשך הליכה דרומה למבנה המגהץ ולפארק הנחמד שלצידו.", descEn: "The iconic Flatiron building.", type: "mustsee", icon: "fa-building", places: ["Flatiron Building", "Madison Square Park"] },
+            { time: "11:45", nameHe: "ארוחת צהריים - Pastrami Queen", nameEn: "Lunch - Pastrami Queen", descHe: "כריך פסטרמה ניו-יורקי ענק (כשר!).", descEn: "The famous Kosher Pastrami Sandwich.", type: "food", icon: "fa-burger", places: ["Pastrami Queen"] },
+            { time: "13:00", nameHe: "Harry Styles Pop-Ups 🍉", nameEn: "Harry Styles Pop-Ups 🍉", descHe: "נסיעה ל-NoHo/SoHo כדי לסמן וי על ההפתעות של הארי (כולם חינמיים לכניסה).", descEn: "Visit the three Harry Styles pop-ups in NoHo/SoHo.", type: "harry", icon: "fa-store", places: ["Together, Together Pop-Up", "Together, Together Shop & Go", "PleasingLand"] },
+            { time: "16:00", nameHe: "SoHo Shopping", nameEn: "SoHo Shopping", descHe: "המשך שופינג ושיטוט ברחובות ברזל יצוק של סוהו.", descEn: "Shopping and cast-iron architecture in SoHo.", type: "mustsee", icon: "fa-bag-shopping", places: ["SoHo"] },
+            { time: "18:00", nameHe: "תצפיות חינמיות / מנוחה", nameEn: "Free Views / Rest", descHe: "אופציה לשבת באחת הגינות באזור דאונטאון, או לקחת סאבווי בחזרה למלון למנוחה.", descEn: "Rest or head back uptown.", type: "custom", icon: "fa-bed", places: ["Union Square"] }
+        ]
+    },
+    {
+        date: "2026-10-02",
+        he: { label: "יום שישי", title: "תצפית (SUMMIT/Top of the Rock) ואמנות" },
+        en: { label: "Friday", title: "Viewpoints & Modern Art" },
+        events: [
+            { time: "09:30", nameHe: "אופציות לתצפית בוקר מטורפת", nameEn: "Morning Observation Deck", descHe: "אופציה א': SUMMIT One Vanderbilt (הכי מודרני, עם מראות ובלונים).\nאופציה ב': Top of the Rock (בשביל הנוף הקלאסי לאמפייר סטייט).", descEn: "Option A: SUMMIT One Vanderbilt. Option B: Top of the Rock.", type: "mustsee", icon: "fa-camera", places: ["SUMMIT One Vanderbilt", "Top of the Rock"] },
+            { time: "11:30", nameHe: "Rockefeller Center", nameEn: "Rockefeller Center", descHe: "שיטוט חינמי ברחבת רוקפלר.", descEn: "Plaza visit.", type: "mustsee", icon: "fa-city", places: ["Rockefeller Center"] },
+            { time: "13:00", nameHe: "ארוחת צהריים", nameEn: "Kosher Lunch", descHe: "ארוחה באזור מידטאון.", descEn: "Midtown kosher lunch.", type: "food", icon: "fa-utensils", places: ["Bravo Kosher Pizza"] },
+            { time: "14:30", nameHe: "מוזיאונים - אופציות לבחירה", nameEn: "Museums - Options", descHe: "אופציה א': The Met (אמנות קלאסית בסנטרל פארק).\nאופציה ב': MoMA (אמנות מודרנית - בדקו אם עדיין חינם בשישי אחה\"צ).", descEn: "Option A: The Met. Option B: MoMA.", type: "custom", icon: "fa-palette", places: ["The Met", "MoMA"] },
+            { time: "18:00", nameHe: "ארוחת שישי כשרה", nameEn: "Shabbat Dinner", descHe: "ארוחת ערב במסעדה כשרה או מצרכים מוכנים מראש.", descEn: "Kosher dinner.", type: "food", icon: "fa-utensils", places: ["Delta Hotels Times Square"] },
+            { time: "20:00", nameHe: "Movie Nights in the Park (חינם)", nameEn: "Movie in the Park", descHe: "לחפש הקרנת סרט תחת כיפת השמיים. חוויה ניו-יורקית מושלמת וחינמית.", descEn: "Find a free outdoor movie screening.", type: "custom", icon: "fa-moon", places: ["Bryant Park"] }
+        ]
+    },
+    {
+        date: "2026-10-03",
+        he: { label: "יום שבת", title: "רכבל רוזוולט וברודווי 🎭" },
+        en: { label: "Saturday", title: "Roosevelt Island & Broadway 🎭" },
+        events: [
+            { time: "09:30", nameHe: "Roosevelt Island Tram", nameEn: "Roosevelt Island Tram", descHe: "נסיעת רכבל אדומה באוויר עם נוף למנהטן (עולה כנסיעת סאבווי רגילה ב-OMNY!).", descEn: "Tram ride with Manhattan views (cost of a subway ride).", type: "mustsee", icon: "fa-cable-car", places: ["Roosevelt Island Tram"] },
+            { time: "10:15", nameHe: "Roosevelt Island", nameEn: "Roosevelt Island", descHe: "הליכה קצרה על שפת הנהר בפארק, תצפית חזרה לעיר.", descEn: "Short waterfront walk.", type: "custom", icon: "fa-tree", places: ["Roosevelt Island"] },
+            { time: "11:30", nameHe: "Hunter's Point South Park", nameEn: "Hunter's Point South Park", descHe: "אפשר לקחת מעבורת מתחנת רוזוולט ל-Long Island City כדי לראות פארק חדש ונוף פנורמי חינמי.", descEn: "Take ferry to Long Island City for the panoramic view.", type: "mustsee", icon: "fa-camera", places: ["Hunter's Point South Park", "NYC Ferry"] },
+            { time: "13:30", nameHe: "TKTS Lincoln Center", nameEn: "TKTS Lincoln Center", descHe: "💡 טיפ חיסכון: דלגו על התור בטיימס סקוור וגשו לדוכן ה-TKTS בלינקולן סנטר! כרטיסי ברודווי ב-50% הנחה בלי לחכות שעות.", descEn: "Head to Lincoln Center TKTS booth for half-price tickets.", type: "mustsee", icon: "fa-ticket", places: ["TKTS Lincoln Center"] },
+            { time: "15:00", nameHe: "זמן חופשי / Columbus Circle", nameEn: "Columbus Circle", descHe: "מנוחה קלה בקולומבוס סירקל ממש בכניסה לסנטרל פארק.", descEn: "Rest near Central Park before the show.", type: "custom", icon: "fa-bed", places: ["Columbus Circle"] },
+            { time: "17:30", nameHe: "ארוחת ערב לפני ההצגה", nameEn: "Pre-Theatre Dinner", descHe: "קפיצה ל-Kosher Deluxe לארוחה מהירה וזולה, במקום מסעדות המלכודת-תיירים.", descEn: "Affordable Kosher dinner near Times Square before the show.", type: "food", icon: "fa-utensils", places: ["Kosher Deluxe"] },
+            { time: "19:30", nameHe: "Broadway 🎭", nameEn: "Broadway 🎭", descHe: "מופע מחזמר (לפי מה שקניתן בהנחה בבוקר). חוויה אמיתית!", descEn: "Musical.", type: "mustsee", icon: "fa-masks-theater", places: ["Broadway"] }
+        ]
+    },
+    {
+        date: "2026-10-04",
+        he: { label: "יום ראשון", title: "פינוקים, השלמות וטיסה ✈️" },
+        en: { label: "Sunday", title: "Treats & Flight ✈️" },
+        events: [
+            { time: "09:30", nameHe: "צ'ק-אאוט + שמירת מזוודות", nameEn: "Check-out + Luggage", descHe: "להשאיר מזוודות במלון Delta. היתרון שהוא במרכז ואפשר לחזור לקחת אותן בערב להליכה קצרה ל-Penn Station.", descEn: "Leave luggage at the hotel.", type: "transit", icon: "fa-suitcase", places: ["Delta Hotels Times Square"] },
+            { time: "10:30", nameHe: "Levain Bakery 🍪", nameEn: "Levain Bakery 🍪", descHe: "העוגיות המושחתות של ניו יורק. הסניף ברחוב 74 הוא כשר חלבי, עולה 5.50$ לעוגייה (השקעה שווה).", descEn: "The most famous cookies in NYC! The 74th St branch is kosher dairy.", type: "mustsee", icon: "fa-cookie-bite", places: ["Levain Bakery"] },
+            { time: "11:30", nameHe: "פרידה מ-Central Park", nameEn: "Central Park Farewell", descHe: "טיול עם העוגיות (וקפה) בתוך הסנטרל פארק כדי להיפרד מהעיר.", descEn: "Final walk in NYC with cookies and coffee.", type: "mustsee", icon: "fa-tree", places: ["Central Park"] },
+            { time: "13:30", nameHe: "אופציה: השלמות שופינג אחרונות", nameEn: "Final Shopping Option", descHe: "אם נשאר מקום במזוודה (תרוצים לבזבז עוד קצת).", descEn: "Last minute shopping.", type: "custom", icon: "fa-bag-shopping", places: ["Fifth Avenue"] },
+            { time: "15:00", nameHe: "ארוחה כשרה אחרונה במנהטן", nameEn: "Last NYC Meal", descHe: "לאכול ולצבור כוחות לטיסה.", descEn: "Eat before heading to the airport.", type: "food", icon: "fa-utensils", places: ["Kosher Deluxe", "Bravo Kosher Pizza"] },
+            { time: "16:45", nameHe: "איסוף מזוודות", nameEn: "Pick up Luggage", descHe: "חזרה למלון כדי לקחת את הכל.", descEn: "Pick up luggage.", type: "transit", icon: "fa-suitcase", places: ["Delta Hotels Times Square"] },
+            { time: "18:00", nameHe: "יציאה ל-EWR", nameEn: "Transit to EWR", descHe: "🚶 הליכה מהמלון ל־Penn Station, רכבת NJ Transit ל־EWR ו־AirTrain. זול ונוח!", descEn: "Walk to Penn Station → NJ Transit → AirTrain.", type: "flight", icon: "fa-train-subway", places: ["Penn Station", "Newark Liberty Airport"] },
+            { time: "22:50", nameHe: "טיסה חזרה לישראל (UA90)", nameEn: "Flight to TLV", descHe: "הביתה ✈️", descEn: "Home ✈️", type: "flight", icon: "fa-plane-departure", places: ["Ben Gurion Airport"] }
+        ]
+    }
+];
 
-        { date: "2026-09-30", time: "10:00", nameHe: "🇺🇳 סיור בבניין האו\"ם (יש להזמין כרטיס מראש)", nameEn: "UN Headquarters Tour", type: "mustsee" },
-        { date: "2026-09-30", time: "13:00", nameHe: "🏙️ הדסון יארדס (Hudson Yards) ומבנה ה-Vessel", nameEn: "Hudson Yards & Vessel", type: "mustsee" },
-        { date: "2026-09-30", time: "16:30", nameHe: "🏨 התרעננות במלון בהארלם", nameEn: "Rest at Hotel", type: "custom" },
-        { date: "2026-09-30", time: "19:30", nameHe: "🎤 הופעה שנייה: HARRY STYLES Live! 🍉", nameEn: "Live Concert: HARRY STYLES!", type: "harry" },
 
-        { date: "2026-10-01", time: "10:00", nameHe: "🏢 בניין האמפייר סטייט (Empire State Building)", nameEn: "Empire State Building", type: "mustsee" },
-        { date: "2026-10-01", time: "13:00", nameHe: "🌷 מרכז רוקפלר (Rockefeller Center) וגני Channel", nameEn: "Rockefeller Center", type: "mustsee" },
-        { date: "2026-10-01", time: "16:30", nameHe: "🌇 תצפית שקיעה: Top of the Rock או Summit", nameEn: "Sunset Deck: Top of the Rock", type: "mustsee" },
+/* ============================
+   MUST DO (KOSHER & BUDGET UPDATED)
+============================ */
 
-        { date: "2026-10-02", time: "10:00", nameHe: "🛍️ סיבוב בשדרה החמישית (5th Avenue)", nameEn: "5th Avenue Shopping", type: "custom" },
-        { date: "2026-10-02", time: "13:00", nameHe: "👗 שכונת סוהו (SoHo) - בוטיקים וגלריות", nameEn: "SoHo Boutiques", type: "mustsee" },
-        { date: "2026-10-02", time: "16:00", nameHe: "🖼️ מוזיאון MoMA (כניסה בחינם! שישי הראשון בחודש)", nameEn: "MoMA Museum (Free Entry!)", type: "mustsee" },
+const flowList = [
+    {
+        titleHe: "🍉 פופ-אפים של הארי סטיילס",
+        titleEn: "🍉 Harry Styles Pop-Ups",
+        events: [
+            ["PleasingLand", "PleasingLand (433 Broadway)", "PleasingLand (433 Broadway)", "harry", "fa-store", ["PleasingLand"]],
+            ["Together, Together Pop-Up", "Together, Together Pop-Up (22 E 2nd St)", "Together, Together Pop-Up", "harry", "fa-shirt", ["Together, Together Pop-Up"]],
+            ["Together, Together Shop & Go", "Together Shop & Go (55 Great Jones St)", "Together Shop & Go", "harry", "fa-bag-shopping", ["Together, Together Shop & Go"]]
+        ]
+    },
+    {
+        titleHe: "🗽 אייקונים שחייבים לראות",
+        titleEn: "🗽 Must-See Icons",
+        events: [
+            ["Statue of Liberty", "פסל החירות + Ellis Island", "Statue of Liberty + Ellis Island", "mustsee", "fa-landmark", ["Statue of Liberty", "Ellis Island"]],
+            ["Staten Island Ferry", "שייט חינמי במעבורת", "Free Staten Island Ferry", "mustsee", "fa-ferry", ["Staten Island Ferry"]],
+            ["Brooklyn Bridge", "גשר ברוקלין", "Brooklyn Bridge", "mustsee", "fa-bridge", ["Brooklyn Bridge"]],
+            ["Pebble Beach", "צילום ב-Pebble Beach (במקום ב-DUMBO העמוס)", "Pebble Beach Photo", "mustsee", "fa-camera", ["Pebble Beach"]],
+            ["9/11 Memorial", "9/11 Memorial (והמוזיאון)", "9/11 Memorial + Museum", "mustsee", "fa-water", ["9/11 Memorial", "9/11 Museum"]],
+            ["One World Trade Center", "מגדל החירות (One World)", "One World Trade Center", "mustsee", "fa-building", ["One World Trade Center"]],
+            ["Times Square", "Times Square בלילה", "Times Square at night", "mustsee", "fa-city", ["Times Square"]],
+            ["Top of the Rock", "Top of the Rock או סאמיט", "Top of the Rock / SUMMIT", "mustsee", "fa-camera", ["Top of the Rock", "SUMMIT One Vanderbilt"]],
+            ["Empire State Building", "Empire State Building", "Empire State Building", "mustsee", "fa-building", ["Empire State Building"]],
+            ["Broadway", "מחזמר בברודווי (בכרטיס מוזל ב-TKTS לינקולן)", "Broadway musical", "mustsee", "fa-masks-theater", ["Broadway", "TKTS Lincoln Center"]]
+        ]
+    },
+    {
+        titleHe: "🌆 שכונות, גגות ופארקים",
+        titleEn: "🌆 Neighborhoods & Parks",
+        events: [
+            ["Central Park", "Central Park (בת'סדה, בואו ברידג')", "Central Park", "mustsee", "fa-tree", ["Central Park", "Bethesda Terrace", "Bow Bridge"]],
+            ["West Village", "West Village + Greenwich Village", "West Village + Greenwich Village", "mustsee", "fa-mug-hot", ["West Village", "Greenwich Village", "Carrie Bradshaw's brownstone"]],
+            ["High Line", "High Line + Little Island", "High Line + Little Island", "mustsee", "fa-route", ["High Line", "Little Island"]],
+            ["Pier 57", "פארק הגג ב-Pier 57 (חינם)", "Pier 57 Rooftop", "mustsee", "fa-tree", ["Pier 57"]],
+            ["Hunter's Point South Park", "הנוף מ-Hunter's Point", "Hunter's Point South Park", "mustsee", "fa-camera", ["Hunter's Point South Park"]],
+            ["Exchange Place", "הנוף הפנורמי מ-Exchange Place (נסיעת PATH אחת)", "Exchange Place", "mustsee", "fa-camera", ["Exchange Place"]],
+            ["SoHo", "SoHo + NoHo", "SoHo + NoHo", "mustsee", "fa-store", ["SoHo", "NoHo"]],
+            ["NYC Ferry", "שיט ב-NYC Ferry ($4.50)", "NYC Ferry Ride", "mustsee", "fa-ferry", ["NYC Ferry"]],
+            ["Roosevelt Island Tram", "Roosevelt Island Tram (רכבל מדהים וזול)", "Roosevelt Island Tram", "mustsee", "fa-cable-car", ["Roosevelt Island Tram", "Roosevelt Island"]]
+        ]
+    },
+    {
+        titleHe: "🎨 תרבות ואדריכלות",
+        titleEn: "🎨 Culture & Architecture",
+        events: [
+            ["The Met / MoMA", "The Met או MoMA", "The Met / MoMA", "mustsee", "fa-palette", ["The Met", "MoMA", "Guggenheim", "Frick Collection"]],
+            ["Grand Central Terminal", "Grand Central Terminal", "Grand Central Terminal", "mustsee", "fa-train", ["Grand Central Terminal"]],
+            ["NY Public Library", "New York Public Library", "New York Public Library", "mustsee", "fa-book", ["NY Public Library"]],
+            ["United Nations", "בניין האו״ם", "United Nations Headquarters", "custom", "fa-landmark-flag", ["United Nations"]],
+            ["Flatiron", "Flatiron Building", "Flatiron Building", "mustsee", "fa-building", ["Flatiron Building"]]
+        ]
+    },
+    {
+        titleHe: "🍕 אוכל (כשר/זול) שחובה לנסות",
+        titleEn: "🍕 Affordable Kosher Food",
+        events: [
+            ["Joe's Pizza", "Joe’s Pizza (למי שלא שומר כשרות בחוץ) 🍕", "Joe’s Pizza 🍕", "food", "fa-pizza-slice", ["Joe's Pizza"]],
+            ["Bravo Kosher Pizza", "פיצה ניו יורקית (Bravo Kosher) 🍕", "Bravo Kosher Pizza 🍕", "food", "fa-pizza-slice", ["Bravo Kosher Pizza"]],
+            ["Liberty Bagels", "בייגל ניו יורקי עם Lox 🥯", "NYC Bagel with Lox", "food", "fa-circle-notch", ["Liberty Bagels"]],
+            ["Pastrami Queen", "כריך פסטרמה (Pastrami Queen)", "Pastrami Sandwich", "food", "fa-burger", ["Pastrami Queen"]],
+            ["Trader Joe's", "ארוחה מוכנה לפיקניק ב-Trader Joe's (לחיסכון)", "Trader Joe's Picnic", "food", "fa-shopping-basket", ["Trader Joe's"]],
+            ["Levain Bakery", "העוגיות הכי טעימות בעיר 🍪", "Levain Bakery Cookies", "food", "fa-cookie-bite", ["Levain Bakery"]]
+        ]
+    }
+];
 
-        { date: "2026-10-03", time: "10:00", nameHe: "🎟️ דוכן TKTS לקניית כרטיסים מוזלים להצגה להערב", nameEn: "TKTS Booth for Broadway", type: "custom" },
-        { date: "2026-10-03", time: "13:00", nameHe: "🚡 רכבל רוזוולט או פארק Gantry Plaza בלונג איילנד", nameEn: "Roosevelt Tramway / Gantry Plaza", type: "mustsee" },
-        { date: "2026-10-03", time: "19:30", nameHe: "🎭 מחזמר בברודווי (Lion King, Wicked וכו')", nameEn: "Broadway Musical", type: "custom" },
-        { date: "2026-10-03", time: "22:30", nameHe: "🎷 ארוחת ערב יוקרתית או מועדון ג'אז (Comedy Cellar)", nameEn: "Dinner / Jazz Club", type: "custom" },
 
-        { date: "2026-10-04", time: "10:00", nameHe: "🥞 צ'ק-אאוט וארוחת בראנץ' אחרונה (או פיקניק מפונק)", nameEn: "Check-out & Farewell Brunch", type: "custom" },
-        { date: "2026-10-04", time: "12:00", nameHe: "🛍️ השלמות וקניות אחרונות", nameEn: "Final Shopping", type: "custom" },
-        { date: "2026-10-04", time: "18:30", nameHe: "🚕 נסיעה לשדה התעופה EWR ממרכז העיר", nameEn: "Transit to EWR", type: "transit" },
-        { date: "2026-10-04", time: "22:50", nameHe: "✈️ המראה חזרה לישראל (UA90)", nameEn: "Flight to Tel Aviv (UA90)", type: "flight" }
-    ];
+/* ============================
+   INIT DAY SELECTION (SAFEGUARD)
+============================ */
 
-    function toggleLanguage() {
-        currentLang = currentLang === 'he' ? 'en' : 'he';
-        const root = document.getElementById('html-root');
-        root.setAttribute('dir', currentLang === 'en' ? 'ltr' : 'rtl');
-        updateUIStrings();
-        renderTimeline();
+function initDaySelection() {
+    try {
+        const now = new Date('');
+        const y = now.getFullYear();
+        const m = String(now.getMonth() + 1).padStart(2, '0');
+        const d = String(now.getDate()).padStart(2, '0');
+        const todayISO = `${y}-${m}-${d}`;
+        
+        const matchIndex = dailySchedule.findIndex(day => day.date === todayISO);
+        
+        if (matchIndex !== -1) {
+            selectedDayIndex = matchIndex;
+            isDuringTrip = true;
+        } else {
+            selectedDayIndex = 'all'; 
+            isDuringTrip = false;
+        }
+    } catch (e) {
+        console.error("Date check failed", e);
+        selectedDayIndex = 'all'; 
+        isDuringTrip = false;
+    }
+}
+
+function selectDay(index) {
+    selectedDayIndex = index;
+    renderDailySchedule();
+    
+    // Smooth scroll the selector
+    const activePill = document.querySelector('.day-pill.active');
+    if(activePill) {
+        activePill.scrollIntoView({ behavior: 'smooth', inline: 'center', block: 'nearest' });
+    }
+}
+
+/* ============================
+   RENDER DAILY
+============================ */
+
+function renderDailySchedule() {
+    const container = document.getElementById("daily-tab");
+    container.innerHTML = "";
+
+    // 1. Not vacation message (only show if viewing "all" by default before trip)
+    if (!isDuringTrip && selectedDayIndex === 'all') {
+        const now = new Date();
+        const dateStr = now.toLocaleDateString(currentLang === 'he' ? 'he-IL' : 'en-US');
+        const msg = translations[currentLang].notVacationMsg(dateStr);
+        container.innerHTML += `<div class="not-vacation-msg">${msg}</div>`;
     }
 
-    function updateUIStrings() {
-        const t = translations[currentLang];
-        document.getElementById('lang-btn').innerText = t.btn;
-        document.getElementById('ui-title').innerText = t.title;
-        document.getElementById('ui-subtitle').innerText = t.subtitle;
-        document.getElementById('lbl-days').innerText = t.days;
-        document.getElementById('lbl-hours').innerText = t.hours;
-        document.getElementById('lbl-min').innerText = t.min;
-    }
+    // 2. Day selector
+    let selectorHtml = `<div class="day-selector">`;
+    
+    // Add "All Days" button
+    const allActiveClass = selectedDayIndex === 'all' ? "active" : "";
+    selectorHtml += `<button class="day-pill ${allActiveClass}" onclick="selectDay('all')">
+                        ${translations[currentLang].allDays}
+                     </button>`;
 
-    function renderTimeline() {
-        const container = document.getElementById('timeline-container');
-        container.innerHTML = '';
-        const t = translations[currentLang];
+    dailySchedule.forEach((day, idx) => {
+        const dateParts = day.date.split("-");
+        const shortDate = `${dateParts[2]}.${dateParts[1]}`;
+        const activeClass = idx === selectedDayIndex ? "active" : "";
+        selectorHtml += `<button class="day-pill ${activeClass}" onclick="selectDay(${idx})">
+                            ${shortDate} | ${day[currentLang].label}
+                         </button>`;
+    });
+    selectorHtml += `</div>`;
+    container.innerHTML += selectorHtml;
 
-        tripDays.forEach(day => {
-            const dayEvents = defaultStaticEvents.filter(e => e.date === day.date);
-            dayEvents.sort((a,b) => a.time.localeCompare(b.time));
+    // 3. Render the selected day(s)
+    const daysToRender = selectedDayIndex === 'all' ? dailySchedule : [dailySchedule[selectedDayIndex]];
 
-            let dayHtml = `
-                <div class="day-row">
-                    <div class="day-header">
-                        <span class="day-title">${day[currentLang].desc}</span>
-                        <span class="day-date">${day[currentLang].label}</span>
+    daysToRender.forEach(day => {
+        let html = `
+            <div class="day-row">
+                <div class="day-header">
+                    <span class="day-title">${day[currentLang].title}</span>
+                    <span class="day-date">${day.date}</span>
+                </div>
+                <div class="event-list">
+        `;
+
+        day.events.forEach(ev => {
+            const name = currentLang === "he" ? ev.nameHe : ev.nameEn;
+            const desc = currentLang === "he" ? ev.descHe : ev.descEn;
+
+            html += `
+                <div class="event-item ${ev.type}">
+                    <div class="event-icon">
+                        <i class="fa-solid ${ev.icon}"></i>
                     </div>
-                    <div class="event-list">
+                    <div class="event-details">
+                        <span class="event-time">${ev.time}</span>
+                        <span class="event-name">${name}</span>
+                        <span class="event-desc">${desc}</span>
+                        ${attachLinks(ev.places)}
+                    </div>
+                </div>
             `;
-
-            if (dayEvents.length === 0) {
-                dayHtml += `<p style="color: var(--text-muted); font-size:0.85rem;">${t.emptyDay}</p>`;
-            } else {
-                dayEvents.forEach(ev => {
-                    let icon = 'fa-star';
-                    if (ev.type === 'flight') icon = 'fa-plane';
-                    if (ev.type === 'harry') icon = 'fa-microphone';
-                    if (ev.type === 'mustsee') icon = 'fa-map-location-dot';
-                    if (ev.type === 'custom') icon = 'fa-masks-theater';
-                    if (ev.type === 'transit') icon = 'fa-taxi';
-
-                    const displayTime = ev.time || t.flexible;
-                    const displayName = currentLang === 'he' ? ev.nameHe : ev.nameEn;
-
-                    dayHtml += `
-                        <div class="event-item ${ev.type}">
-                            <div class="event-icon"><i class="fa-solid ${icon}"></i></div>
-                            <div class="event-details">
-                                <span class="event-time">${displayTime}</span>
-                                <span class="event-name">${displayName}</span>
-                            </div>
-                        </div>
-                    `;
-                });
-            }
-
-            dayHtml += `</div></div>`;
-            container.innerHTML += dayHtml;
         });
-    }
 
-    const flightDate = new Date("September 25, 2026 11:00:00").getTime();
-    function updateCountdown() {
-        const now = new Date().getTime();
-        const diff = flightDate - now;
-        if (diff < 0) return;
-        document.getElementById('days').innerText = Math.floor(diff / (1000 * 60 * 60 * 24));
-        document.getElementById('hours').innerText = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        document.getElementById('minutes').innerText = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    }
+        html += `
+                </div>
+            </div>
+        `;
+        container.innerHTML += html;
+    });
+}
+
+
+/* ============================
+   RENDER MUST DO
+============================ */
+
+function renderFlowList() {
+    const container = document.getElementById("flow-tab");
+    container.innerHTML = "";
+
+    flowList.forEach(category => {
+        let html = `
+            <div class="day-row">
+                <div class="category-header">
+                    ${currentLang === "he" ? category.titleHe : category.titleEn}
+                </div>
+                <div class="event-list">
+        `;
+
+        category.events.forEach(ev => {
+            const [key, he, en, type, icon, placesArray] = ev;
+            html += `
+                <div class="event-item ${type}">
+                    <div class="event-icon">
+                        <i class="fa-solid ${icon}"></i>
+                    </div>
+                    <div class="event-details">
+                        <span class="event-name">
+                            ${currentLang === "he" ? he : en}
+                        </span>
+                        <span class="event-desc" style="margin-bottom: 5px;">
+                            ${translations[currentLang].linksTitle}
+                        </span>
+                        ${attachLinks(placesArray)}
+                    </div>
+                </div>
+            `;
+        });
+
+        html += `
+                </div>
+            </div>
+        `;
+        container.innerHTML += html;
+    });
+}
+
+
+/* ============================
+   LANGUAGE
+============================ */
+
+function toggleLanguage() {
+    currentLang = currentLang === "he" ? "en" : "he";
+    const root = document.getElementById("html-root");
+    root.setAttribute("dir", currentLang === "en" ? "ltr" : "rtl");
 
     updateUIStrings();
-    renderTimeline();
-    updateCountdown();
-    setInterval(updateCountdown, 60000);
+    renderDailySchedule();
+    renderFlowList();
+}
+
+
+function updateUIStrings() {
+    const t = translations[currentLang];
+    document.getElementById("lang-btn").innerText = t.btn;
+    document.getElementById("ui-title").innerText = t.title;
+    document.getElementById("ui-subtitle").innerText = t.subtitle;
+    document.getElementById("lbl-days").innerText = t.days;
+    document.getElementById("lbl-hours").innerText = t.hours;
+    document.getElementById("lbl-min").innerText = t.min;
+    document.getElementById("tab-daily").innerText = t.tabDaily;
+    document.getElementById("tab-flow").innerText = t.tabFlow;
+    
+    const tipsSection = document.getElementById("ui-quick-tips");
+    if(tipsSection) {
+        tipsSection.querySelector("h3").innerHTML = `<i class="fa-solid fa-lightbulb"></i> ${t.tipsTitle}`;
+        tipsSection.querySelector("ul").innerHTML = t.tipsContent;
+    }
+}
+
+
+/* ============================
+   TABS
+============================ */
+
+function switchTab(tabId) {
+    document.querySelectorAll(".tab-btn").forEach(btn => btn.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(content => content.classList.remove("active"));
+    
+    document.getElementById(`tab-${tabId}`).classList.add("active");
+    document.getElementById(`${tabId}-tab`).classList.add("active");
+}
+
+
+/* ============================
+   COUNTDOWN
+============================ */
+
+const flightDate = new Date("September 25, 2026 11:00:00").getTime();
+
+function updateCountdown() {
+    const now = Date.now();
+    const diff = flightDate - now;
+
+    if (diff < 0) {
+        document.getElementById("days").innerText = "00";
+        document.getElementById("hours").innerText = "00";
+        document.getElementById("minutes").innerText = "00";
+        return;
+    }
+
+    document.getElementById("days").innerText = Math.floor(diff / 86400000);
+    document.getElementById("hours").innerText = Math.floor((diff % 86400000) / 3600000);
+    document.getElementById("minutes").innerText = Math.floor((diff % 3600000) / 60000);
+}
+
+
+/* ============================
+   INIT
+============================ */
+
+initDaySelection();
+updateUIStrings();
+renderDailySchedule();
+renderFlowList();
+updateCountdown();
+setInterval(updateCountdown, 60000);
+
 </script>
 
 </body>
