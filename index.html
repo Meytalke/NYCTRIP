@@ -1680,12 +1680,68 @@ const bonusNearby = {
     ],
 
     "2026-09-27": [
+        {after:"DUMBO + Washington St", he:"Time Out Market DUMBO", en:"Time Out Market DUMBO", noteHe:"⭐ NICE — ממש על המסלול ליד המים; כמעט בלי סטייה. רק אם בא לכן להיכנס/לעלות לגג.", noteEn:"⭐ NICE — directly on the waterfront route; almost no detour.", q:"Time Out Market New York DUMBO"},
+        {after:"חציית Brooklyn Bridge למנהטן", he:"Pleasing / Harry Styles market ב-Seaport Pier 17 — רק אם מאומת", en:"Pleasing / Harry Styles market at Pier 17 — only if confirmed", noteHe:"⭐ BONUS מהצילום ששלחתן: כתוב Seaport Pier 17 Sat & Sun. Pier 17 יושב כמעט על הדרך אחרי Brooklyn Bridge ולפני Chinatown, ולכן אם האירוע אכן פועל ב-27.9 זו עצירה חכמה של 10–20 דק׳. לא הצלחתי לאמת כרגע מקור רשמי, אז לבדוק שוב קרוב לטיול ולא לבנות עליו.", noteEn:"⭐ BONUS from your screenshot: it says Seaport Pier 17 Sat & Sun. Pier 17 is almost directly on the route after Brooklyn Bridge and before Chinatown, so it is a smart 10–20 min stop if officially confirmed for Sep 27. Re-check close to the trip.", q:"Pier 17 Seaport New York"}
+    ],
+
+    "2026-09-28": [
+        {after:"Battery Park אל Wall Street", he:"Stone Street", en:"Stone Street", noteHe:"⭐ BONUS — קרוב ל-Wall Street; עצירה קצרה של 10–15 דק׳ רק אם אתן בקצב טוב.", noteEn:"⭐ BONUS — near Wall Street; 10–15 min only if you are on schedule.", q:"Stone Street New York"},
+        {after:"South Street Seaport + Pier 17", he:"Balloon Museum / DAYDREAM", en:"Balloon Museum / DAYDREAM", noteHe:"⭐ NICE — ממש ליד Pier 17. מתאים בעיקר אם מזג האוויר פחות טוב או אם בוחרות בו במקום זמן שיטוט אחר; לא על חשבון חלון 9/11.", noteEn:"⭐ NICE — by Pier 17; best as a substitute in bad weather, never at the expense of the 9/11 window.", q:"Balloon Museum New York Pier 17"}
+    ],
+
+    "2026-09-29": [
+        {after:"High Line", he:"Whitney Museum", en:"Whitney Museum", noteHe:"⭐ NICE — בקצה הדרומי של ה-High Line. הגיוני רק אם בוחרות להיכנס למוזיאון במקום להקדיש את כל הזמן לשיטוט; לא חובה.", noteEn:"⭐ NICE — at the south end of the High Line; treat it as an optional museum choice, not an extra obligation.", q:"Whitney Museum New York"}
+    ],
+
+    // 30.9 is another Harry Styles concert day. Keep the Midtown core and the rest window clean.
+    "2026-09-30": [],
+
+    "2026-10-01": [
+        {after:"Rockefeller Center", he:"Nintendo NY", en:"Nintendo NY", noteHe:"⭐ BONUS — בתוך Rockefeller Center עצמו; 10–20 דק׳ אם מעניין אתכן, בלי לשנות מסלול.", noteEn:"⭐ BONUS — inside Rockefeller Center; 10–20 min with no route change.", q:"Nintendo NY Rockefeller Center"}
+    ],
+
+    "2026-10-02": [
+    ],
+
+    // 3.10 already includes Woodbury + Wicked. No bonus stop between them.
+    "2026-10-03": [],
+
+    "2026-10-04": [
+        {after:"Levain Bakery 🍪", he:"American Museum of Natural History", en:"American Museum of Natural History", noteHe:"⭐ NICE — חלופה לבוקר ביום הטיסה, לא תוספת. אם נכנסות למוזיאון, מקצרות את Central Park/השופינג בהתאם.", noteEn:"⭐ NICE — an alternative morning plan on flight day, not an add-on. If you enter, shorten the park/shopping accordingly.", q:"American Museum of Natural History New York"}
+    ]
+};
+
+function renderInlineBonus(dayDate, afterNameHe) {
+    const items = (bonusNearby[dayDate] || []).filter(x => x.after === afterNameHe);
+    if (!items.length) return "";
+    return items.map(x => {
+        const name = currentLang === 'he' ? x.he : x.en;
+        const note = currentLang === 'he' ? x.noteHe : x.noteEn;
+        return `<div class="event-item custom"><div class="event-icon"><i class="fa-solid fa-star"></i></div><div class="event-details"><span class="event-time">${currentLang==='he'?'אופציונלי • אם נשאר זמן':'Optional • if time remains'}</span><span class="event-name">${name}</span><span class="event-desc">${note}</span><div class="links"><a class="link-btn map" href="${maps(x.q)}" target="_blank">📍 Maps</a></div></div></div>`;
+    }).join('');
+}
+
+const dayMapRoutes = {
+    "2026-09-25": [
+        "Newark Liberty International Airport, Newark, NJ",
+        "Delta Hotels by Marriott New York Times Square, 340 W 40th St, New York, NY",
+        "Times Square, New York, NY"
+    ],
+    "2026-09-26": [
+        "Madison Square Garden, New York, NY",
+        "22 E 2nd St, New York, NY",
+        "433 Broadway, New York, NY",
+        "Delta Hotels by Marriott New York Times Square, 340 W 40th St, New York, NY",
+        "Madison Square Garden, New York, NY"
+    ],
+    "2026-09-27": [
         "North Williamsburg, Brooklyn, NY",
         "DUMBO, Brooklyn, NY",
         "Brooklyn Bridge Park, Brooklyn, NY",
         "Brooklyn Heights Promenade, Brooklyn, NY",
         "Brooklyn Bridge, New York, NY",
         "Little Italy, New York, NY"
+    
     ],
     "2026-09-28": [
         "Battery Park, New York, NY",
@@ -1696,6 +1752,7 @@ const bonusNearby = {
         "SoHo, New York, NY",
         "9/11 Memorial & Museum, New York, NY",
         "Oculus, New York, NY"
+    
     ],
     "2026-09-29": [
         "Hudson Yards, New York, NY",
