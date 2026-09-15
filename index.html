@@ -408,6 +408,20 @@
             white-space: pre-line;
         }
 
+        .hours-note {
+            display: block;
+            margin-top: 6px;
+            font-size: 0.76rem;
+            line-height: 1.35;
+            color: #a5b4fc;
+            background: rgba(99,102,241,0.08);
+            border: 1px solid rgba(99,102,241,0.18);
+            border-radius: 8px;
+            padding: 5px 7px;
+        }
+        .hours-note strong { color: #c7d2fe; }
+
+
         .option-highlight {
             font-weight: bold;
             color: #38bdf8;
@@ -945,6 +959,11 @@ const placeLinks = {
     "Bar 54": { cost: "🍸 Rooftop", costType: "paid", costNote: "135 W 45th St • rooftop גבוה בלב Times Square; אופציה נוחה מאוד לערב פנוי", map: maps("Bar 54 Hyatt Centric Times Square 135 W 45th St New York") },
     "Magic Hour Rooftop": { cost: "🍸 Rooftop", costType: "paid", costNote: "485 7th Ave • rooftop צעיר ופוטוגני ליד המלון/MSG", map: maps("Magic Hour Rooftop 485 7th Ave New York") },
     "Betsy Wolfe at Wagner Park": { cost: "🎤 חינם", costType: "free", costNote: "28.9 בשעה 19:00 • Wagner Park • רק כחלופה אם יוצאות מוקדם ממוזיאון 9/11 ומוותרות על Oculus", map: maps("Wagner Park Battery Park City New York") },
+    "Comedy Cellar": { cost: "🎤 סטנדאפ", costType: "paid", costNote: "MacDougal St • 21+ • 2-item minimum", official: "https://www.comedycellar.com/", ticket: "https://www.comedycellar.com/reservations/", map: maps("Comedy Cellar MacDougal Street New York") },
+    "St. Mark's Place": { cost: "🆓 רחוב / שכונה", costType: "free", costNote: "East Village • 8th St בין 3rd Ave ל-Ave A", map: maps("St Marks Place East Village New York") },
+    "East Village": { cost: "🆓 שכונה", costType: "free", map: maps("East Village New York") },
+    "Tompkins Square Park": { cost: "🆓 פארק", costType: "free", costNote: "06:00–00:00", map: maps("Tompkins Square Park New York") },
+    "Lower East Side": { cost: "🆓 שכונה", costType: "free", map: maps("Lower East Side New York") },
     "Ludlow Flea": { cost: "🛍️ וינטג׳ / שוק פשפשים", costType: "free", official: "https://www.ludlowflea.com/", map: maps("Ludlow Flea New York") },
     "Lillie's Victorian Establishment Times Square": { cost: "☕🍰 קפה / בראנץ׳ / תה", costType: "special", costNote: "249 W 49th St • המקום הפרחוני מהצילום • ליד Times Square", official: "https://www.lilliesnyc.com/", map: maps("Lillie's Victorian Establishment 249 W 49th St New York") },
     "Thai Diner": { cost: "🍳 בראנץ׳ / תאילנדי", costType: "special", costNote: "186 Mott St • Nolita", official: "https://www.thaidiner.com/", map: maps("Thai Diner 186 Mott St New York") },
@@ -1124,15 +1143,15 @@ const dailySchedule = [
             { time: "08:20", nameHe: "מלון אל East 34th St Ferry", nameEn: "Hotel to East 34th St Ferry", descHe: "🚕/🚇 משאירות 25–35 דק׳ ועוד מרווח לפני ההפלגה.", descEn: "Allow 25–35 min plus a ferry buffer.", type: "transit", icon: "fa-train-subway", places: ["Delta Hotels Times Square", "NYC Ferry"] },
             { time: "09:05", nameHe: "NYC Ferry אל North Williamsburg", nameEn: "NYC Ferry to North Williamsburg", descHe: "⛴️ מתחילות מצפון ומתקדמות כל היום דרומה/מערבה בלי לחזור אחורה.", descEn: "Start north and keep moving south/west without backtracking.", type: "transit", icon: "fa-ferry", places: ["NYC Ferry", "Williamsburg"] },
             { time: "09:35", nameHe: "Williamsburg – Domino Park + Grand St + Bedford Ave", nameEn: "Williamsburg – Domino Park + Grand St + Bedford Ave", descHe: "🔥 <b>MUST:</b> Waterfront + Domino Park + Grand St + Bedford Ave. Devoción / Loaf on Paper נשארים כאוכל אופציונלי במפה.", descEn: "🔥 MUST: Waterfront, Domino Park, Grand St and Bedford Ave. Food stops stay optional on the food map.", type: "mustsee", icon: "fa-store", places: ["Williamsburg", "Devocion Williamsburg", "Loaf on Paper"] },
-            { time: "10:45", nameHe: "Artists & Fleas – רק אם בא לכן", nameEn: "Artists & Fleas – Optional", descHe: "⭐ NICE ועל הדרך. 20–25 דק׳ בלבד; אם לא מעניין — ממשיכות ישר ל-DUMBO.", descEn: "⭐ NICE and on-route. Keep it to 20–25 min or skip and continue to DUMBO.", type: "custom", icon: "fa-shirt", places: ["Artists & Fleas Williamsburg"] },
-            { time: "11:20", nameHe: "Williamsburg אל DUMBO", nameEn: "Williamsburg to DUMBO", descHe: "🚇/🚕 20–30 דק׳. אין Brooklyn Museum ואין Williamsburg Bridge — הורדנו את שתי הסטיות כדי להפוך את היום להגיוני.", descEn: "20–30 min. Brooklyn Museum and the Williamsburg Bridge side-trip are removed to keep the day realistic.", type: "transit", icon: "fa-train-subway", places: ["Williamsburg", "DUMBO"] },
-            { time: "12:00", nameHe: "DUMBO + Washington St + Jane’s Carousel", nameEn: "DUMBO + Washington St + Jane’s Carousel", descHe: "🔥 <b>MUST:</b> Washington St + האזור ליד המים. Jane’s Carousel על הדרך.", descEn: "🔥 MUST: Washington St and the waterfront; Jane’s Carousel is directly on the route.", type: "mustsee", icon: "fa-camera", places: ["DUMBO", "Washington St (DUMBO)", "Jane's Carousel"] },
-            { time: "12:50", nameHe: "Pebble Beach + Brooklyn Bridge Park", nameEn: "Pebble Beach + Brooklyn Bridge Park", descHe: "🚶 ממשיכות ברגל לאורך המים לכיוון Pier 1.", descEn: "Continue along the waterfront toward Pier 1.", type: "mustsee", icon: "fa-water", places: ["Pebble Beach", "Brooklyn Bridge Park"] },
-            { time: "13:40", nameHe: "Brooklyn Heights Promenade", nameEn: "Brooklyn Heights Promenade", descHe: "🔥 25–30 דק׳. ממשיכה טבעית מהפארק בדרך לכיוון גשר ברוקלין.", descEn: "25–30 min, naturally continuing toward Brooklyn Bridge.", type: "mustsee", icon: "fa-camera", places: ["Brooklyn Heights Promenade"] },
+            { time: "11:00", nameHe: "Artists & Fleas – רק אם בא לכן", nameEn: "Artists & Fleas – Optional", descHe: "⭐ NICE ועל הדרך. 20–25 דק׳ בלבד; אם לא מעניין — ממשיכות ישר ל-DUMBO.", descEn: "⭐ NICE and on-route. Keep it to 20–25 min or skip and continue to DUMBO.", type: "custom", icon: "fa-shirt", places: ["Artists & Fleas Williamsburg"] },
+            { time: "11:30", nameHe: "Williamsburg אל DUMBO", nameEn: "Williamsburg to DUMBO", descHe: "🚇/🚕 20–30 דק׳. אין Brooklyn Museum ואין Williamsburg Bridge — הורדנו את שתי הסטיות כדי להפוך את היום להגיוני.", descEn: "20–30 min. Brooklyn Museum and the Williamsburg Bridge side-trip are removed to keep the day realistic.", type: "transit", icon: "fa-train-subway", places: ["Williamsburg", "DUMBO"] },
+            { time: "12:10", nameHe: "DUMBO + Washington St + Jane’s Carousel", nameEn: "DUMBO + Washington St + Jane’s Carousel", descHe: "🔥 <b>MUST:</b> Washington St + האזור ליד המים. Jane’s Carousel על הדרך.", descEn: "🔥 MUST: Washington St and the waterfront; Jane’s Carousel is directly on the route.", type: "mustsee", icon: "fa-camera", places: ["DUMBO", "Washington St (DUMBO)", "Jane's Carousel"] },
+            { time: "13:00", nameHe: "Pebble Beach + Brooklyn Bridge Park", nameEn: "Pebble Beach + Brooklyn Bridge Park", descHe: "🚶 ממשיכות ברגל לאורך המים לכיוון Pier 1.", descEn: "Continue along the waterfront toward Pier 1.", type: "mustsee", icon: "fa-water", places: ["Pebble Beach", "Brooklyn Bridge Park"] },
+            { time: "13:50", nameHe: "Brooklyn Heights Promenade", nameEn: "Brooklyn Heights Promenade", descHe: "🔥 25–30 דק׳. ממשיכה טבעית מהפארק בדרך לכיוון גשר ברוקלין.", descEn: "25–30 min, naturally continuing toward Brooklyn Bridge.", type: "mustsee", icon: "fa-camera", places: ["Brooklyn Heights Promenade"] },
             { time: "אופציונלי • על הדרך", nameHe: "Brooklyn Book Festival", nameEn: "Brooklyn Book Festival", descHe: "⭐ BONUS: רק 10–15 דק׳ אם מסקרן; יושב כמעט על הדרך לכניסה לגשר.", descEn: "⭐ BONUS: 10–15 min only if interested; nearly on the way to the bridge.", type: "custom", icon: "fa-book-open", places: ["Brooklyn Book Festival"] },
-            { time: "14:30", nameHe: "Brooklyn Bridge", nameEn: "Brooklyn Bridge", descHe: "🔥 <b>MUST:</b> חוצות למנהטן בקצב צילום, כ-35–45 דק׳.", descEn: "🔥 MUST: Cross to Manhattan at a photo-taking pace, about 35–45 min.", type: "mustsee", icon: "fa-bridge", places: ["Brooklyn Bridge"] },
-            { time: "15:30", nameHe: "Little Italy + Feast of San Gennaro 🎉", nameEn: "Little Italy + Feast of San Gennaro 🎉", descHe: "🔥 <b>MUST בגלל התאריך:</b> זה היום האחרון של San Gennaro. מגיעות ישר מהגשר ומקדישות 60–75 דק׳. Chinatown לא מקבל כאן בלוק נפרד — הוא עובר ל-28.9 עם SoHo כדי להוריד עומס.", descEn: "🔥 MUST for the date: final day of San Gennaro. Spend 60–75 min. Chinatown moves to Sep 28 with SoHo to reduce overload.", type: "mustsee", icon: "fa-pizza-slice", places: ["Little Italy", "San Gennaro Feast"] },
-            { time: "16:45", nameHe: "סיום היום / ערב חופשי", nameEn: "Finish / Free Evening", descHe: "אחרי San Gennaro מסיימות. לא מוסיפות עוד שכונה ביום ברוקלין.", descEn: "Finish after San Gennaro; no extra neighborhood on the Brooklyn day.", type: "custom", icon: "fa-mug-hot", places: [] }
+            { time: "14:40", nameHe: "Brooklyn Bridge", nameEn: "Brooklyn Bridge", descHe: "🔥 <b>MUST:</b> חוצות למנהטן בקצב צילום, כ-35–45 דק׳.", descEn: "🔥 MUST: Cross to Manhattan at a photo-taking pace, about 35–45 min.", type: "mustsee", icon: "fa-bridge", places: ["Brooklyn Bridge"] },
+            { time: "15:40", nameHe: "Little Italy + Feast of San Gennaro 🎉", nameEn: "Little Italy + Feast of San Gennaro 🎉", descHe: "🔥 <b>MUST בגלל התאריך:</b> זה היום האחרון של San Gennaro. מגיעות ישר מהגשר ומקדישות 60–75 דק׳. Chinatown לא מקבל כאן בלוק נפרד — הוא עובר ל-28.9 עם SoHo כדי להוריד עומס.", descEn: "🔥 MUST for the date: final day of San Gennaro. Spend 60–75 min. Chinatown moves to Sep 28 with SoHo to reduce overload.", type: "mustsee", icon: "fa-pizza-slice", places: ["Little Italy", "San Gennaro Feast"] },
+            { time: "16:55", nameHe: "סיום היום / ערב חופשי", nameEn: "Finish / Free Evening", descHe: "אחרי San Gennaro מסיימות. לא מוסיפות עוד שכונה ביום ברוקלין.", descEn: "Finish after San Gennaro; no extra neighborhood on the Brooklyn day.", type: "custom", icon: "fa-mug-hot", places: [] }
         ]
     },
     {
@@ -1169,9 +1188,9 @@ const dailySchedule = [
             { time: "אופציונלי • 5–8 דק׳", nameHe: "Stonewall + Christopher Park – NICE", nameEn: "Stonewall + Christopher Park – NICE", descHe: "⭐ <b>NICE חכם:</b> Stonewall National Monument / Christopher Park נמצאים כמה דקות מ-Friends. זו עצירת צילום והיסטוריה קצרה של 10–15 דק׳, בלי לייצר זיגזג. אם אין כוח — מדלגות וממשיכות ל-Bleecker.", descEn: "⭐ NICE: Stonewall National Monument / Christopher Park are only a few minutes from Friends. A 10–15 min history/photo stop with minimal detour.", type: "custom", icon: "fa-landmark", places: ["Stonewall National Monument"] },
             { time: "15:15", nameHe: "Friends אל Bleecker + Washington Square", nameEn: "Friends to Bleecker + Washington Square", descHe: "🚶 ממשיכות דרך Bleecker והרחובות היפים של ה-Village אל Washington Square Park. הליכה רציפה בלי תחבורה.", descEn: "Continue on foot via Bleecker and the Village streets to Washington Square Park.", type: "transit", icon: "fa-person-walking", places: ["Friends Apartment Building", "Washington Square Park"] },
             { time: "16:00", nameHe: "Washington Square Park + Village", nameEn: "Washington Square Park + Village", descHe: "🔥 <b>MUST:</b> 60–75 דק׳ לשבת, מוזיקת רחוב, אנשים, ועוד קצת Bleecker/Greenwich Village.", descEn: "🔥 MUST: 60–75 min for people-watching, street music and more Village/Bleecker time.", type: "mustsee", icon: "fa-tree", places: ["Washington Square Park", "Greenwich Village"] },
-            { time: "17:20", nameHe: "Village אל מלון", nameEn: "Village to Hotel", descHe: "🚇/🚶 כ-20–25 דק׳ חזרה. ארוחת ערב באזור המלון.", descEn: "Allow about 20–25 min back. Dinner near the hotel.", type: "transit", icon: "fa-train-subway", places: ["Greenwich Village", "Delta Hotels Times Square"] },
-            { time: "18:15", nameHe: "ארוחת ערב — זורמות לפי החשק", nameEn: "Dinner — Choose on the Spot", descHe: "ערב רגוע. בוחרות אוכל לפי המיקום והחשק דרך Food Must; מחר שוב השכמה ב-05:00.", descEn: "Easy evening. Pick food from Food Must based on location and mood; another 5 AM start tomorrow.", type: "food", icon: "fa-utensils", places: [] },
-            { time: "19:15", nameHe: "ערב חופשי – 3 אופציות טובות", nameEn: "Free Evening – 3 Good Options", descHe: "🔥 <b>שומרות את הערב גמיש:</b> ① 🎷 <b>Birdland</b> — 315 W 44th St, ממש ליד המלון. ב-29.9 יש סטים בערב; אופציה מצוינת אם בא לכן ערב ניו-יורקי אמיתי. ② 🍸 <b>Bar 54</b> — rooftop ב-135 W 45th St, נוף Midtown/Times Square. ③ ✨ <b>Magic Hour Rooftop</b> — 485 7th Ave, צעיר ופוטוגני עם נוף Empire State. אם עייפות — פשוט Times Square / Bryant Park / קפה. לא חייבות להזמין שום דבר מראש אלא אם בוחרות מופע ספציפי ב-Birdland.", descEn: "Keep the evening flexible: Birdland jazz at 315 W 44th, Bar 54 rooftop at 135 W 45th, or Magic Hour Rooftop at 485 7th Ave. If tired, just stroll Times Square/Bryant Park or grab coffee.", type: "mustsee", icon: "fa-mug-hot", places: ["Birdland Jazz Club", "Bar 54", "Magic Hour Rooftop", "Times Square", "Bryant Park"] }
+            { time: "17:20", nameHe: "ארוחת ערב בוילג׳ — לפי החשק", nameEn: "Dinner in the Village — Flexible", descHe: "🍽️ במקום לחזור למלון ואז לרדת שוב, נשארות באזור Greenwich Village ובוחרות משהו מ-Food Must. זה חוסך הלוך־חזור.", descEn: "Stay in Greenwich Village for dinner instead of returning to the hotel and coming downtown again.", type: "food", icon: "fa-utensils", places: ["Greenwich Village"] },
+            { time: "19:30", nameHe: "Comedy Cellar – אופציה חזקה לערב", nameEn: "Comedy Cellar – Strong Evening Option", descHe: "🔥 <b>NICE חזק / חוויה ניו־יורקית:</b> אם בא לכן סטנדאפ — זה משתלב מושלם כי אתן כבר בוילג׳. בימי ג׳ יש בדרך כלל מופעים ב-19:30, 21:30 ו-23:30. בגלל ההשכמה ב-05:00 למחרת, רק 19:30 הגיוני. להזמין מראש; 21+ ושתי הזמנות מינימום לאדם (אוכל/שתייה/מים). אם לא בא לכן — חוזרות מוקדם למלון.", descEn: "Strong NYC option because you are already in the Village. Tuesdays typically have 7:30, 9:30 and 11:30 PM shows; only 7:30 is sensible before the next day's 5 AM start. Reserve ahead; 21+ and two-item minimum.", type: "custom", icon: "fa-face-laugh-beam", places: ["Comedy Cellar"] },
+            { time: "21:00", nameHe: "חזרה מוקדמת / חלופה ליד המלון", nameEn: "Early Return / Midtown Alternative", descHe: "⭐ אם לא עשיתן Comedy Cellar: Birdland / Bar 54 / Magic Hour נשארים כאופציות ליד המלון. אם עשיתן סטנדאפ — חוזרות ישר לישון.", descEn: "If you skip Comedy Cellar, Birdland / Bar 54 / Magic Hour remain alternatives near the hotel. After comedy, go straight back and sleep.", type: "custom", icon: "fa-moon", places: ["Birdland Jazz Club", "Bar 54", "Magic Hour Rooftop"] }
         ]
     },
     {
@@ -1190,8 +1209,8 @@ const dailySchedule = [
     },
     {
         date: "2026-10-01",
-        he: { label: "יום חמישי", title: "Roosevelt Island + Midtown + שופינג + Harbor Lights 🚢" },
-        en: { label: "Thursday", title: "Roosevelt Island + Midtown + Shopping + Harbor Lights Cruise" },
+        he: { label: "יום חמישי", title: "Roosevelt Island + Midtown + שופינג + East Village / LES 🌃" },
+        en: { label: "Thursday", title: "Roosevelt Island + Midtown + Shopping + East Village / LES" },
         events: [
             { time: "08:45", nameHe: "מלון אל Roosevelt Island Tram", nameEn: "Hotel to Roosevelt Island Tram", descHe: "🚇/🚶 כ-25–30 דק׳ ל-East 59th St.", descEn: "Allow 25–30 min to the tram.", type: "transit", icon: "fa-train-subway", places: ["Delta Hotels Times Square", "Roosevelt Island Tram"] },
             { time: "09:20", nameHe: "Roosevelt Island Tram + Waterfront", nameEn: "Roosevelt Island Tram + Waterfront", descHe: "🔥 MUST: עולות ברכבל, עושות 30–40 דק׳ הליכה קלה על האי וחוזרות ברכבל. לא מקדישות חצי יום.", descEn: "Ride the tram, take a 30–40 min waterfront walk, then return by tram.", type: "mustsee", icon: "fa-cable-car", places: ["Roosevelt Island Tram", "Roosevelt Island"] },
@@ -1204,10 +1223,11 @@ const dailySchedule = [
             { time: "14:55", nameHe: "KO’LLECTION Outlet – K-Beauty", nameEn: "KO’LLECTION Outlet – K-Beauty", descHe: "⭐ NICE: 20–30 דק׳, ממש בדרך ל-Flatiron.", descEn: "⭐ NICE: 20–30 min, directly on the way to Flatiron.", type: "custom", icon: "fa-bag-shopping", places: ["KO’LLECTION Outlet"] },
             { time: "15:25", nameHe: "Flatiron + Madison Square Park", nameEn: "Flatiron + Madison Square Park", descHe: "🔥 MUST: 35–45 דק׳ באזור.", descEn: "🔥 MUST: 35–45 min in the area.", type: "mustsee", icon: "fa-building", places: ["Flatiron Building", "Madison Square Park"] },
             { time: "16:10", nameHe: "Marshalls + Burlington – אותו בניין", nameEn: "Marshalls + Burlington – Same Building", descHe: "⭐ NICE: שתיהן ב-620 Avenue of the Americas. משאירות 35–45 דק׳ לשתיהן ביחד; אם נמאס משופינג פשוט מדלגות.", descEn: "⭐ NICE: both are at 620 Avenue of the Americas. Allow 35–45 min total, or skip if you have had enough shopping.", type: "custom", icon: "fa-bag-shopping", places: ["Marshalls Chelsea", "Burlington Chelsea"] },
-            { time: "17:05", nameHe: "מנוחה + אוכל לפני הערב", nameEn: "Rest + Food Before Evening", descHe: "🍽️ חלון רגוע של בערך שעה. אוכל לפי Food Must, בלי להזמין משהו צפוף.", descEn: "A relaxed roughly one-hour buffer for food and a break.", type: "food", icon: "fa-bed", places: ["Delta Hotels Times Square"] },
-            { time: "18:30", nameHe: "Pier 83 – הגעה לשייט", nameEn: "Pier 83 – Arrive for Cruise", descHe: "🚶/🚕 Pier 83 נמצא במידטאון על ה-Hudson, קרוב יחסית למלון. מגיעות עם מרווח לפני העלייה.", descEn: "Pier 83 is on the Midtown Hudson waterfront, relatively close to the hotel. Arrive with boarding buffer.", type: "transit", icon: "fa-person-walking", places: ["Circle Line Harbor Lights"] },
-            { time: "19:00", nameHe: "Circle Line Harbor Lights Cruise 🌆🚢", nameEn: "Circle Line Harbor Lights Cruise 🌆🚢", descHe: "🔥 <b>MUST אופציונלי לערב שהתפנה:</b> שייט של כשעתיים מ-Pier 83 בשעת שקיעה/אורות העיר. בלוח 2026 של Circle Line, בתקופה 1.8–31.10 שעת Harbor Lights הטיפוסית היא 19:00. בודקות את 1.10 ספציפית לפני שקונות.", descEn: "🔥 Strong evening option: a roughly two-hour skyline cruise from Pier 83. Circle Line's 2026 schedule lists a typical 7 PM Harbor Lights departure for Aug 1–Oct 31; confirm Oct 1 before booking.", type: "mustsee", icon: "fa-ship", places: ["Circle Line Harbor Lights"] },
-            { time: "21:10", nameHe: "ערב חופשי ליד המלון", nameEn: "Free Evening Near Hotel", descHe: "⭐ אחרי השייט אין עוד חובה. קינוח / Times Square / חזרה למלון לפי הכוח.", descEn: "⭐ Nothing else fixed after the cruise. Dessert, Times Square or hotel depending on energy.", type: "custom", icon: "fa-moon", places: ["Times Square", "Delta Hotels Times Square"] }
+            { time: "17:05", nameHe: "מנוחה קצרה + אוכל", nameEn: "Short Rest + Food", descHe: "🍽️ חלון רגוע במלון לפני ערב Downtown. אם עייפות — זה המקום להחליט שמוותרים על הערב וחוזרים אליו יום אחר.", descEn: "A relaxed hotel buffer before the Downtown evening. Skip the evening if energy is low.", type: "food", icon: "fa-bed", places: ["Delta Hotels Times Square"] },
+            { time: "18:45", nameHe: "East Village – St. Mark’s Place", nameEn: "East Village – St. Mark’s Place", descHe: "🔥 <b>NICE חזק:</b> ערב שכונתי ולא עוד אטרקציה. St. Mark’s Place → הרחובות של East Village, חנויות קטנות, מוזיקה ואווירה. ביום ה׳ אין סגירת Sunday-style; רוב הרחוב פעיל בערב.", descEn: "Strong neighborhood evening: St. Mark’s Place and the East Village streets, small shops, music and atmosphere.", type: "mustsee", icon: "fa-city", places: ["St. Mark's Place", "East Village"] },
+            { time: "19:30", nameHe: "Tompkins Square Park + Alphabet City", nameEn: "Tompkins Square Park + Alphabet City", descHe: "⭐ 20–30 דק׳ בפארק ואז ממשיכות דרומה/מערבה לכיוון LES. זה רצף גיאוגרפי טבעי, לא נסיעה נפרדת.", descEn: "20–30 min in the park, then continue naturally toward the Lower East Side.", type: "custom", icon: "fa-tree", places: ["Tompkins Square Park", "East Village"] },
+            { time: "20:10", nameHe: "Lower East Side – אוכל / קינוח / בר לפי החשק", nameEn: "Lower East Side – Flexible Food / Dessert / Bar", descHe: "🔥 <b>חוויה ולא משימה:</b> Orchard / Ludlow / Rivington והאזור. פותחות את Food Must ובוחרות מה קרוב — למשל Katz’s / Russ & Daughters / Scarr’s / Golden Diner / Supermoon לפי שעות ותור. לא נוסעות במיוחד למקום אחד.", descEn: "Treat it as an experience, not a checklist: Orchard / Ludlow / Rivington, then choose a nearby Food Must based on hours and queue.", type: "food", icon: "fa-utensils", places: ["Lower East Side", "Katz's Delicatessen", "Russ & Daughters Cafe", "Scarr's Pizza", "Golden Diner"] },
+            { time: "21:30", nameHe: "חזרה לפי האנרגיה", nameEn: "Return When Ready", descHe: "⭐ אין הזמנה קשיחה. אם כיף נשארות קצת; אם עייפות חוזרות למלון. המטרה היא לקבל ערב NYC מקומי בלי להעמיס.", descEn: "No fixed booking. Stay a little longer if it feels good, or head back early.", type: "custom", icon: "fa-moon", places: ["Lower East Side", "Delta Hotels Times Square"] }
         ]
     },
     {
@@ -1253,7 +1273,7 @@ const dailySchedule = [
         en: { label: "Sunday", title: "Last Morning, Shopping & Flight ✈️" },
         events: [
             { time: "09:00", nameHe: "צ'ק-אאוט + שמירת מזוודות", nameEn: "Check-out + Luggage Storage", descHe: "🔥 <b>MUST:</b> משאירות מזוודות במלון ויוצאות רק עם תיקי יום.", descEn: "🔥 MUST: Leave luggage at the hotel and travel with day bags only.", type: "transit", icon: "fa-suitcase", places: ["Delta Hotels Times Square"] },
-            { time: "09:30", nameHe: "American Museum of Natural History – אופציה מהתמונה", nameEn: "American Museum of Natural History – Optional", descHe: "⭐ <b>כדי לוודא שכל מה שבתמונה קיים בלוז:</b> אם בא לכן מוזיאון נוסף לפני הטיסה, זה המקום. הוא ליד Central Park ו-Levain ולכן גאוגרפית זה היום הכי הגיוני. אבל בגלל טיסת 22:50 אני משאיר אותו כאופציה של 1.5–2 שעות בלבד, לא חובה. אם נכנסות — מקצרות את Central Park והשופינג האחרון.", descEn: "Optional add-on from the reference image. It fits geographically with Levain and Central Park, but keep it to 1.5–2 hours on flight day.", type: "custom", icon: "fa-paw", places: ["American Museum of Natural History"] },
+            { time: "10:00", nameHe: "American Museum of Natural History – אופציה מהתמונה", nameEn: "American Museum of Natural History – Optional", descHe: "⭐ <b>כדי לוודא שכל מה שבתמונה קיים בלוז:</b> אם בא לכן מוזיאון נוסף לפני הטיסה, זה המקום. הוא ליד Central Park ו-Levain ולכן גאוגרפית זה היום הכי הגיוני. אבל בגלל טיסת 22:50 אני משאיר אותו כאופציה של 1.5–2 שעות בלבד, לא חובה. אם נכנסות — מקצרות את Central Park והשופינג האחרון.", descEn: "Optional add-on from the reference image. It fits geographically with Levain and Central Park, but keep it to 1.5–2 hours on flight day.", type: "custom", icon: "fa-paw", places: ["American Museum of Natural History"] },
             { time: "10:00", nameHe: "Plan B: Upper West Side", nameEn: "Plan B: Upper West Side", descHe: "אם לא עושים אאוטלט — נוסעות ל-Upper West Side. אוכל נשאר גמיש דרך Food Must, בלי תחנת אוכל קבועה.", descEn: "If the outlet is not done, go to the Upper West Side. Food stays flexible via Food Must with no fixed restaurant stop.", type: "custom", icon: "fa-tree", places: ["Central Park"] },
             { time: "10:15", nameHe: "Upper West Side + אוכל גמיש", nameEn: "Upper West Side + Flexible Food", descHe: "🚇/🚶 עולות ל-Upper West Side. אם בא לכן Levain או מקום אחר מ-Food Must — עוצרות; אם לא, ממשיכות ישר לפארק. בלי יעד אוכל קשיח.", descEn: "Head to the Upper West Side. Stop at Levain or another Food Must only if you feel like it; otherwise continue straight to the park.", type: "transit", icon: "fa-train-subway", places: ["Delta Hotels Times Square", "Central Park"] },
             { time: "11:30", nameHe: "Central Park South – המסלול האייקוני לבוקר האחרון", nameEn: "Central Park South – Final Iconic Walk", descHe: "🔥 <b>MUST:</b> אם לא נכנסות ל-AMNH, עושות מסלול חד-כיווני חכם לכיוון Fifth Ave: Strawberry Fields (אם חסר) → The Mall & Literary Walk → Gapstow Bridge → The Pond. כך משלימות את החלק הדרומי בלי לחזור על Bethesda/Bow Bridge.", descEn: "🔥 MUST: If skipping AMNH, do a one-way southbound route toward Fifth Ave: Strawberry Fields if missed → The Mall & Literary Walk → Gapstow Bridge → The Pond.", type: "mustsee", icon: "fa-tree", places: ["Strawberry Fields", "The Mall & Literary Walk", "Gapstow Bridge", "The Pond"] },
@@ -1781,7 +1801,9 @@ const dayMapRoutes = {
         "KO'LLECTION Outlet, 315 5th Ave, New York, NY",
         "Flatiron Building, New York, NY",
         "620 Avenue of the Americas, New York, NY",
-        "Circle Line Sightseeing Cruises Pier 83, New York, NY"
+        "St Marks Place, New York, NY",
+        "Tompkins Square Park, New York, NY",
+        "Lower East Side, New York, NY"
     ],
     "2026-10-02": [
         "Grand Central Terminal, New York, NY",
@@ -1842,6 +1864,105 @@ function openAirportMap() {
         "New York Penn Station, New York, NY",
         "Newark Liberty International Airport, Newark, NJ"
     ], "transit");
+}
+
+
+const placeHours = {
+    "Theatre District": {he:"אזור ציבורי • פעיל כל היום; שעות תיאטראות/חנויות בנפרד", en:"Public district • accessible all day; venue/store hours vary"},
+    "Fifth Avenue": {he:"רחוב ציבורי • חנויות לפי שעות נפרדות", en:"Public avenue • individual store hours vary"},
+    "Louis Vuitton Trunk Building": {he:"צילום מבחוץ • אין תלות בשעות פתיחה ✅", en:"Exterior photo • no opening-hour dependency ✅"},
+    "Radio City Music Hall": {he:"צילום מבחוץ • אין תלות בשעות פתיחה ✅", en:"Exterior photo • no opening-hour dependency ✅"},
+    "Empire State Building": {he:"אצלכן צילום מבחוץ בלבד • אין תלות בשעות תצפית ✅", en:"Exterior only in your plan • no observatory-hour dependency ✅"},
+    "Flatiron Building": {he:"צילום מבחוץ • אין תלות בשעות פתיחה ✅", en:"Exterior photo • no opening-hour dependency ✅"},
+    "Chrysler Building": {he:"צילום מבחוץ • אין תלות בשעות פתיחה ✅", en:"Exterior photo • no opening-hour dependency ✅"},
+    "Williamsburg": {he:"שכונה / רחובות ציבוריים • אין שעת סגירה כוללת", en:"Neighborhood/public streets • no overall closing time"},
+    "DUMBO": {he:"שכונה / רחובות ציבוריים • אין שעת סגירה כוללת", en:"Neighborhood/public streets • no overall closing time"},
+    "Washington St (DUMBO)": {he:"רחוב ציבורי • צילום בכל שעה סבירה ✅", en:"Public street • accessible at normal visiting hours ✅"},
+    "Pebble Beach": {he:"בתוך Brooklyn Bridge Park • שעות פארק חלות", en:"Inside Brooklyn Bridge Park • park hours apply"},
+    "Brooklyn Bridge Park": {he:"פארק ציבורי • התוכנית בצהריים מתאימה ✅", en:"Public park • daytime plan fits ✅"},
+    "Brooklyn Heights Promenade": {he:"טיילת ציבורית • שעות היום בלוז מתאימות ✅", en:"Public promenade • daytime plan fits ✅"},
+    "Brooklyn Bridge": {he:"מעבר הולכי רגל ציבורי • שעות היום בלוז מתאימות ✅", en:"Public pedestrian crossing • daytime plan fits ✅"},
+    "Little Italy": {he:"שכונה / רחובות ציבוריים • אין שעת סגירה כוללת", en:"Neighborhood/public streets • no overall closing time"},
+    "Chinatown": {he:"שכונה / רחובות ציבוריים • עסקים לפי שעות נפרדות", en:"Neighborhood/public streets • businesses set their own hours"},
+    "SoHo": {he:"שכונה / רחובות ציבוריים • חנויות לפי שעות נפרדות", en:"Neighborhood/public streets • stores set their own hours"},
+    "SoHo Cast-Iron District": {he:"אזור ציבורי • אין שעת סגירה", en:"Public district • no closing time"},
+    "Wall Street": {he:"רחוב ציבורי • המסלול בצהריים מתאים ✅", en:"Public street • midday visit fits ✅"},
+    "Charging Bull": {he:"פסל חוץ • נגיש בכל שעה סבירה ✅", en:"Outdoor sculpture • accessible at normal hours ✅"},
+    "Fearless Girl": {he:"פסל חוץ • נגיש בכל שעה סבירה ✅", en:"Outdoor sculpture • accessible at normal hours ✅"},
+    "New York Stock Exchange": {he:"אצלכן מבחוץ בלבד • אין תלות בשעות מסחר ✅", en:"Exterior only • no dependency on market hours ✅"},
+    "Federal Hall": {he:"האירוע אצלכן כחלק מסיבוב חוץ; אם נכנסות פנימה יש לבדוק שעות NPS", en:"Exterior on your route; check NPS hours only if entering"},
+    "Trinity Church": {he:"עוברות כחלק מהמסלול; אם רוצות כניסה פנימה יש לבדוק שעות אותו יום", en:"Passed on route; confirm same-day hours only if entering"},
+    "South Street Seaport": {he:"אזור ציבורי • חנויות/מסעדות לפי שעות נפרדות", en:"Public district • individual venue hours vary"},
+    "Pier 17": {he:"ה-Pier/Seaport נגישים ביום; אירועים ומסעדות לפי שעות נפרדות ✅", en:"Pier/Seaport accessible daytime; events/restaurants vary ✅"},
+    "Hudson Yards": {he:"המרחב הציבורי נגיש; The Shops יום ג׳ 10:00–21:00 ✅", en:"Public space accessible; The Shops Tue 10 AM–9 PM ✅"},
+    "Vessel": {he:"09:55 הוא לפני פתיחת The Shops ב-10:00; צילום מבחוץ אפשרי, לכניסה ל-Vessel יש להזמין סלוט רשמי", en:"9:55 is before The Shops open at 10; exterior viewing is fine, Vessel entry requires a booked slot"},
+    "Friends Apartment Building": {he:"בניין מגורים מבחוץ • אין שעות פתיחה ✅", en:"Residential exterior • no opening hours ✅"},
+    "Stonewall National Monument": {he:"הפארק/אנדרטה בחוץ • שעות היום בלוז מתאימות ✅", en:"Outdoor monument/park • daytime plan fits ✅"},
+    "Greenwich Village": {he:"שכונה / רחובות ציבוריים • אין שעת סגירה כוללת", en:"Neighborhood/public streets • no overall closing time"},
+    "West Village": {he:"שכונה / רחובות ציבוריים • אין שעת סגירה כוללת", en:"Neighborhood/public streets • no overall closing time"},
+    "Roosevelt Island": {he:"מרחב ציבורי • 09:20 מתאים ✅", en:"Public area • 9:20 fits ✅"},
+    "Museum Mile": {he:"רחוב/אזור ציבורי • שעות המוזיאונים נפרדות", en:"Public corridor • museum hours vary"},
+    "The Lake": {he:"בתוך Central Park • 06:00–01:00 ✅", en:"Inside Central Park • 6 AM–1 AM ✅"},
+    "Times Square": {he:"פתוח 24/7 • חנויות פועלות לפי שעות נפרדות", en:"Open 24/7 • store hours vary"},
+    "Together, Together Pop-Up": {he:"שבת 26.9: 12:00–19:00 • Amex 11:00–12:00 ✅", en:"Sat Sep 26: 12 PM–7 PM • Amex 11 AM–12 PM ✅"},
+    "PleasingLand": {he:"שבת 26.9: 12:00–19:00 • Amex 11:00–12:00 ✅", en:"Sat Sep 26: 12 PM–7 PM • Amex 11 AM–12 PM ✅"},
+    "Artists & Fleas Williamsburg": {he:"א׳ 27.9: 11:00–19:00 ✅", en:"Sun Sep 27: 11 AM–7 PM ✅"},
+    "San Gennaro Feast": {he:"27.9 הוא היום האחרון • הופעות רשמיות 15:00–17:00 ו-18:00–21:00 ✅", en:"Sep 27 is the final day • official performances 3–5 PM and 6–9 PM ✅"},
+    "NYC Ferry": {he:"פועל ביום א׳ • לוח הפלגות משתנה עונתית, לבדוק באפליקציה בערב שלפני", en:"Runs Sunday • seasonal timetable; confirm in app the night before"},
+    "Statue of Liberty": {he:"המעבורת הרשמית פועלת מדי יום • השעות עונתיות; כניסה אחרי 14:00 לא מספיקה לשני האיים ✅ ל-09:45", en:"Official ferry runs daily • seasonal schedule; after 2 PM is too late for both islands ✅ at 9:45"},
+    "Ellis Island": {he:"לפי לוח Statue City Cruises • 09:45 מתאים ✅", en:"Per Statue City Cruises schedule • 9:45 plan is suitable ✅"},
+    "9/11 Memorial": {he:"כל יום 08:00–20:00 • 16:10 מתאים ✅", en:"Daily 8 AM–8 PM • 4:10 PM fits ✅"},
+    "9/11 Museum": {he:"ב׳ 09:00–19:00 • כניסה אחרונה 17:30 • חינם ב׳ 17:30–19:00 ✅", en:"Mon 9 AM–7 PM • last entry 5:30 PM • free Mon 5:30–7 PM ✅"},
+    "Oculus": {he:"המתחם פתוח; שעות החנויות משתנות • ב׳ בערב חלק מהחנויות כבר נסגרות סביב 19:00", en:"Complex accessible; shop hours vary • some stores close around 7 PM Monday"},
+    "UNIQLO SoHo": {he:"ב׳ 11:00–20:00 ✅", en:"Mon 11 AM–8 PM ✅"},
+    "Bloomingdale's SoHo": {he:"ב׳ 11:00–20:00 ✅", en:"Mon 11 AM–8 PM ✅"},
+    "MUJI SoHo": {he:"ב׳ 10:00–21:00 ✅", en:"Mon 10 AM–9 PM ✅"},
+    "The RealReal SoHo": {he:"ב׳ 10:00–19:00 ✅", en:"Mon 10 AM–7 PM ✅"},
+    "High Line": {he:"ספטמבר: 07:00–23:00 • 11:00 מתאים ✅", en:"September: 7 AM–11 PM • 11 AM fits ✅"},
+    "Chelsea Market": {he:"כל יום 07:00–22:00 • 12:00 מתאים ✅", en:"Daily 7 AM–10 PM • noon fits ✅"},
+    "Pier 57": {he:"Rooftop כל יום 06:00–01:00 • Market 57 11:00–20:00 ✅", en:"Rooftop daily 6 AM–1 AM • Market 57 11 AM–8 PM ✅"},
+    "Little Island": {he:"8.9–31.10: 06:00–23:00 • 13:20 מתאים ✅", en:"Sep 8–Oct 31: 6 AM–11 PM • 1:20 PM fits ✅"},
+    "Washington Square Park": {he:"06:00–01:00 • 16:00 מתאים ✅", en:"6 AM–1 AM • 4 PM fits ✅"},
+    "Comedy Cellar": {he:"יום ג׳: 19:30 / 21:30 / 23:30 • 19:30 מתאים ✅ • 21+", en:"Tuesday: 7:30 / 9:30 / 11:30 PM • 7:30 fits ✅ • 21+"},
+    "NY Public Library": {he:"יום ד׳: 10:00–20:00 • 10:15 מתאים ✅", en:"Wednesday: 10 AM–8 PM • 10:15 fits ✅"},
+    "Bryant Park": {he:"ספטמבר: 07:00–23:00 • 10:15 מתאים ✅", en:"September: 7 AM–11 PM • 10:15 fits ✅"},
+    "Roosevelt Island Tram": {he:"יום ה׳: 06:00–02:00 • 09:20 מתאים ✅", en:"Thursday: 6 AM–2 AM • 9:20 fits ✅"},
+    "St. Patrick's Cathedral": {he:"כל יום 06:45–20:45 • 10:30 מתאים ✅", en:"Daily 6:45 AM–8:45 PM • 10:30 fits ✅"},
+    "Rockefeller Center": {he:"ה-Plaza פתוחה 24/7 • 11:20 מתאים ✅", en:"Plaza open 24/7 • 11:20 fits ✅"},
+    "Primark Herald Square": {he:"נפתח ב-10:00 • 13:45 מתאים ✅ (שעת סגירה לבדוק סמוך)", en:"Opens 10 AM • 1:45 PM fits ✅ (confirm closing time closer to trip)"},
+    "Madison Square Park": {he:"יוני–אוקטובר 06:00–00:00 • 15:25 מתאים ✅", en:"Jun–Oct 6 AM–midnight • 3:25 PM fits ✅"},
+    "Tompkins Square Park": {he:"כל יום 06:00–00:00 • 19:30 מתאים ✅", en:"Daily 6 AM–midnight • 7:30 PM fits ✅"},
+    "St. Mark's Place": {he:"רחוב ציבורי • ביום ה׳ פתוח כרגיל; עסקים לפי שעותיהם ✅", en:"Public street • normal Thursday access; individual business hours vary ✅"},
+    "East Village": {he:"שכונה / רחובות ציבוריים • אין שעת סגירה כוללת", en:"Neighborhood/public streets • no overall closing time"},
+    "Lower East Side": {he:"שכונה / רחובות ציבוריים • עסקים וברים לפי שעותיהם", en:"Neighborhood/public streets • individual venues vary"},
+    "Grand Central Terminal": {he:"פתוח מדי יום 05:15–02:00 • 08:40 מתאים ✅", en:"Open daily 5:15 AM–2 AM • 8:40 fits ✅"},
+    "SUMMIT One Vanderbilt": {he:"ו׳: 08:00–00:00 • כניסה אחרונה 22:30 • 09:30 מתאים ✅", en:"Fri 8 AM–midnight • last entry 10:30 PM • 9:30 fits ✅"},
+    "The Met": {he:"ו׳ 10:00–21:00 • 13:00 מתאים ✅", en:"Fri 10 AM–9 PM • 1 PM fits ✅"},
+    "Central Park": {he:"כל יום 06:00–01:00 ✅", en:"Daily 6 AM–1 AM ✅"},
+    "Central Park Boathouse": {he:"הפארק פתוח 06:00–01:00; למסעדה/סירות שעות נפרדות", en:"Park 6 AM–1 AM; restaurant/boats have separate hours"},
+    "Bethesda Terrace": {he:"בתוך Central Park • 06:00–01:00 ✅", en:"Inside Central Park • 6 AM–1 AM ✅"},
+    "Bethesda Fountain": {he:"בתוך Central Park • 06:00–01:00 ✅", en:"Inside Central Park • 6 AM–1 AM ✅"},
+    "Bow Bridge": {he:"בתוך Central Park • 06:00–01:00 ✅", en:"Inside Central Park • 6 AM–1 AM ✅"},
+    "Cherry Hill": {he:"בתוך Central Park • 06:00–01:00 ✅", en:"Inside Central Park • 6 AM–1 AM ✅"},
+    "The Mills at Jersey Gardens": {he:"שבת 3.10: שעות רגילות 10:00–21:00 • 10:00–14:30 מתאים ✅", en:"Sat Oct 3 regular hours 10 AM–9 PM • 10–2:30 fits ✅"},
+    "Wicked Broadway": {he:"3.10: הצגה 20:00 • להגיע 30–40 דק׳ לפני ✅", en:"Oct 3: 8 PM performance • arrive 30–40 min early ✅"},
+    "Midnight Moment": {he:"כל לילה 23:57–00:00 • 3.10 מתאים ✅", en:"Nightly 11:57 PM–midnight • Oct 3 fits ✅"},
+    "American Museum of Natural History": {he:"א׳ 10:00–17:30 • תוקן בלוז ל-10:00 ✅", en:"Sun 10 AM–5:30 PM • schedule corrected to 10 AM ✅"},
+    "Strawberry Fields": {he:"בתוך Central Park • 06:00–01:00 ✅", en:"Inside Central Park • 6 AM–1 AM ✅"},
+    "The Mall & Literary Walk": {he:"בתוך Central Park • 06:00–01:00 ✅", en:"Inside Central Park • 6 AM–1 AM ✅"},
+    "Gapstow Bridge": {he:"בתוך Central Park • 06:00–01:00 ✅", en:"Inside Central Park • 6 AM–1 AM ✅"},
+    "The Pond": {he:"בתוך Central Park • 06:00–01:00 ✅", en:"Inside Central Park • 6 AM–1 AM ✅"},
+    "Wollman Rink": {he:"הפארק פתוח 06:00–01:00; שעות ההחלקה עונתיות — לבדוק אם העונה נפתחה", en:"Park 6 AM–1 AM; skating hours seasonal — confirm season opening"},
+    "Times Square Shopping": {he:"חנויות משתנות; אחרי Wicked חלקן עלולות להיות סגורות — לא לבנות על כולן", en:"Store hours vary; after Wicked some may be closed — do not rely on all of them"}
+};
+
+function renderHoursNotes(ev) {
+    const notes = [];
+    (ev.places || []).forEach(p => {
+        const h = placeHours[p];
+        if (h) notes.push(`<div class="hours-note">🕒 <strong>${p}</strong> — ${h[currentLang] || h.he}</div>`);
+    });
+    return notes.join('');
 }
 
 function renderDailySchedule() {
@@ -1914,6 +2035,7 @@ function renderDailySchedule() {
                         <span class="event-time">${ev.time}</span>
                         <span class="event-name">${name}</span>
                         <span class="event-desc">${desc}</span>
+                        ${renderHoursNotes(ev)}
                         ${attachLinks(ev.places)}
                     </div>
                 </div>
