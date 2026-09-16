@@ -961,7 +961,6 @@ const placeLinks = {
     "Bar 54": { cost: "🍸 Rooftop", costType: "paid", costNote: "135 W 45th St • rooftop גבוה בלב Times Square; אופציה נוחה מאוד לערב פנוי", map: maps("Bar 54 Hyatt Centric Times Square 135 W 45th St New York") },
     "Magic Hour Rooftop": { cost: "🍸 Rooftop", costType: "paid", costNote: "485 7th Ave • rooftop צעיר ופוטוגני ליד המלון/MSG", map: maps("Magic Hour Rooftop 485 7th Ave New York") },
     "Betsy Wolfe at Wagner Park": { cost: "🎤 חינם", costType: "free", costNote: "28.9 בשעה 19:00 • Wagner Park • רק כחלופה אם יוצאות מוקדם ממוזיאון 9/11 ומוותרות על Oculus", map: maps("Wagner Park Battery Park City New York") },
-    "Cellar Dog": { cost: "🎷🎱 ג׳אז + ביליארד/פינג פונג", costType: "special", costNote: "75 Christopher St • ג׳אז כל ערב ב-19:00 • ג׳ 16:00–01:00 • $5 cover אחרי 18:00", official: "https://www.cellardog.net/visit", map: maps("Cellar Dog 75 Christopher Street New York") },
     "St. Mark's Place": { cost: "🆓 רחוב / שכונה", costType: "free", costNote: "East Village • 8th St בין 3rd Ave ל-Ave A", map: maps("St Marks Place East Village New York") },
     "East Village": { cost: "🆓 שכונה", costType: "free", map: maps("East Village New York") },
     "Tompkins Square Park": { cost: "🆓 פארק", costType: "free", costNote: "06:00–00:00", map: maps("Tompkins Square Park New York") },
@@ -1191,9 +1190,10 @@ const dailySchedule = [
             { time: "אופציונלי • 5–8 דק׳", nameHe: "Stonewall + Christopher Park – NICE", nameEn: "Stonewall + Christopher Park – NICE", descHe: "⭐ <b>NICE חכם:</b> Stonewall National Monument / Christopher Park נמצאים כמה דקות מ-Friends. זו עצירת צילום והיסטוריה קצרה של 10–15 דק׳, בלי לייצר זיגזג. אם אין כוח — מדלגות וממשיכות ל-Bleecker.", descEn: "⭐ NICE: Stonewall National Monument / Christopher Park are only a few minutes from Friends. A 10–15 min history/photo stop with minimal detour.", type: "custom", icon: "fa-landmark", places: ["Stonewall National Monument"] },
             { time: "15:15", nameHe: "Friends אל Bleecker + Washington Square", nameEn: "Friends to Bleecker + Washington Square", descHe: "🚶 ממשיכות דרך Bleecker והרחובות היפים של ה-Village אל Washington Square Park. הליכה רציפה בלי תחבורה.", descEn: "Continue on foot via Bleecker and the Village streets to Washington Square Park.", type: "transit", icon: "fa-person-walking", places: ["Friends Apartment Building", "Washington Square Park"] },
             { time: "16:00", nameHe: "Washington Square Park + Village", nameEn: "Washington Square Park + Village", descHe: "🔥 <b>MUST:</b> 60–75 דק׳ לשבת, מוזיקת רחוב, אנשים, ועוד קצת Bleecker/Greenwich Village.", descEn: "🔥 MUST: 60–75 min for people-watching, street music and more Village/Bleecker time.", type: "mustsee", icon: "fa-tree", places: ["Washington Square Park", "Greenwich Village"] },
-            { time: "17:20", nameHe: "ארוחת ערב בוילג׳ — לפי החשק", nameEn: "Dinner in the Village — Flexible", descHe: "🍽️ במקום לחזור למלון ואז לרדת שוב, נשארות באזור Greenwich Village ובוחרות משהו מ-Food Must. זה חוסך הלוך־חזור.", descEn: "Stay in Greenwich Village for dinner instead of returning to the hotel and coming downtown again.", type: "food", icon: "fa-utensils", places: ["Greenwich Village"] },
-            { time: "19:00", nameHe: "Cellar Dog – ג׳אז + ביליארד / פינג פונג", nameEn: "Cellar Dog – Jazz + Pool / Ping Pong", descHe: "🔥 <b>NICE חזק וכיפי:</b> נשארות בוילג׳ ומסיימות את היום ב-Cellar Dog, 75 Christopher St. ביום ג׳ פתוח 16:00–01:00 ויש ג׳אז חי כל ערב מ-19:00. זה פחות 'מופע שיושבים בו' ויותר ערב ניו־יורקי קליל עם מוזיקה, ביליארד, פינג פונג ומשחקים. בימי ג׳ ה-cover אחרי 18:00 הוא $5. שעה–שעה וחצי מספיקות, ואז חוזרות לישון לפני ההשכמה ב-05:00.", descEn: "🔥 Strong NICE and fun: stay in the Village and finish at Cellar Dog, 75 Christopher St. Tuesday hours are 4 PM–1 AM, with live jazz every night from 7 PM. It is a casual NYC night with music, pool, ping pong and games rather than a formal show. Tuesday cover after 6 PM is $5.", type: "custom", icon: "fa-music", places: ["Cellar Dog"] },
-            { time: "20:30", nameHe: "סיום מוקדם", nameEn: "Early Finish", descHe: "חוזרות למלון אחרי שעה–שעה וחצי. זה משאיר לכן ערב אמיתי אבל עדיין שומר על השינה לפני 05:00.", descEn: "Head back after roughly 60–90 minutes, keeping a real evening while protecting sleep before the 5 AM start.", type: "custom", icon: "fa-moon", places: [] }
+            { time: "17:10", nameHe: "Greenwich Village אל Madame Tussauds", nameEn: "Greenwich Village to Madame Tussauds", descHe: "🚇 עולות חזרה ל-Times Square. משאירות כ-25–30 דק׳ כדי להגיע בלי לחץ לפני הסגירה.", descEn: "Take the subway back toward Times Square and allow about 25–30 minutes.", type: "transit", icon: "fa-train-subway", places: ["Greenwich Village", "Madame Tussauds"] },
+            { time: "17:40", nameHe: "Madame Tussauds New York", nameEn: "Madame Tussauds New York", descHe: "⭐ <b>NICE חזק:</b> 234 W 42nd St. ביום ג׳ 29.9 שעות הפתיחה הרשמיות הן 10:00–19:00, ולכן נכנסות סביב 17:40 ומשאירות כ-75–80 דק׳. האתר הרשמי מציין שביקור טיפוסי לוקח 60–90 דק׳ — החלון הזה מתאים בלי לדחוף אותו ליום ההופעה.", descEn: "⭐ Strong NICE: 234 W 42nd St. Official hours on Tue Sep 29 are 10 AM–7 PM. Enter around 5:40 PM for about 75–80 minutes; the official typical visit duration is 60–90 minutes.", type: "custom", icon: "fa-user-secret", places: ["Madame Tussauds"] },
+            { time: "19:05", nameHe: "ארוחת ערב באזור המלון", nameEn: "Dinner Near the Hotel", descHe: "🍽️ אחרי מאדאם טוסו נשארות באזור Times Square / המלון ובוחרות משהו מ-Food Must. בלי עוד נסיעה ובלי ערב מאוחר לפני ההשכמה ב-05:00.", descEn: "Choose dinner from Food Must around Times Square / the hotel, with no extra cross-city trip before the 5 AM start.", type: "food", icon: "fa-utensils", places: ["Times Square", "Delta Hotels Times Square"] },
+            { time: "20:15", nameHe: "סיום מוקדם", nameEn: "Early Finish", descHe: "ערב רגוע ושינה מוקדמת לפני יום ההופעה.", descEn: "Keep the rest of the evening easy and get an early night before the concert day.", type: "custom", icon: "fa-moon", places: [] }
         ]
     },
     {
@@ -1204,7 +1204,7 @@ const dailySchedule = [
             { time: "05:00", nameHe: "מלון אל MSG", nameEn: "Hotel to MSG", descHe: "🔥 <b>MUST:</b> 🚶 כ-5–10 דק׳. סבב שני של Priority Entry וצמידים.", descEn: "🔥 MUST: 5–10 min walk to MSG for the second Priority Entry/wristband process.", type: "harry", icon: "fa-ticket", places: ["Delta Hotels Times Square", "Madison Square Garden"] },
             { time: "09:00", nameHe: "חלוקת צמידים", nameEn: "Wristband Distribution", descHe: "אחרי קבלת המספר — יוצאות מיד ל-Midtown ולא נשארות ליד MSG.", descEn: "After receiving the number, leave MSG and explore Midtown rather than waiting there.", type: "harry", icon: "fa-hand-sparkles", places: ["Madison Square Garden"] },
             { time: "10:15", nameHe: "NY Public Library + Bryant Park", nameEn: "NYPL + Bryant Park", descHe: "🔥 <b>MUST:</b> נשארות בצד המערבי/מרכזי של Midtown ולא קופצות ל-Grand Central ביום הופעה. 45–60 דק׳ ל-NYPL + Bryant Park.", descEn: "🔥 MUST: Keep this concert day on the west/central Midtown side. Spend 45–60 min at NYPL + Bryant Park; Grand Central and Chrysler move to the SUMMIT day.", type: "mustsee", icon: "fa-book", places: ["NY Public Library", "Bryant Park"] },
-            { time: "11:20", nameHe: "חזרה למלון + אוכל + מנוחה", nameEn: "Hotel + Food + Rest", descHe: "🔥 <b>MUST:</b> חוזרות מוקדם. Grand Central ו-Chrysler עברו ל-2.10 ליד SUMMIT, ולכן אין היום הלוך-חזור מיותר במידטאון ואין פגיעה בחלון המנוחה לפני ההופעה.", descEn: "🔥 MUST: Return early. Grand Central and Chrysler are moved to Oct 2 beside SUMMIT, removing unnecessary Midtown backtracking and protecting the pre-show rest window.", type: "custom", icon: "fa-bed", places: ["Delta Hotels Times Square"] },
+            { time: "11:20", nameHe: "מלון + אוכל + מנוחה ארוכה", nameEn: "Hotel + Food + Long Rest", descHe: "🔥 <b>MUST:</b> חוזרות מוקדם למלון אחרי NYPL + Bryant Park. שומרות את רוב הצהריים לאוכל, מקלחת, התארגנות ומנוחה לפני Harry Styles — בלי עוד אטרקציה ביום ההופעה.", descEn: "🔥 MUST: Return early after NYPL + Bryant Park and protect the afternoon for food, shower, getting ready and a long rest before Harry Styles.", type: "custom", icon: "fa-bed", places: ["Delta Hotels Times Square"] },
             { time: "16:45", nameHe: "מלון אל MSG", nameEn: "Hotel to MSG", descHe: "🚶 כ-5–10 דק׳. כבר ליד הכניסה/השומר ב-16:45.", descEn: "Walk about 5–10 min and be at the entrance/security point by 4:45 PM.", type: "harry", icon: "fa-ticket", places: ["Delta Hotels Times Square", "Madison Square Garden"] },
             { time: "19:00", nameHe: "פתיחת שערים", nameEn: "Doors Open", descHe: "נכנסות לפי ההנחיות ונשארות יחד.", descEn: "Enter according to venue instructions and stay together.", type: "harry", icon: "fa-door-open", places: ["Madison Square Garden"] },
             { time: "20:00", nameHe: "Harry Styles 🍉 – לילה 2", nameEn: "Harry Styles 🍉 – Night 2", descHe: "🎤 ההופעה השנייה והאחרונה בטיול.", descEn: "🎤 The second and final concert of the trip.", type: "harry", icon: "fa-microphone", places: ["Madison Square Garden"] }
@@ -1363,7 +1363,7 @@ const flowList = [
             ["United Nations", "בניין האו״ם", "United Nations Headquarters", "custom", "fa-landmark-flag", ["United Nations"]],
             ["Flatiron", "Flatiron Building", "Flatiron Building", "mustsee", "fa-building", ["Flatiron Building"]],
             ["Chrysler & Radio City", "בניין קרייזלר, רדיו סיטי וקרנגי הול (מבחוץ)", "Chrysler & Radio City", "custom", "fa-building", ["Chrysler Building", "Radio City Music Hall", "Carnegie Hall"]],
-            ["Madame Tussauds New York", "Madame Tussauds — NICE", "Madame Tussauds — optional", "custom", "fa-user-secret", ["Madame Tussauds New York"]]
+            ["Madame Tussauds New York", "Madame Tussauds — NICE • 29.9", "Madame Tussauds — optional • Sep 29", "custom", "fa-user-secret", ["Madame Tussauds"]]
         ]
     },
     {
@@ -1786,7 +1786,8 @@ const dayMapRoutes = {
         "Pier 57, New York, NY",
         "90 Bedford St, New York, NY",
         "Washington Square Park, New York, NY",
-        "Cellar Dog, 75 Christopher St, New York, NY"
+        "Madame Tussauds New York, 234 W 42nd St, New York, NY",
+        "Delta Hotels by Marriott New York Times Square, 340 W 40th St, New York, NY"
     ],
     "2026-09-30": [
         "Madison Square Garden, New York, NY",
@@ -1931,8 +1932,8 @@ const placeHours = {
     "Pier 57": {he:"Rooftop כל יום 06:00–01:00 • Market 57 11:00–20:00 ✅", en:"Rooftop daily 6 AM–1 AM • Market 57 11 AM–8 PM ✅"},
     "Little Island": {he:"8.9–31.10: 06:00–23:00 • 13:20 מתאים ✅", en:"Sep 8–Oct 31: 6 AM–11 PM • 1:20 PM fits ✅"},
     "Washington Square Park": {he:"06:00–01:00 • 16:00 מתאים ✅", en:"6 AM–1 AM • 4 PM fits ✅"},
-    "Cellar Dog": {he:"יום ג׳: 16:00–01:00 • ג׳אז כל ערב מ-19:00 • 19:00 מתאים ✅ • cover $5 אחרי 18:00", en:"Tuesday: 4 PM–1 AM • live jazz nightly from 7 PM • 7 PM fits ✅ • $5 cover after 6 PM"},
     "NY Public Library": {he:"יום ד׳: 10:00–20:00 • 10:15 מתאים ✅", en:"Wednesday: 10 AM–8 PM • 10:15 fits ✅"},
+    "Madame Tussauds": {he:"יום ג׳ 29.9: 10:00–19:00 • כניסה סביב 17:40 מתאימה ✅ • ביקור טיפוסי 60–90 דק׳", en:"Tue Sep 29: 10 AM–7 PM • entry around 5:40 PM fits ✅ • typical visit 60–90 min"},
     "Bryant Park": {he:"ספטמבר: 07:00–23:00 • 10:15 מתאים ✅", en:"September: 7 AM–11 PM • 10:15 fits ✅"},
     "Roosevelt Island Tram": {he:"יום ה׳: 06:00–02:00 • 09:20 מתאים ✅", en:"Thursday: 6 AM–2 AM • 9:20 fits ✅"},
     "St. Patrick's Cathedral": {he:"כל יום 06:45–20:45 • 10:30 מתאים ✅", en:"Daily 6:45 AM–8:45 PM • 10:30 fits ✅"},
