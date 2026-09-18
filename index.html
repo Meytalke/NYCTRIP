@@ -546,6 +546,248 @@
         .jetlag-table tr:nth-child(even) { background: rgba(255, 255, 255, 0.02); }
         .jetlag-highlight { color: #ec4899; font-weight: 700; }
 
+    
+        /* Simple daily grocery-list view */
+        .simple-list-btn {
+            background: #0f766e;
+            color: #ffffff;
+            border: 1px solid #14b8a6;
+            border-radius: 9px;
+            padding: 7px 11px;
+            font-family: inherit;
+            font-weight: 700;
+            font-size: 0.78rem;
+            cursor: pointer;
+            transition: 0.2s ease;
+        }
+        .simple-list-btn:hover {
+            transform: translateY(-1px);
+            background: #0d9488;
+        }
+        .simple-day-list {
+            display: none;
+            margin: 10px 0 14px;
+            padding: 12px 14px;
+            background: #0f172a;
+            border: 1px solid #334155;
+            border-radius: 12px;
+        }
+        .simple-day-list.open {
+            display: block;
+        }
+        .simple-day-list-title {
+            font-weight: 800;
+            font-size: 0.95rem;
+            margin-bottom: 9px;
+            color: #f8fafc;
+        }
+        .simple-checklist {
+            list-style: none;
+            display: grid;
+            gap: 7px;
+        }
+        .simple-checklist li {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            color: #e2e8f0;
+            font-size: 0.92rem;
+            line-height: 1.3;
+        }
+        .simple-check-box {
+            width: 17px;
+            height: 17px;
+            min-width: 17px;
+            border: 2px solid #64748b;
+            border-radius: 4px;
+            margin-top: 1px;
+        }
+        .simple-item-time {
+            color: #94a3b8;
+            font-size: 0.78rem;
+            white-space: nowrap;
+            margin-inline-start: 4px;
+        }
+        .simple-optional {
+            color: #fbbf24;
+            font-size: 0.76rem;
+            font-weight: 700;
+            margin-inline-start: 5px;
+            white-space: nowrap;
+        }
+        @media (max-width: 560px) {
+            .day-header-actions {
+                gap: 6px;
+                flex-wrap: wrap;
+            }
+            .simple-list-btn, .day-map-btn {
+                padding: 6px 9px;
+                font-size: 0.74rem;
+            }
+        }
+
+    
+        /* Polished simple daily list */
+        .simple-list-btn {
+            background: linear-gradient(135deg, #0f766e, #0d9488);
+            color: #fff;
+            border: 1px solid rgba(45,212,191,.5);
+            border-radius: 12px;
+            padding: 8px 12px;
+            font-family: inherit;
+            font-weight: 800;
+            font-size: .8rem;
+            cursor: pointer;
+            box-shadow: 0 4px 12px rgba(13,148,136,.18);
+        }
+        .simple-day-list {
+            display: none;
+            margin: 12px 0 16px;
+            padding: 14px;
+            background: linear-gradient(180deg, #0f172a, #111827);
+            border: 1px solid #334155;
+            border-radius: 16px;
+            box-shadow: 0 8px 24px rgba(0,0,0,.18);
+        }
+        .simple-day-list.open { display: block; }
+        .simple-day-list-title {
+            display: flex; align-items: center; gap: 8px;
+            font-weight: 800; font-size: 1rem; margin-bottom: 11px; color: #f8fafc;
+        }
+        .simple-checklist { list-style: none; display: grid; gap: 8px; padding: 0; margin: 0; }
+        .simple-checklist li {
+            display: grid; grid-template-columns: 22px 1fr auto; align-items: start;
+            gap: 9px; padding: 9px 10px; background: rgba(255,255,255,.035);
+            border: 1px solid rgba(148,163,184,.12); border-radius: 11px;
+            color: #e5e7eb; font-size: .92rem; line-height: 1.35;
+        }
+        .simple-check-box { width: 18px; height: 18px; border: 2px solid #64748b; border-radius: 5px; margin-top: 1px; background: #0b1220; }
+        .simple-item-main { min-width: 0; }
+        .simple-item-name { font-weight: 700; color: #f8fafc; }
+        .simple-item-time { color: #94a3b8; font-size: .75rem; white-space: nowrap; padding-top: 2px; }
+        .simple-optional {
+            display: inline-block; margin-inline-start: 6px; padding: 2px 6px; border-radius: 999px;
+            background: rgba(245,158,11,.12); border: 1px solid rgba(245,158,11,.25);
+            color: #fbbf24; font-size: .68rem; font-weight: 800; vertical-align: 1px;
+        }
+        @media (max-width: 560px) {
+            .simple-day-list { padding: 12px; }
+            .simple-checklist li { grid-template-columns: 20px 1fr; gap: 8px; padding: 9px; }
+            .simple-item-time { grid-column: 2; justify-self: start; margin-top: -3px; }
+        }
+
+    
+        /* v27 — friendlier "Today at a glance" list */
+        .simple-list-btn {
+            background: rgba(20, 184, 166, 0.12) !important;
+            color: #5eead4 !important;
+            border: 1px solid rgba(45, 212, 191, 0.30) !important;
+            border-radius: 999px !important;
+            padding: 7px 12px !important;
+            box-shadow: none !important;
+        }
+        .simple-list-btn:hover {
+            background: rgba(20, 184, 166, 0.20) !important;
+            transform: none !important;
+        }
+
+        .simple-day-list {
+            display: none;
+            margin: 10px 0 14px;
+            padding: 13px 15px 10px !important;
+            background: rgba(15, 23, 42, 0.68) !important;
+            border: 1px solid rgba(148, 163, 184, 0.15) !important;
+            border-radius: 14px !important;
+            box-shadow: none !important;
+        }
+        .simple-day-list.open { display: block; }
+
+        .simple-day-list-title {
+            font-size: 0.93rem !important;
+            margin-bottom: 6px !important;
+            color: #f8fafc !important;
+        }
+
+        .simple-checklist {
+            display: block !important;
+            list-style: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+        }
+
+        .simple-checklist li {
+            display: grid !important;
+            grid-template-columns: 14px 1fr auto !important;
+            gap: 8px !important;
+            align-items: start !important;
+            padding: 9px 1px !important;
+            margin: 0 !important;
+            background: transparent !important;
+            border: 0 !important;
+            border-radius: 0 !important;
+            border-bottom: 1px solid rgba(148, 163, 184, 0.12) !important;
+            color: #e5e7eb !important;
+        }
+        .simple-checklist li:last-child {
+            border-bottom: 0 !important;
+            padding-bottom: 4px !important;
+        }
+
+        .simple-check-box {
+            width: 7px !important;
+            height: 7px !important;
+            min-width: 7px !important;
+            border: 0 !important;
+            border-radius: 50% !important;
+            background: #2dd4bf !important;
+            margin-top: 6px !important;
+            box-shadow: 0 0 0 3px rgba(45, 212, 191, 0.10);
+        }
+
+        .simple-item-main {
+            min-width: 0;
+        }
+
+        .simple-item-name {
+            font-size: 0.91rem !important;
+            font-weight: 650 !important;
+            color: #f1f5f9 !important;
+        }
+
+        .simple-item-time {
+            color: #94a3b8 !important;
+            font-size: 0.72rem !important;
+            white-space: nowrap !important;
+            padding-top: 2px !important;
+        }
+
+        .simple-optional {
+            display: inline-block !important;
+            margin-inline-start: 6px !important;
+            padding: 1px 6px !important;
+            border-radius: 999px !important;
+            background: transparent !important;
+            border: 1px solid rgba(251, 191, 36, 0.28) !important;
+            color: #fbbf24 !important;
+            font-size: 0.64rem !important;
+            font-weight: 700 !important;
+        }
+
+        @media (max-width: 560px) {
+            .simple-day-list {
+                padding: 11px 13px 8px !important;
+            }
+            .simple-checklist li {
+                grid-template-columns: 12px 1fr !important;
+                padding: 8px 0 !important;
+            }
+            .simple-item-time {
+                grid-column: 2 !important;
+                justify-self: start !important;
+                margin-top: -3px !important;
+            }
+        }
+
     </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
@@ -2010,6 +2252,61 @@ function renderHoursNotes(ev) {
     return notes.join('');
 }
 
+
+function isSimpleChecklistEvent(ev) {
+    const he = (ev.nameHe || "").toLowerCase();
+    const en = (ev.nameEn || "").toLowerCase();
+
+    // The quick list is intentionally only "what are we actually doing/seeing",
+    // not transfers, generic meals, hotel logistics or airport movements.
+    if (["transit", "flight", "food"].includes(ev.type)) return false;
+
+    const skipFragments = [
+        "מנוחה", "אוכל +", "אוכל ומנוחה", "צ'ק-אין", "צ׳ק-אין", "צ'ק-אאוט", "צ׳ק-אאוט",
+        "חזרה למלון", "מלון +", "hotel +", "return to hotel", "check-in", "check-out"
+    ];
+    const combined = `${he} ${en}`;
+    return !skipFragments.some(x => combined.includes(x.toLowerCase()));
+}
+
+function isOptionalSimpleEvent(ev) {
+    const txt = `${ev.nameHe || ""} ${ev.nameEn || ""} ${ev.descHe || ""} ${ev.descEn || ""}`.toLowerCase();
+    return txt.includes("nice") || txt.includes("bonus") || txt.includes("אופציונ") || txt.includes("אם נשאר");
+}
+
+function buildSimpleDayList(day) {
+    const items = day.events.filter(isSimpleChecklistEvent);
+    const title = currentLang === "he" ? "היום בקצרה" : "Today at a glance";
+
+    const rows = items.map(ev => {
+        const name = currentLang === "he" ? ev.nameHe : ev.nameEn;
+        const time = (ev.time && !String(ev.time).toLowerCase().includes("אופציונלי"))
+            ? `<span class="simple-item-time">${ev.time}</span>`
+            : "";
+        const optional = isOptionalSimpleEvent(ev)
+            ? `<span class="simple-optional">${currentLang === "he" ? "אופציונלי" : "optional"}</span>`
+            : "";
+        return `<li>
+            <span class="simple-check-box"></span>
+            <span class="simple-item-main"><span class="simple-item-name">${name}</span>${optional}</span>
+            ${time}
+        </li>`;
+    }).join("");
+
+    return `
+        <div class="simple-day-list" id="simple-list-${day.date}">
+            <div class="simple-day-list-title">✨ ${title}</div>
+            <ul class="simple-checklist">${rows}</ul>
+        </div>
+    `;
+}
+
+function toggleSimpleDayList(dayDate) {
+    const el = document.getElementById(`simple-list-${dayDate}`);
+    if (!el) return;
+    el.classList.toggle("open");
+}
+
 function renderDailySchedule() {
     const container = document.getElementById("daily-tab");
     container.innerHTML = "";
@@ -2057,6 +2354,9 @@ function renderDailySchedule() {
                         <button class="day-map-btn" onclick="openDayMap('${day.date}')">
                             🗺️ ${currentLang === 'he' ? 'מפת היום' : 'Day Map'}
                         </button>
+                        <button class="simple-list-btn" onclick="toggleSimpleDayList('${day.date}')">
+                            👀 ${currentLang === 'he' ? 'היום בקצרה' : 'Today at a glance'}
+                        </button>
                         ${day.date === '2026-10-04' ? `
                         <button class="day-map-btn" onclick="openAirportMap()">
                             ✈️ ${currentLang === 'he' ? 'מסלול לשדה' : 'Airport Route'}
@@ -2064,6 +2364,7 @@ function renderDailySchedule() {
                         <span class="day-date">${day.date}</span>
                     </div>
                 </div>
+                ${buildSimpleDayList(day)}
                 <div class="event-list">
         `;
 
