@@ -861,6 +861,17 @@
         }
         .event-desc a[href*="google.com/maps/dir"]:hover{text-decoration:underline;}
 
+    
+        .dedupe-note{
+            margin:0 0 12px;
+            padding:10px 12px;
+            border-radius:12px;
+            background:rgba(16,185,129,.08);
+            border:1px solid rgba(52,211,153,.18);
+            color:#d1fae5;
+            font-size:.78rem;
+            line-height:1.5;
+        }
     </style>
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 </head>
@@ -1643,9 +1654,7 @@ const flowList = [
         titleEn: "🔥 Current Trends & Events",
         events: [
             ["San Gennaro Feast", "🔥 MUST — חגיגות ה-100 של San Gennaro; היום האחרון 27.9 ואתן כבר ב-Little Italy", "🔥 MUST — 100th San Gennaro; final day Sep 27 and already on your Little Italy route", "mustsee", "fa-star", ["San Gennaro Feast", "Little Italy"]],
-            ["New Museum + Nolita", "⭐ NICE — New Museum נפתח מחדש ב-24.9, יום לפני הגעתכן; טרנדי ורלוונטי מאוד ל-SoHo/LES", "⭐ NICE — New Museum reopens Sep 24, one day before your arrival", "custom", "fa-palette", ["New Museum", "Nolita"]],
-            ["Balloon Museum", "⭐ NICE — DAYDREAM / Balloon Museum: אימרסיבי ואינסטגרמי, אבל לא על חשבון אטרקציות הליבה", "⭐ NICE — immersive and Instagram-friendly, but secondary to core sights", "custom", "fa-circle", ["Balloon Museum NYC"]],
-            ["Smorgasburg Williamsburg", "⚠️ לא ליום שלכן — Smorgasburg Williamsburg מתקיים בשבת, בעוד יום ברוקלין שלכן הוא א׳ 27.9. אם תרצו Smorgasburg ביום א׳, בודקות את Prospect Park ולא משנות מסלול בלי צורך", "⚠️ Not for your Brooklyn day — Williamsburg Smorgasburg is Saturday while your Brooklyn day is Sunday Sep 27. Check Prospect Park on Sunday only if it genuinely fits.", "custom", "fa-utensils", ["Smorgasburg Williamsburg", "Williamsburg"]]
+                    ["Smorgasburg Williamsburg", "⚠️ לא ליום שלכן — Smorgasburg Williamsburg מתקיים בשבת, בעוד יום ברוקלין שלכן הוא א׳ 27.9. אם תרצו Smorgasburg ביום א׳, בודקות את Prospect Park ולא משנות מסלול בלי צורך", "⚠️ Not for your Brooklyn day — Williamsburg Smorgasburg is Saturday while your Brooklyn day is Sunday Sep 27. Check Prospect Park on Sunday only if it genuinely fits.", "custom", "fa-utensils", ["Smorgasburg Williamsburg", "Williamsburg"]]
         ]
     },
     {
@@ -1668,10 +1677,8 @@ const flowList = [
             ["9/11 Memorial", "9/11 Memorial (והמוזיאון)", "9/11 Memorial + Museum", "mustsee", "fa-water", ["9/11 Memorial", "9/11 Museum"]],
             ["One World Trade Center", "מגדל החירות (One World)", "One World Trade Center", "mustsee", "fa-building", ["One World Trade Center"]],
             ["Times Square", "Times Square בלילה + חנויות + Midnight Moment", "Times Square, shopping & Midnight Moment", "mustsee", "fa-city", ["Times Square", "Midnight Moment", "Disney Store", "Sephora Times Square", "Target Times Square", "MINISO Times Square", "LINE FRIENDS Times Square", "Five Below Times Square", "Foot Locker Times Square", "American Eagle Times Square", "LEGO Store", "M&M's World"]],
-            ["Top of the Rock", "Top of the Rock או סאמיט", "Top of the Rock / SUMMIT", "mustsee", "fa-camera", ["Top of the Rock", "SUMMIT One Vanderbilt"]],
-            ["Empire State Building", "Empire State Building", "Empire State Building", "mustsee", "fa-building", ["Empire State Building"]],
-            ["The Mills at Jersey Gardens", "🛍️ Jersey Gardens Outlet – 3.10", "🛍️ Jersey Gardens Outlet – Oct 3", "mustsee", "fa-bag-shopping", ["The Mills at Jersey Gardens"]],
-            ["Broadway", "Wicked – מרשעת, 3.10 בשעה 20:00", "Wicked on Broadway – Oct 3, 8 PM", "mustsee", "fa-masks-theater", ["Wicked Broadway"]]
+            ["Top of the Rock", "⭐ חלופה בלבד ל-SUMMIT — לא לעשות את שניהם. SUMMIT כבר שובץ ב-2.10.", "⭐ Alternative to SUMMIT only — do not do both. SUMMIT is already scheduled Oct 2.", "custom", "fa-camera", ["Top of the Rock"]],
+                    ["Broadway", "Wicked – מרשעת, 3.10 בשעה 20:00", "Wicked on Broadway – Oct 3, 8 PM", "mustsee", "fa-masks-theater", ["Wicked Broadway"]]
         ]
     },
     {
@@ -1680,13 +1687,12 @@ const flowList = [
         events: [
             ["Central Park", "סנטרל פארק ונקודות ציון חינמיות", "Central Park spots", "mustsee", "fa-tree", ["Central Park", "Bethesda Terrace", "Bow Bridge", "Strawberry Fields", "Belvedere Castle"]],
             ["West Village", "West Village + הבית של Friends + Washington Sq Park", "West Village + Friends + Washington Sq Park", "mustsee", "fa-mug-hot", ["West Village", "Greenwich Village", "Friends Apartment Building", "Washington Square Park"]],
-            ["High Line", "High Line + Pier 57", "High Line + Pier 57", "mustsee", "fa-route", ["High Line", "Pier 57"]],
-            ["Pier 57", "פארק הגג ב-Pier 57 (חינם)", "Pier 57 Rooftop", "mustsee", "fa-tree", ["Pier 57"]],
-            ["Hunter's Point South Park", "Hunter's Point — אופציה טרנדית ב-Queens", "Hunter's Point — optional Queens skyline", "custom", "fa-camera", ["Hunter's Point South Park"]],
+            ["High Line + Pier 57", "🔥 MUST — High Line + Pier 57 כבלוק אחד רציף; לא חוזרות ל-Pier 57 שוב", "🔥 MUST — High Line + Pier 57 as one continuous block; no second visit to Pier 57", "mustsee", "fa-route", ["High Line", "Pier 57"]],
+                ["Hunter's Point South Park", "⭐ NICE — אופציית Skyline ב-Queens; הכי הגיוני אחרי Roosevelt Island רק אם נשארים כוח וזמן", "⭐ NICE — Queens skyline option; best after Roosevelt Island only if time and energy allow", "custom", "fa-camera", ["Hunter's Point South Park"]],
             ["Exchange Place", "הנוף הפנורמי מ-Exchange Place (נסיעת PATH אחת)", "Exchange Place", "mustsee", "fa-camera", ["Exchange Place"]],
             ["SoHo", "SoHo + NoHo", "SoHo + NoHo", "mustsee", "fa-store", ["SoHo", "NoHo"]],
             ["Williamsburg", "Williamsburg – NICE, רק אם נשאר כוח", "Williamsburg – NICE, only if energy remains", "custom", "fa-store", ["Williamsburg"]],
-            ["NYC Ferry", "שיט ב-NYC Ferry ($4.50) – לבדוק שעה בבוקר עצמו", "NYC Ferry Ride", "mustsee", "fa-ferry", ["NYC Ferry"]],
+            ["NYC Ferry", "🔥 MUST ביום ברוקלין — שיט NYC Ferry; לבדוק שעה בבוקר עצמו. פס/כרטיס יומי רק אם מספר הנסיעות בפועל מצדיק אותו.", "🔥 MUST on Brooklyn day — NYC Ferry ride; check the departure that morning. Only buy a pass if your actual ride count makes it worthwhile.", "mustsee", "fa-ferry", ["NYC Ferry"]],
             ["Roosevelt Island Tram", "Roosevelt Island Tram (רכבל מדהים וזול)", "Roosevelt Island Tram", "mustsee", "fa-cable-car", ["Roosevelt Island Tram", "Roosevelt Island"]]
         ]
     },
@@ -1694,12 +1700,12 @@ const flowList = [
         titleHe: "🎨 תרבות ואדריכלות",
         titleEn: "🎨 Culture & Architecture",
         events: [
-            ["Museums", "מוזיאונים אייקונים (The Met, MoMA, AMNH)", "Iconic Museums", "mustsee", "fa-palette", ["The Met", "MoMA", "American Museum of Natural History", "Whitney Museum", "Guggenheim", "Frick Collection"]],
+            ["Museums – alternatives", "⭐ חלופות שלא שובצו: MoMA / Whitney / Guggenheim / Frick. The Met ו-AMNH כבר מטופלים בלו״ז ולכן לא מופיעים כאן שוב.", "⭐ Unscheduled museum alternatives: MoMA / Whitney / Guggenheim / Frick. The Met and AMNH are already handled in the itinerary.", "custom", "fa-palette", ["MoMA", "Whitney Museum", "Guggenheim", "Frick Collection"]],
             ["Grand Central Terminal", "Grand Central Terminal", "Grand Central Terminal", "mustsee", "fa-train", ["Grand Central Terminal"]],
             ["NY Public Library", "New York Public Library", "New York Public Library", "mustsee", "fa-book", ["NY Public Library"]],
             ["United Nations", "⭐ NICE — בניין האו״ם + שורת הדגלים; שובץ עכשיו ב-2.10 אחרי Chrysler, עצירה קצרה מבחוץ", "⭐ NICE — UN Headquarters + flags; now scheduled Oct 2 after Chrysler as a short exterior stop", "custom", "fa-landmark-flag", ["United Nations"]],
             ["Flatiron", "Flatiron Building", "Flatiron Building", "mustsee", "fa-building", ["Flatiron Building"]],
-            ["Chrysler & Radio City", "בניין קרייזלר, רדיו סיטי וקרנגי הול (מבחוץ)", "Chrysler & Radio City", "custom", "fa-building", ["Chrysler Building", "Radio City Music Hall", "Carnegie Hall"]],
+            ["Carnegie Hall", "➕ BONUS — Carnegie Hall מבחוץ בלבד אם עוברות באזור. Chrysler ו-Radio City כבר בלו״ז ולכן לא רשומים כאן שוב.", "➕ BONUS — Carnegie Hall exterior only if you happen to pass nearby. Chrysler and Radio City are already scheduled.", "custom", "fa-building", ["Carnegie Hall"]],
             ["Madame Tussauds New York", "Madame Tussauds — NICE • 29.9", "Madame Tussauds — optional • Sep 29", "custom", "fa-user-secret", ["Madame Tussauds"]]
         ]
     },
@@ -1717,7 +1723,7 @@ const flowList = [
             ["Reclectic", "⭐ NICE — Reclectic ב-1333 Broadway; שובץ ליד Herald Square ב-1.10", "⭐ NICE — Reclectic at 1333 Broadway; scheduled near Herald Square on Oct 1", "custom", "fa-shirt", ["Reclectic"]],
             ["Marshalls + Burlington", "⭐ NICE חכם — שתי החנויות באותו בניין, 620 Ave of the Americas; שובצו יחד אחרי Flatiron ב-1.10", "⭐ Smart NICE — both stores are in the same building at 620 Avenue of the Americas; paired after Flatiron on Oct 1", "custom", "fa-tags", ["Marshalls Chelsea", "Burlington Chelsea"]],
             ["Artists & Fleas Williamsburg", "⭐ NICE חזק — שוק וינטג׳/מעצבים ב-70 N 7th, פתוח ביום א׳; שובץ בתוך Williamsburg ב-27.9", "⭐ Strong NICE — vintage/design market at 70 N 7th, open Sunday; scheduled in Williamsburg on Sep 27", "custom", "fa-shirt", ["Artists & Fleas Williamsburg"]],
-            ["Jersey Gardens", "🔥 MUST אם אאוטלט חשוב לכן — Jersey Gardens ב-3.10, קרוב ופשוט יותר מ-Jersey Gardens", "🔥 MUST if outlet shopping matters — Jersey Gardens on Oct 3, much easier than Jersey Gardens", "mustsee", "fa-bag-shopping", ["The Mills at Jersey Gardens"]]
+            ["Jersey Gardens", "🔥 MUST אם אאוטלט חשוב לכן — Jersey Gardens ב-3.10; יום הקניות המרוכז שלכן עם נסיעה ישירה מ-Port Authority", "🔥 MUST if outlet shopping matters — Jersey Gardens on Oct 3; your dedicated outlet day with a direct bus from Port Authority", "mustsee", "fa-bag-shopping", ["The Mills at Jersey Gardens"]]
         ]
     },
     {
@@ -1725,13 +1731,12 @@ const flowList = [
         titleEn: "➕ Reviewed Additions – MUST vs NICE",
         events: [
             ["Pier 17", "🔥 MUST — South Street Seaport + Pier 17; כבר שובץ ב-28.9", "🔥 MUST — Seaport + Pier 17; scheduled Sep 28", "mustsee", "fa-water", ["South Street Seaport", "Pier 17"]],
-            ["Empire State Building Night", "🔥 MUST — Empire State Building מואר בלילה, מבחוץ בלבד; שובץ ב-1.10", "🔥 MUST — Empire State Building lit at night, exterior only; scheduled Oct 1", "mustsee", "fa-building", ["Empire State Building"]],
-            ["Free Evening", "🔥 MUST — ערב ספונטני אחד בלי הזמנות; שובץ ב-29.9", "🔥 MUST — one spontaneous no-booking evening; scheduled Sep 29", "mustsee", "fa-mug-hot", ["Times Square", "Bryant Park", "Fifth Avenue"]],
+            ["Empire State Building", "🔥 MUST — Empire State Building מבחוץ; שובץ פעם אחת בלבד ב-1.10 במסלול Herald Square → Flatiron", "🔥 MUST — Empire State Building exterior; scheduled exactly once on Oct 1 between Herald Square and Flatiron", "mustsee", "fa-building", ["Empire State Building"]],
+            ["Free Evening", "🔥 MUST — ערב ספונטני אחד בלי הזמנות; שובץ ב-29.9. בוחרות בזמן אמת איפה להסתובב בלי ליצור ביקור חוזר באטרקציה שכבר עשיתן.", "🔥 MUST — one spontaneous no-booking evening on Sep 29. Choose the area in real time without intentionally revisiting a completed attraction.", "mustsee", "fa-mug-hot", []],
             ["Harbor Lights Cruise", "⭐ NICE חזק — 1.10 בערב, שייט Skyline של כשעתיים מ-Pier 83 במקום המסוק", "⭐ Strong NICE — Oct 1 evening skyline cruise from Pier 83 replacing the helicopter", "custom", "fa-ship", ["Circle Line Harbor Lights"]],
             ["Brooklyn Museum", "⭐ NICE בלבד — הוצא מהיום של 27.9 כדי למנוע סטייה וחזרה. לעשות רק אם מוותרים על חלק מ-Williamsburg/DUMBO.", "⭐ NICE — Brooklyn Museum + Grand Army Plaza / Prospect Park", "custom", "fa-palette", ["Brooklyn Museum", "Grand Army Plaza Brooklyn", "Prospect Park"]],
             ["New Museum + Nolita", "⭐ NICE — New Museum + Nolita; מתאים במיוחד ביום SoHo/Lower East Side אם פתאום תרצו אמנות עכשווית במקום עוד שופינג", "⭐ NICE — New Museum + Nolita; good add-on around SoHo/LES", "custom", "fa-palette", ["New Museum", "Nolita"]],
-            ["Hunter's Point Skyline", "⭐ NICE — Roosevelt Island אל Hunter's Point / LIC skyline; רק אם המעבורת והאנרגיה מסתדרות", "⭐ NICE — Roosevelt Island to Hunter's Point skyline if timing works", "custom", "fa-camera", ["Roosevelt Island", "Hunter's Point South Park"]],
-            ["Williamsburg Bridge", "⭐ NICE — Williamsburg Bridge: עולות מהצד של Williamsburg לנקודת צילום ראשונה וחוזרות; לא צריך לחצות למנהטן", "⭐ NICE — Williamsburg Bridge: worth seeing from Williamsburg, but don't cross it on the Brooklyn day because it pulls you away from DUMBO", "custom", "fa-bridge", ["Williamsburg Bridge", "Williamsburg"]],
+                ["Williamsburg Bridge", "⭐ NICE — Williamsburg Bridge: עולות מהצד של Williamsburg לנקודת צילום ראשונה וחוזרות; לא צריך לחצות למנהטן", "⭐ NICE — Williamsburg Bridge: worth seeing from Williamsburg, but don't cross it on the Brooklyn day because it pulls you away from DUMBO", "custom", "fa-bridge", ["Williamsburg Bridge", "Williamsburg"]],
             ["Balloon Museum", "⭐ NICE — Balloon Museum / DAYDREAM ליד Seaport; אימרסיבי ואינסטגרמי אבל לא על חשבון 9/11/פסל/ברוקלין", "⭐ NICE — Balloon Museum / DAYDREAM near Seaport", "custom", "fa-circle", ["Balloon Museum NYC"]],
             ["NYC Ferry Pass", "⭐ NICE / לבדוק כדאיות — כרטיס/פס NYC Ferry רק אם מספר הנסיעות שלכן מצדיק; לא חובה לקנות מראש", "⭐ NICE / value check — ferry pass only if your ride count makes it worthwhile", "custom", "fa-ferry", ["NYC Ferry"]]
         ]
