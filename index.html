@@ -1267,7 +1267,6 @@ const placeLinks = {
     "Grand Army Plaza Brooklyn": { cost: "🆓 חינם", costType: "free", costNote: "צמוד ל-Prospect Park ול-Brooklyn Museum", map: maps("Grand Army Plaza Brooklyn New York") },
     "New Museum": { cost: "🎨 מוזיאון אמנות עכשווית", costType: "special", costNote: "נפתח מחדש ב-24.9.2026; מתאים במיוחד אם כבר באזור Nolita/Lower East Side", official: "https://newmuseum.org/", ticket: "https://newmuseum.org/", map: maps("New Museum New York") },
     "Nolita": { cost: "🆓 חינם להסתובב", costType: "free", costNote: "רחובות יפים, בוטיקים, בתי קפה וחנויות קטנות בין SoHo ל-Lower East Side", map: maps("Nolita New York") },
-    "Balloon Museum NYC": { cost: "🎈 בתשלום", costType: "special", costNote: "DAYDREAM / Air Becomes Art, 96 South St ליד Seaport; מתאים כאופציה אימרסיבית", ticket: "https://www.ticketmaster.com/balloon-museum-nyc-tickets-new-york-city/venue/1679", map: maps("Balloon Museum NYC 96 South Street New York") },
     "Junior's Cheesecake Times Square": { cost: "🍰 בתשלום", costType: "paid", costNote: "1626 Broadway @ 49th St; אופציה קלאסית לעוגת גבינה ניו-יורקית", official: "https://www.juniorscheesecake.com/pages/49th-st-nyc", map: maps("Junior's Cheesecake 1626 Broadway New York") },
     "L'Industrie Pizzeria Little Italy": { cost: "🍕 $$", costType: "paid", costNote: "197 Grand St; מהסלייסים הכי מדוברים בעיר", official: "https://www.lindustriebk.com/", map: maps("L'Industrie Pizzeria 197 Grand St New York NY") },
     "Apollo Bagels East Village": { cost: "🥯 $", costType: "paid", costNote: "242 E 10th St; בייגל sourdough טרנדי", official: "https://www.apollobagels.com/", map: maps("Apollo Bagels 242 E 10th St New York NY") },
@@ -1521,14 +1520,14 @@ const dailySchedule = [
         he: { label: "יום ראשון", title: "Jersey Gardens 🛍️ + San Gennaro 🎉" },
         en: { label: "Sunday", title: "Jersey Gardens + San Gennaro" },
         events: [
-            { time: "08:55", nameHe: "מלון אל Port Authority", nameEn: "Hotel to Port Authority", descHe: "🚶 <b>זמן מעבר:</b> כ-2–4 דק׳. המלון ממש ליד הטרמינל. יוצאות בנחת כדי לתפוס אוטובוס שמביא אתכן לקניון סמוך לפתיחה.", descEn: "Walk about 2–4 min to Port Authority and aim for a bus that gets you to the mall close to opening.", type: "transit", icon: "fa-person-walking", places: ["Delta Hotels Times Square", "Port Authority Bus Terminal"] },
-            { time: "09:10", nameHe: "NJ Transit 111 ל-Jersey Gardens", nameEn: "NJ Transit 111 to Jersey Gardens", descHe: "🚌 קו 111 ישיר ל-JERSEY GARDENS – MAIN ENTRANCE. תכננו בערך 45–60 דק׳ כולל המתנה/תנועה. המטרה: להיות בקניון סביב 10:00 בלי לחץ.", descEn: "Direct NJ Transit 111 to Jersey Gardens. Allow about 45–60 min including wait/traffic; target arrival is around 10 AM.", type: "transit", icon: "fa-bus", places: ["Port Authority Bus Terminal", "The Mills at Jersey Gardens"] },
-            { time: "10:00–15:00", nameHe: "The Mills at Jersey Gardens 🛍️ — חלון קניות מלא", nameEn: "The Mills at Jersey Gardens — Full Shopping Window", descHe: "🔥 <b>MUST שופינג:</b> 5 שעות מלאות, 10:00–15:00, כדי לקנות בלי לרוץ. יש גם Primark בתוך הקניון. לא מושכות מעבר ל-15:00 כי San Gennaro בערב הוא אירוע תלוי-תאריך.", descEn: "🔥 Shopping MUST: a full 10 AM–3 PM window so there is no need to rush. Primark is inside the mall. Leave at 3 PM to protect the date-specific San Gennaro evening.", type: "mustsee", icon: "fa-bag-shopping", places: ["The Mills at Jersey Gardens"] },
-            { time: "15:00", nameHe: "Jersey Gardens אל Manhattan", nameEn: "Jersey Gardens to Manhattan", descHe: "🚌 חזרה בקו 111. זמן נסיעה טיפוסי כ-35–45 דק׳; עם המתנה ותנועה תכננו 45–60 דק׳ עד Port Authority.", descEn: "Return on NJ Transit 111. Typical ride is about 35–45 min; allow 45–60 min with waiting and traffic.", type: "transit", icon: "fa-bus", places: ["The Mills at Jersey Gardens", "Port Authority Bus Terminal"] },
-            { time: "16:00–17:00", nameHe: "מלון + פריקת קניות + התרעננות", nameEn: "Hotel + Drop Shopping + Refresh", descHe: "🛍️ חוזרות למלון, משאירות שקיות, נחות קצת ומתארגנות לערב. לא דוחפות עוד אטרקציה בין האאוטלט לפסטיבל.", descEn: "Drop bags at the hotel, rest briefly and get ready for the evening. No extra attraction is forced into this buffer.", type: "custom", icon: "fa-bed", places: ["Delta Hotels Times Square"] },
-            { time: "17:00", nameHe: "מלון אל Little Italy", nameEn: "Hotel to Little Italy", descHe: "🚇 תכננו כ-25–35 דק׳ מדלת לדלת. המטרה להגיע לפני תחילת ההופעה הרשמית של 18:00.", descEn: "Allow roughly 25–35 min door-to-door and aim to arrive before the 6 PM performance.", type: "transit", icon: "fa-train-subway", places: ["Delta Hotels Times Square", "Little Italy"] },
-            { time: "17:30", nameHe: "Little Italy + Feast of San Gennaro 🎉", nameEn: "Little Italy + Feast of San Gennaro 🎉", descHe: "🔥 <b>MUST בגלל התאריך:</b> 27.9 הוא היום האחרון של San Gennaro. נשארות לערב; ב-18:00 מתחילה ההופעה הרשמית של Jenna Esposito עד 21:00. כך לא מאבדות את הפסטיבל למרות שהעברנו את ברוקלין ל-3.10.", descEn: "🔥 MUST for the date: Sep 27 is the final day of San Gennaro. Stay into the evening; Jenna Esposito performs 6–9 PM. Brooklyn has moved to Oct 3 so this date-specific festival is preserved.", type: "mustsee", icon: "fa-pizza-slice", places: ["Little Italy", "San Gennaro Feast"] },
-            { time: "20:15", nameHe: "סיום היום / חזרה רגועה", nameEn: "Finish / Easy Return", descHe: "אחרי San Gennaro חוזרות למלון. יום קניות מלא + ערב פסטיבל, אבל בלי לחץ ובלי לוותר על אירוע התאריך.", descEn: "Return after San Gennaro. A full shopping day plus festival evening, without rushing the mall window.", type: "custom", icon: "fa-mug-hot", places: [] }
+            { time: "09:40", nameHe: "מלון אל Port Authority", nameEn: "Hotel to Port Authority", descHe: "🚶 <b>זמן מעבר:</b> כ-2–4 דק׳. יוצאות מוקדם מספיק כדי להגיע בנחת לשער הנכון של קו 111 ולהיות מוכנות לאוטובוס של 10:00.", descEn: "🚶 Walk about 2–4 min. Leave enough time to find the correct gate for the 10:00 AM Route 111 bus.", type: "transit", icon: "fa-person-walking", places: ["Delta Hotels Times Square", "Port Authority Bus Terminal"] },
+            { time: "10:00", nameHe: "NJ Transit 111 ל-Jersey Gardens", nameEn: "NJ Transit 111 to Jersey Gardens", descHe: "🚌 <b>לפי לוח יום א׳ של NJ Transit:</b> יציאה מ-Port Authority ב-10:00 והגעה מתוכננת ל-Jersey Gardens Main Entrance ב-10:34. הקניון נפתח רק ב-11:00 ביום ראשון, אז יש לכן בערך 25 דק׳ מרווח לשירותים/קפה/להתמקם בלי לחץ.", descEn: "🚌 Per NJ Transit's Sunday schedule: depart Port Authority at 10:00 AM and arrive Jersey Gardens Main Entrance at 10:34 AM. The mall opens at 11:00 AM on Sundays, giving you a comfortable buffer.", type: "transit", icon: "fa-bus", places: ["Port Authority Bus Terminal", "The Mills at Jersey Gardens"] },
+            { time: "11:00–15:05", nameHe: "The Mills at Jersey Gardens 🛍️", nameEn: "The Mills at Jersey Gardens 🛍️", descHe: "🔥 <b>MUST שופינג:</b> שעות הפעילות הרגילות ביום ראשון הן <b>11:00–19:00</b>. לכן אי אפשר להתחיל ב-10:00 כמו בגרסה הקודמת. מקבלות קצת יותר מ-4 שעות שופינג נטו, כולל Primark, בלי לרוץ.", descEn: "🔥 Shopping MUST: regular Sunday hours are 11:00 AM–7:00 PM. The previous 10:00 AM start was not possible on Sunday. You now get just over four hours of actual shopping time, including Primark, without rushing.", type: "mustsee", icon: "fa-bag-shopping", places: ["The Mills at Jersey Gardens"] },
+            { time: "15:14", nameHe: "NJ Transit 111 חזרה ל-Manhattan", nameEn: "NJ Transit 111 back to Manhattan", descHe: "🚌 <b>לפי לוח יום א׳:</b> אוטובוס 111 יוצא מ-Jersey Gardens Main Entrance ב-15:14 ומגיע ל-Port Authority ב-16:02. יוצאות מהחנויות סביב 15:05 כדי להגיע לתחנה בלי לחץ. אם מפספסות, בודקות בזמן אמת ב-NJ Transit לפני שעוזבות את הקניון.", descEn: "🚌 Per the Sunday timetable: Route 111 departs Jersey Gardens Main Entrance at 3:14 PM and reaches Port Authority at 4:02 PM. Leave the stores around 3:05 PM so you are not rushing to the stop.", type: "transit", icon: "fa-bus", places: ["The Mills at Jersey Gardens", "Port Authority Bus Terminal"] },
+            { time: "16:05–16:45", nameHe: "מלון + פריקת קניות + התרעננות", nameEn: "Hotel + Drop Shopping + Refresh", descHe: "🛍️ חוזרות למלון, משאירות שקיות ומתרעננות. זה חלון קצר ומכוון — לא זמן מת — כדי לא להגיע עם שקיות ל-San Gennaro.", descEn: "🛍️ Drop the bags at the hotel and refresh. This is a short intentional buffer so you do not take outlet shopping bags to San Gennaro.", type: "custom", icon: "fa-bed", places: ["Delta Hotels Times Square"] },
+            { time: "16:45", nameHe: "מלון אל Little Italy", nameEn: "Hotel to Little Italy", descHe: "🚇 תכננו כ-25–35 דק׳ מדלת לדלת. המטרה להגיע סביב 17:20–17:30, לפני תחילת ההופעה הרשמית של 18:00.", descEn: "🚇 Allow roughly 25–35 min door-to-door, targeting arrival around 5:20–5:30 PM before the 6 PM performance.", type: "transit", icon: "fa-train-subway", places: ["Delta Hotels Times Square", "Little Italy"] },
+            { time: "17:30", nameHe: "Little Italy + Feast of San Gennaro 🎉", nameEn: "Little Italy + Feast of San Gennaro 🎉", descHe: "🔥 <b>MUST בגלל התאריך:</b> 27.9 הוא היום האחרון של San Gennaro. נשארות לערב; ב-18:00 מתחילה ההופעה הרשמית של Jenna Esposito עד 21:00. כך שומרות גם על האאוטלט וגם על האירוע שתלוי בתאריך.", descEn: "🔥 MUST for the date: Sep 27 is the final day of San Gennaro. Stay into the evening; Jenna Esposito performs 6–9 PM. This preserves both the outlet and the date-specific festival.", type: "mustsee", icon: "fa-pizza-slice", places: ["Little Italy", "San Gennaro Feast"] },
+            { time: "20:15", nameHe: "סיום היום / חזרה רגועה", nameEn: "Finish / Easy Return", descHe: "אחרי San Gennaro חוזרות למלון לפי האנרגיה.", descEn: "Return after San Gennaro depending on your energy.", type: "custom", icon: "fa-mug-hot", places: [] }
         ]
     },
     {
@@ -1768,10 +1767,9 @@ const flowList = [
             ["Brooklyn Museum", "⭐ NICE בלבד — הוצא מהיום של 27.9 כדי למנוע סטייה וחזרה. לעשות רק אם מוותרים על חלק מ-Williamsburg/DUMBO.", "⭐ NICE — Brooklyn Museum + Grand Army Plaza / Prospect Park", "custom", "fa-palette", ["Brooklyn Museum", "Grand Army Plaza Brooklyn", "Prospect Park"]],
             ["New Museum + Nolita", "⭐ NICE — New Museum + Nolita; מתאים במיוחד ביום SoHo/Lower East Side אם פתאום תרצו אמנות עכשווית במקום עוד שופינג", "⭐ NICE — New Museum + Nolita; good add-on around SoHo/LES", "custom", "fa-palette", ["New Museum", "Nolita"]],
                 ["Williamsburg Bridge", "⭐ NICE — Williamsburg Bridge: עולות מהצד של Williamsburg לנקודת צילום ראשונה וחוזרות; לא צריך לחצות למנהטן", "⭐ NICE — Williamsburg Bridge: worth seeing from Williamsburg, but don't cross it on the Brooklyn day because it pulls you away from DUMBO", "custom", "fa-bridge", ["Williamsburg Bridge", "Williamsburg"]],
-            ["Balloon Museum", "⭐ NICE — Balloon Museum / DAYDREAM ליד Seaport; אימרסיבי ואינסטגרמי אבל לא על חשבון 9/11/פסל/ברוקלין", "⭐ NICE — Balloon Museum / DAYDREAM near Seaport", "custom", "fa-circle", ["Balloon Museum NYC"]],
             ["NYC Ferry Pass", "⭐ NICE / לבדוק כדאיות — כרטיס/פס NYC Ferry רק אם מספר הנסיעות שלכן מצדיק; לא חובה לקנות מראש", "⭐ NICE / value check — ferry pass only if your ride count makes it worthwhile", "custom", "fa-ferry", ["NYC Ferry"]]
         ]
-    },
+    }
 ];
 
 
@@ -1922,8 +1920,7 @@ const foodMustList = [
     ["Gray's Papaya", "🔥 MUST NYC EXPERIENCE — 🌭 hot dog • Upper West Side. נשאר במפת האוכל כדי לבחור לפי האזור ולא לנסוע במיוחד.", "🔥 MUST NYC EXPERIENCE — 🌭 hot dog • Upper West Side. Keep it flexible and choose it when nearby.", "fa-utensils", ["Gray's Papaya"]],
     ["Lombardi's", "🔥 MUST NYC EXPERIENCE — 🍕 historic pizza • Nolita. נשאר במפת האוכל כדי לבחור לפי האזור ולא לנסוע במיוחד.", "🔥 MUST NYC EXPERIENCE — 🍕 historic pizza • Nolita. Keep it flexible and choose it when nearby.", "fa-pizza-slice", ["Lombardi's"]],
     ["Sarge's Delicatessen", "🔥 MUST NYC EXPERIENCE — 🥪 deli • Murray Hill. נשאר במפת האוכל כדי לבחור לפי האזור ולא לנסוע במיוחד.", "🔥 MUST NYC EXPERIENCE — 🥪 deli • Murray Hill. Keep it flexible and choose it when nearby.", "fa-utensils", ["Sarge's Delicatessen"]],
-    ["Lafayette Grand Cafe & Bakery", "⭐ NICE — 380 Lafayette St, קפה/מאפים ב-NoHo; הגיוני ביום SoHo/NoHo אם עוברות ליד.", "⭐ NICE — coffee/pastries in NoHo, easy to use on the SoHo/NoHo day.", "fa-croissant", ["Lafayette Grand Cafe & Bakery"]],
-
+    ["Lafayette Grand Cafe & Bakery", "⭐ NICE — 380 Lafayette St, קפה/מאפים ב-NoHo; הגיוני ביום SoHo/NoHo אם עוברות ליד.", "⭐ NICE — coffee/pastries in NoHo, easy to use on the SoHo/NoHo day.", "fa-croissant", ["Lafayette Grand Cafe & Bakery"]]
 ]
 
 const foodMapPoints = [
@@ -2063,7 +2060,7 @@ const foodMapPoints = [
     {name:"Lombardi's", lat:40.7216, lng:-73.9957, note:"MUST NYC EXPERIENCE • Pizza"},
     {name:"Sarge's Delicatessen", lat:40.7448, lng:-73.9778, note:"MUST NYC EXPERIENCE • Deli"},
     {name:"Junior's Cheesecake Times Square", lat:40.7602, lng:-73.9845, note:"MUST NYC EXPERIENCE • NY cheesecake"},
-    {name:"Lafayette Grand Cafe & Bakery", lat:40.7275, lng:-73.9938, note:"NICE • Coffee/pastries"},
+    {name:"Lafayette Grand Cafe & Bakery", lat:40.7275, lng:-73.9938, note:"NICE • Coffee/pastries"}
 ]
 
 /* ============================
@@ -2334,8 +2331,7 @@ const bonusNearby = {
     ],
 
     "2026-09-28": [
-        {after:"Battery Park אל Wall Street", he:"Stone Street", en:"Stone Street", noteHe:"⭐ BONUS — קרוב ל-Wall Street; עצירה קצרה של 10–15 דק׳ רק אם אתן בקצב טוב.", noteEn:"⭐ BONUS — near Wall Street; 10–15 min only if you are on schedule.", q:"Stone Street New York"},
-        {after:"South Street Seaport + Pier 17", he:"Balloon Museum / DAYDREAM", en:"Balloon Museum / DAYDREAM", noteHe:"⭐ NICE — ממש ליד Pier 17. מתאים בעיקר אם מזג האוויר פחות טוב או אם בוחרות בו במקום זמן שיטוט אחר; לא על חשבון חלון 9/11.", noteEn:"⭐ NICE — by Pier 17; best as a substitute in bad weather, never at the expense of the 9/11 window.", q:"Balloon Museum New York Pier 17"}
+        {after:"Battery Park אל Wall Street", he:"Stone Street", en:"Stone Street", noteHe:"⭐ BONUS — קרוב ל-Wall Street; עצירה קצרה של 10–15 דק׳ רק אם אתן בקצב טוב.", noteEn:"⭐ BONUS — near Wall Street; 10–15 min only if you are on schedule.", q:"Stone Street New York"}
     ],
 
     "2026-09-29": [
@@ -2639,10 +2635,10 @@ const dayGuidance = {
         flexEn: "Together, Together depends on Amex access. If delayed, shorten pop-up time—not hotel rest."
     },
     "2026-09-27": {
-        hardHe: "10:00–15:00 Jersey Gardens • 17:30 San Gennaro",
-        flexHe: "האאוטלט מקבל 5 שעות מלאות. ב-15:00 מתחילות חזרה כדי לא לפגוע ביום האחרון של San Gennaro.",
-        hardEn: "10 AM–3 PM Jersey Gardens • 5:30 PM San Gennaro",
-        flexEn: "The outlet gets a full five-hour window; start returning at 3 PM to protect the final day of San Gennaro."
+        hardHe: "10:00 אוטובוס 111 • 11:00 פתיחת Jersey Gardens • 15:14 אוטובוס חזרה • 17:30 San Gennaro",
+        flexHe: "ביום א׳ הקניון נפתח רק ב-11:00. השופינג הוא 11:00–15:05; ב-15:14 עולות על 111 חזרה כדי לשמור על San Gennaro בערב.",
+        hardEn: "10:00 AM Route 111 • 11:00 AM Jersey Gardens opens • 3:14 PM return bus • 5:30 PM San Gennaro",
+        flexEn: "On Sunday the mall opens at 11 AM. Shop 11:00–3:05, then take the 3:14 PM Route 111 back to protect the San Gennaro evening."
     },
     "2026-09-28": {
         hardHe: "17:30 חלון 9/11 Museum — זה העוגן של היום",
@@ -2931,10 +2927,6 @@ const offScheduleInfo = {
     "New Museum + Nolita": {
         he: "📌 אם תרצו לשלב: הכי טבעי ב-28.9 בתוך SoHo/Nolita, במקום חלק מזמן השופינג. תכננו בערך 60–90 דק׳.",
         en: "📌 Best fit: Sep 28 around SoHo/Nolita, replacing part of shopping time. Allow about 60–90 min."
-    },
-    "Balloon Museum": {
-        he: "📌 אם תרצו לשלב: 28.9 ליד Pier 17. מתאים כתחליף של 45–75 דק׳, לא כתוספת לפני חלון ה-9/11.",
-        en: "📌 Best fit: Sep 28 by Pier 17. Use it as a 45–75 min substitute, not an add-on before the fixed 9/11 window."
     },
     "Smorgasburg Williamsburg": {
         he: "📌 לא מתאים ליום Williamsburg שלכן כי הוא ביום א׳; נשאר כאן רק כרעיון אם משנים יום.",
