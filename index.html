@@ -1346,6 +1346,21 @@ const placeLinks = {
     "Dominique Ansel Bakery": { cost: "🥐 אוכל", costType: "special", costNote: "189 Spring St • Cronut® • SoHo", map: maps("Dominique Ansel Bakery 189 Spring St New York") },
     "Xi'an Famous Foods Chinatown": { cost: "🍽️ אוכל", costType: "special", costNote: "🍜 noodles / dumplings • Chinatown", map: maps("Xi'an Famous Foods Chinatown New York") },
     "Shake Shack Madison Square Park": { cost: "🍔 אוכל", costType: "special", costNote: "🍔 הסניף המקורי בפארק • מתאים ל-1.10", map: maps("Shake Shack Madison Square Park New York") },
+    "A Pasta Bar": { cost: "🍝 אוכל", costType: "special", costNote: "⭐ NICE • 330 W Broadway • SoHo", map: maps("A Pasta Bar 330 W Broadway New York") },
+    "Dim Sum Go Go": { cost: "🥟 אוכל", costType: "special", costNote: "⭐ NICE • 5 E Broadway • Chinatown", map: maps("Dim Sum Go Go 5 E Broadway New York") },
+    "Panda Express Hell's Kitchen": { cost: "🥡 אוכל", costType: "special", costNote: "➕ BONUS • chain • 663 9th Ave • קרוב יחסית למלון", map: maps("Panda Express 663 9th Ave New York") },
+    "7th Street Burger NoMad": { cost: "🍔 אוכל", costType: "special", costNote: "⭐ NICE • smashburger • 1177 Broadway", map: maps("7th Street Burger 1177 Broadway New York") },
+    "Raising Cane's Times Square": { cost: "🍗 אוכל", costType: "special", costNote: "⭐ NICE • flagship • 1501 Broadway • 09:00–03:00", map: maps("Raising Cane's 1501 Broadway New York") },
+    "Chick-fil-A Times Square": { cost: "🍗 אוכל", costType: "special", costNote: "➕ BONUS • 675 8th Ave • סגור ביום א׳", map: maps("Chick-fil-A 675 8th Ave New York") },
+    "Wendy's Union Square": { cost: "🍔 אוכל", costType: "special", costNote: "➕ BONUS • chain • 20 E 14th St", map: maps("Wendy's 20 E 14th St New York") },
+    "GLACE": { cost: "🍦 אוכל", costType: "special", costNote: "⭐ NICE • ice cream • 1266 Madison Ave • 12:00–20:00", map: maps("GLACE 1266 Madison Ave New York") },
+    "Cafe Leon Dore": { cost: "☕ אוכל", costType: "special", costNote: "⭐ NICE • 214 Mulberry St • Nolita", map: maps("Cafe Leon Dore 214 Mulberry Street New York") },
+    "Crumbl Bleecker": { cost: "🍪 אוכל", costType: "special", costNote: "➕ BONUS • cookies • 195 Bleecker St", map: maps("Crumbl 195 Bleecker St New York") },
+    "Leon's Bagels": { cost: "🥯 אוכל", costType: "special", costNote: "⭐ NICE • 169 Thompson St • West Village", map: maps("Leon's Bagels 169 Thompson Street New York") },
+    "Kore Coffee": { cost: "☕ אוכל", costType: "special", costNote: "⭐ NICE • 26A Elizabeth St • Chinatown • tiramisu latte / croffle", map: maps("Kore Coffee 26A Elizabeth Street New York") },
+    "Blank Street Green Room SoHo": { cost: "☕ אוכל", costType: "special", costNote: "⭐ NICE • 63 Spring St • SoHo • 06:30–21:00", map: maps("Blank Street Green Room 63 Spring Street New York") },
+    "Eileen's Special Cheesecake": { cost: "🍰 אוכל", costType: "special", costNote: "🔥 MUST NYC EXPERIENCE • 17 Cleveland Pl • Nolita cheesecake", map: maps("Eileen's Special Cheesecake 17 Cleveland Place New York") },
+    "SMASHED West Village": { cost: "🍔 אוכל", costType: "special", costNote: "⭐ NICE • smashburger • 516 Hudson St", map: maps("SMASHED 516 Hudson St New York") },
     "The Halal Guys 53rd & 6th": { cost: "🍽️ אוכל", costType: "special", costNote: "🌯 cart קלאסי • chicken/gyro over rice", map: maps("The Halal Guys West 53rd Street 6th Avenue New York") },
     "Magnolia Bakery West Village": { cost: "🥐 אוכל", costType: "special", costNote: "🧁 banana pudding • West Village", map: maps("Magnolia Bakery 401 Bleecker Street New York") },
     "Keens Steakhouse": { cost: "🥩 אוכל", costType: "special", costNote: "🥩 Old New York steakhouse • 72 W 36th St", map: maps("Keens Steakhouse 72 W 36th St New York") },
@@ -1753,7 +1768,10 @@ const coffeeMorningList = [
     ["Cafe Paradiso", "➕ BONUS — טוב אם ממילא ב-Lincoln Center/UWS — 144 W 65th St ליד Lincoln Center. מהמלון בערך 25–30 דק׳ הליכה (סביב 2 ק״מ+) או נסיעה קצרה. לא נוסעות במיוחד, אבל מושלם אם אתן ממילא ב-Upper West Side / Lincoln Center. בימים ב׳–ש׳ ארוחת בוקר 08:00–11:00; ביום א׳ נפתח ב-11:00.", "➕ BONUS — good if already around Lincoln Center/UWS — 144 W 65th St by Lincoln Center. About a 25–30 min walk from the hotel (roughly 2 km+) or a short ride. Best only when already around the Upper West Side/Lincoln Center.", "fa-mug-hot", ["Cafe Paradiso"]],
     ["NEROLAB Coffee House", "➕ BONUS — גיבוי פרקטי בתוך המלון — בתוך המלון עצמו. לא יעד קולינרי, אבל זה ה-backup הכי טוב לבקרים של 05:00 או כשאין זמן לסטות.", "➕ BONUS — practical hotel backup — inside the hotel. Not a destination café, but the best backup for 5 AM starts or rushed mornings.", "fa-mug-hot", ["NEROLAB Coffee House"]],
     ["Devocion Williamsburg", "🔥 MUST FOOD — קפה יעד חזק ובדיוק על מסלול Williamsburg — 148 Grand St. כבר יושב על המסלול של Williamsburg, ולכן עדיף לשמור אותו לבוקר ברוקלין ולא לנסוע אליו במיוחד ממנהטן.", "🔥 MUST FOOD — destination-worthy coffee directly on your Williamsburg route — 148 Grand St. Already on your Williamsburg route, so save it for Brooklyn morning rather than making a special trip.", "fa-mug-hot", ["Devocion Williamsburg"]],
-    ["Loaf on Paper", "⭐ NICE — קפה/מאצ׳ה + stationery, ממש על מסלול Williamsburg — קפה/מאצ׳ה + stationery יפני ב-64 Grand St, ממש על מסלול Williamsburg. טוב כתחליף/תוספת ל-Devoción אם מתחשק.", "⭐ NICE — coffee/matcha + stationery directly on the Williamsburg route — coffee/matcha plus Japanese stationery at 64 Grand St, right on the Williamsburg route.", "fa-mug-hot", ["Loaf on Paper"]]
+    ["Loaf on Paper", "⭐ NICE — קפה/מאצ׳ה + stationery, ממש על מסלול Williamsburg — קפה/מאצ׳ה + stationery יפני ב-64 Grand St, ממש על מסלול Williamsburg. טוב כתחליף/תוספת ל-Devoción אם מתחשק.", "⭐ NICE — coffee/matcha + stationery directly on the Williamsburg route — coffee/matcha plus Japanese stationery at 64 Grand St, right on the Williamsburg route.", "fa-mug-hot", ["Loaf on Paper"]],
+    ["Cafe Leon Dore", "⭐ NICE — 214 Mulberry St ב-Nolita. קפה יווני טרנדי, Freddo cappuccino + honey toast; יושב חכם ליד Little Italy/Nolita.", "⭐ NICE — trendy Greek café at 214 Mulberry St in Nolita; great around Little Italy/Nolita.", "fa-mug-hot", ["Cafe Leon Dore"]],
+    ["Kore Coffee", "⭐ NICE — 26A Elizabeth St ב-Chinatown. tiramisu latte / matcha / croffles; חכם במיוחד ביום Chinatown.", "⭐ NICE — Chinatown café at 26A Elizabeth St for tiramisu lattes, matcha and croffles.", "fa-mug-hot", ["Kore Coffee"]],
+    ["Blank Street Green Room SoHo", "⭐ NICE — 63 Spring St ב-SoHo, פתוח מוקדם 06:30–21:00. אופציה קלה תוך כדי שופינג ולא יעד לנסיעה מיוחדת.", "⭐ NICE — 63 Spring St in SoHo, open early; easy while shopping, not a special detour.", "fa-mug-hot", ["Blank Street Green Room SoHo"]]
 ];
 
 const foodMustList = [
@@ -1769,6 +1787,20 @@ const foodMustList = [
     ["Uva", "⭐ NICE — UES Italian/brunch בסופ״ש. לא מקום לפנקייקס קלאסי, אבל טוב כאופציה באזור.", "⭐ NICE — UES Italian/weekend brunch option.", "fa-utensils", ["Uva"]],
     ["The Mean Fiddler", "⭐ NICE — ממש ליד Times Square; Biscoff pancakes בבראנץ׳. קל לשלב ליד המלון בלי נסיעה מיוחדת.", "⭐ NICE — Times Square brunch with Biscoff pancakes, easy near the hotel.", "fa-pancakes", ["The Mean Fiddler"]],
     ["Golden HOF", "➕ BONUS — 16 W 48th; Mini Honey Butter Pancakes כקינוח. חשוב: זה Korean bar, לא מקום breakfast/pancakes קלאסי.", "➕ BONUS — mini honey-butter pancakes as dessert; Korean bar, not a breakfast destination.", "fa-pancakes", ["Golden HOF"]],
+
+    ["A Pasta Bar", "⭐ NICE — פסטה ב-330 W Broadway, SoHo. אם בא לכן ארוחת פסטה מסודרת ביום SoHo זה שילוב טבעי בלי סטייה גדולה.", "⭐ NICE — pasta at 330 W Broadway in SoHo; easy to combine with the SoHo day.", "fa-utensils", ["A Pasta Bar"]],
+    ["Dim Sum Go Go", "⭐ NICE — 5 E Broadway ב-Chinatown. אופציית dim sum חזקה ביום Chinatown, בלי לנסוע במיוחד.", "⭐ NICE — dim sum at 5 E Broadway in Chinatown; a smart Chinatown-day option.", "fa-bowl-food", ["Dim Sum Go Go"]],
+    ["Panda Express", "➕ BONUS — שמרתי גם Panda Express. הסניף הנוח למסלול: 663 9th Ave ב-Hell's Kitchen; chain, אז רק אם ממש מתחשק.", "➕ BONUS — Panda Express at 663 9th Ave in Hell's Kitchen; convenient chain option near the hotel area.", "fa-bowl-rice", ["Panda Express Hell's Kitchen"]],
+    ["In-N-Out", "⚠️ אין כרגע סניף In-N-Out בניו יורק נכון לספטמבר 2026, לכן הוא נשמר רק כתזכורת ולא כפין/יעד במסלול.", "⚠️ No In-N-Out location in NYC as of Sep 2026, so this is informational only and not a map destination.", "fa-burger", []],
+    ["7th Street Burger", "⭐ NICE — smashburger פופולרי; שמרתי את 1177 Broadway כי הוא נוח ל-NoMad/Flatiron. יש עוד סניפים בעיר.", "⭐ NICE — popular smashburger; 1177 Broadway is convenient for NoMad/Flatiron.", "fa-burger", ["7th Street Burger NoMad"]],
+    ["Raising Cane's", "⭐ NICE — flagship ב-1501 Broadway, Times Square. קל מאוד לשלב ליד המלון; פתוח עד מאוחר.", "⭐ NICE — Times Square flagship at 1501 Broadway; very easy near the hotel and open late.", "fa-drumstick-bite", ["Raising Cane's Times Square"]],
+    ["Chick-fil-A", "➕ BONUS — 675 8th Ave ליד Times Square/המלון. נוח מאוד, אבל חשוב: סגור בימי א׳.", "➕ BONUS — 675 8th Ave near Times Square/hotel; convenient, but closed Sundays.", "fa-drumstick-bite", ["Chick-fil-A Times Square"]],
+    ["Wendy's", "➕ BONUS — chain. שמרתי את 20 E 14th St ליד Union Square; לא נוסעות במיוחד.", "➕ BONUS — chain option at 20 E 14th St near Union Square; only if convenient.", "fa-burger", ["Wendy's Union Square"]],
+    ["GLACE", "⭐ NICE — גלידה ב-1266 Madison Ave ליד 90th/91st, פתוח 12:00–20:00. הכי הגיוני ביום UES/Met אם נשאר זמן.", "⭐ NICE — ice cream at 1266 Madison Ave; best when already around the UES/Met.", "fa-ice-cream", ["GLACE"]],
+    ["Crumbl", "➕ BONUS — 195 Bleecker St. אם בא לכן cookie אמריקאי מוגזם במהלך ה-Village; לא יעד בפני עצמו.", "➕ BONUS — 195 Bleecker St; easy cookie stop in the Village, not a special detour.", "fa-cookie-bite", ["Crumbl Bleecker"]],
+    ["Leon's Bagels", "⭐ NICE — 169 Thompson St, walk-up bagels ב-West Village/SoHo. מתאים מאוד ביום Village.", "⭐ NICE — walk-up bagels at 169 Thompson St, excellent for the Village route.", "fa-bagel", ["Leon's Bagels"]],
+    ["Eileen's Special Cheesecake", "🔥 MUST NYC EXPERIENCE — 17 Cleveland Place ב-Nolita. cheesecake ניו-יורקי קלאסי, ממש חכם לשלב ליד SoHo/Little Italy.", "🔥 MUST NYC EXPERIENCE — classic NYC cheesecake at 17 Cleveland Place in Nolita; ideal around SoHo/Little Italy.", "fa-cake-candles", ["Eileen's Special Cheesecake"]],
+    ["SMASHED", "⭐ NICE — smashburger. שמרתי את סניף West Village ב-516 Hudson St כי הוא יושב טוב על יום ה-Village.", "⭐ NICE — smashburger; West Village location at 516 Hudson St fits the Village day well.", "fa-burger", ["SMASHED West Village"]],
     ["Nems Japandi Bistro", "⭐ NICE — brunch/אסייתי ב-80 N 6th, קרוב ל-Artists & Fleas. ⚠️ לא כשר; יש אופציות טבעוניות/צמחוניות אבל מטבח משותף.", "⭐ NICE — brunch/Asian spot at 80 N 6th, close to Artists & Fleas. Not kosher; vegan/vegetarian options use a shared kitchen.", "fa-bowl-food", ["Nems Japandi Bistro"]],
     ["The Water Tower Bar", "➕ BONUS — rooftop ב-Arlo Williamsburg, 96 Wythe Ave. ביום א׳ נפתח ב-15:00, לכן לא דוחפים אותו למסלול הבוקר; רק אם חוזרות לאזור בערב. ⚠️ בר/לא כשר.", "➕ BONUS — rooftop at Arlo Williamsburg, 96 Wythe Ave. Opens 3 PM Sunday, so it does not fit your morning route. Bar/not kosher.", "fa-martini-glass", ["The Water Tower Bar", "Arlo Williamsburg"]],
     ["Pasta de Pasta", "⭐ NICE — Pasta de Pasta: בדקתי מול האתר וביקורות עדכניות, והוא באמת נראה כמו טרנד ששווה לשמור ולא רק הייפ. פסטה טרייה/cheese wheel ב-East Village. ⚠️ לא כשר מוסמך; יש מנות צמחוניות אבל המטבח משותף.", "⭐ NICE — Pasta de Pasta is a strong 2026 social-food pick for fresh pasta/cheese-wheel pasta. Not kosher-certified; shared kitchen.", "fa-bowl-food", ["Pasta de Pasta"]],
@@ -1897,6 +1929,21 @@ const foodMapPoints = [
     {name:"Uva", lat:40.7728, lng:-73.9565, note:"NICE • Weekend brunch • UES"},
     {name:"The Mean Fiddler", lat:40.7605, lng:-73.9873, note:"NICE • Biscoff pancakes • Times Square"},
     {name:"Golden HOF", lat:40.7575, lng:-73.9788, note:"BONUS • Mini Honey Butter Pancakes • dessert"},
+    {name:"A Pasta Bar", lat:40.7222, lng:-74.0045, note:"NICE • Pasta • SoHo"},
+    {name:"Dim Sum Go Go", lat:40.7133, lng:-73.9975, note:"NICE • Dim Sum • Chinatown"},
+    {name:"Panda Express Hell's Kitchen", lat:40.7612, lng:-73.9908, note:"BONUS • chain • near hotel"},
+    {name:"7th Street Burger NoMad", lat:40.7458, lng:-73.9887, note:"NICE • Smashburger • NoMad"},
+    {name:"Raising Cane's Times Square", lat:40.7578, lng:-73.9855, note:"NICE • Chicken • Times Square"},
+    {name:"Chick-fil-A Times Square", lat:40.7580, lng:-73.9892, note:"BONUS • Chicken • closed Sunday"},
+    {name:"Wendy's Union Square", lat:40.7354, lng:-73.9925, note:"BONUS • chain • Union Square"},
+    {name:"GLACE", lat:40.7847, lng:-73.9562, note:"NICE • Ice cream • UES"},
+    {name:"Cafe Leon Dore", lat:40.7222, lng:-73.9958, note:"NICE • Coffee • Nolita"},
+    {name:"Crumbl Bleecker", lat:40.7292, lng:-74.0013, note:"BONUS • Cookies • Village"},
+    {name:"Leon's Bagels", lat:40.7278, lng:-74.0001, note:"NICE • Bagels • Village"},
+    {name:"Kore Coffee", lat:40.7152, lng:-73.9951, note:"NICE • Coffee/Matcha • Chinatown"},
+    {name:"Blank Street Green Room SoHo", lat:40.7224, lng:-73.9977, note:"NICE • Coffee • SoHo"},
+    {name:"Eileen's Special Cheesecake", lat:40.7213, lng:-73.9971, note:"MUST NYC EXPERIENCE • Cheesecake • Nolita"},
+    {name:"SMASHED West Village", lat:40.7345, lng:-74.0064, note:"NICE • Smashburger • West Village"},
     {name:"Pasta de Pasta", lat:40.7285, lng:-73.9852, note:"NICE • Pasta"},
     {name:"L'Industrie Little Italy", lat:40.7197, lng:-73.9970, note:"MUST FOOD • Pizza"},
     {name:"Una Pizza Napoletana", lat:40.7214, lng:-73.9888, note:"MUST FOOD"},
@@ -2041,6 +2088,19 @@ function selectDay(index) {
     }
 }
 
+
+
+const foodSearchAliases = {
+    "shake shake": "shake shack",
+    "in a out": "in-n-out",
+    "raising cana": "raising cane",
+    "raising canas": "raising cane",
+    "eilirrn": "eileen",
+    "eilrrn": "eileen",
+    "kore coffee": "kore coffee",
+    "cafe leon dore": "cafe leon dore",
+    "los tacos no 1": "los tacos no. 1"
+};
 
 const tabFilterState = {
     daily: "all",
@@ -2722,8 +2782,9 @@ function toggleFoodMap() {
         const bounds=[];
         const visibleFoodPoints = foodMapPoints.filter(p => {
             if (!matchesFoodMapPoint(p)) return false;
-            if (!globalSearchTerm) return true;
-            return `${p.name} ${p.note || ''}`.toLowerCase().includes(globalSearchTerm);
+            const foodSearchTerm = foodSearchAliases[globalSearchTerm] || globalSearchTerm;
+            if (!foodSearchTerm) return true;
+            return `${p.name} ${p.note || ''}`.toLowerCase().includes(foodSearchTerm);
         });
         visibleFoodPoints.forEach((p, idx) => {
             const googleUrl = 'https://www.google.com/maps/search/?api=1&query=' + encodeURIComponent(p.name + ' New York');
@@ -2761,14 +2822,16 @@ function renderFoodList() {
     coffeeMorningList.forEach(ev => {
         const [key,he,en,icon,placesArray]=ev;
         if (!matchesFoodFilterParts(key, he, en, placesArray || [])) return;
-        if (globalSearchTerm && ![key,he,en,...(placesArray||[])].join(' ').toLowerCase().includes(globalSearchTerm)) return;
+        const foodSearchTerm = foodSearchAliases[globalSearchTerm] || globalSearchTerm;
+        if (foodSearchTerm && ![key,he,en,...(placesArray||[])].join(' ').toLowerCase().includes(foodSearchTerm)) return;
         html += `<div class="event-item food"><div class="event-icon"><i class="fa-solid ${icon}"></i></div><div class="event-details"><span class="event-name">${currentLang==='he'?he:en}</span>${attachLinks(placesArray)}</div></div>`;
     });
     html += `</div><div class="category-header" style="font-size:1.05rem;margin-top:18px;">${currentLang==='he'?'🍽️ אוכל וקינוחים — MUST / NICE / BONUS':'🍽️ Food & Desserts — MUST / NICE / BONUS'}</div><div class="event-list">`;
     foodMustList.forEach(ev => {
         const [key,he,en,icon,placesArray]=ev;
         if (!matchesFoodFilterParts(key, he, en, placesArray || [])) return;
-        if (globalSearchTerm && ![key,he,en,...(placesArray||[])].join(' ').toLowerCase().includes(globalSearchTerm)) return;
+        const foodSearchTerm = foodSearchAliases[globalSearchTerm] || globalSearchTerm;
+        if (foodSearchTerm && ![key,he,en,...(placesArray||[])].join(' ').toLowerCase().includes(foodSearchTerm)) return;
         html += `<div class="event-item food"><div class="event-icon"><i class="fa-solid ${icon}"></i></div><div class="event-details"><span class="event-name">${currentLang==='he'?he:en}</span>${attachLinks(placesArray)}</div></div>`;
     });
     html += `</div></div>`;
