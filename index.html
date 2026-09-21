@@ -521,6 +521,17 @@
         .schedule-badge.out { background:rgba(239,68,68,.10); color:#fecaca; border:1px solid rgba(239,68,68,.28); }
         .food-map-btn { width:100%; padding:12px 14px; margin-bottom:14px; border:1px solid #92400e; border-radius:12px; background:rgba(245,158,11,.12); color:#fde68a; font-weight:800; cursor:pointer; font-family:inherit; font-size:.95rem; }
         .food-map-panel { display:none; margin-bottom:16px; }
+        .day-food-map-panel { display:none; margin:10px 0 16px; padding:12px; border:1px solid #334155; border-radius:12px; background:#0b1220; }
+        .day-food-map-panel.open { display:block; }
+        .day-food-map-title { font-weight:800; color:#fde68a; margin-bottom:7px; }
+        .day-food-map-sub { font-size:.80rem; color:#94a3b8; line-height:1.45; margin-bottom:9px; }
+        .day-food-filter-row { display:flex; flex-wrap:wrap; gap:6px; margin-bottom:10px; }
+        .day-food-filter-btn { border:1px solid #475569; background:#111827; color:#e2e8f0; border-radius:999px; padding:6px 9px; font-family:inherit; font-size:.75rem; font-weight:700; cursor:pointer; }
+        .day-food-filter-btn.active { border-color:#f59e0b; background:rgba(245,158,11,.16); color:#fde68a; }
+        .day-food-map-canvas { height:350px; border:1px solid #334155; border-radius:12px; overflow:hidden; }
+        .day-food-map-count { font-size:.76rem; color:#cbd5e1; margin-top:7px; }
+        @media (max-width:560px) { .day-food-map-canvas { height:320px; } }
+
         .food-map-panel.show { display:block; }
         #food-map { height:460px; border-radius:14px; border:1px solid #334155; overflow:hidden; }
         .trend-note { background:rgba(59,130,246,.10); border:1px solid rgba(59,130,246,.25); color:#bfdbfe; padding:11px 12px; border-radius:10px; margin-bottom:14px; font-size:.88rem; line-height:1.45; }
@@ -1111,6 +1122,8 @@ function maps(query) {
 }
 
 const placeLinks = {
+    "Kalustyan's": {maps:"https://www.google.com/maps/search/?api=1&query=Kalustyan%27s+123+Lexington+Ave+New+York+NY", official:"https://foodsofnations.com/"},
+    "AUTOPHOTO": {maps:"https://www.google.com/maps/search/?api=1&query=AUTOPHOTO+121+Orchard+St+New+York+NY", official:"https://www.autophoto.org/museum"},
     "Pier 97": {maps:"https://www.google.com/maps/search/?api=1&query=Pier+97+Hudson+River+Park+New+York+NY", official:"https://hudsonriverpark.org/locations/pier-97/"},
     "Pier 35": {maps:"https://www.google.com/maps/search/?api=1&query=Pier+35+FDR+Drive+at+Jefferson+Street+New+York+NY", official:"https://pier35nyc.com/en"},
     "Greenacre Park": {maps:"https://www.google.com/maps/search/?api=1&query=Greenacre+Park+217+E+51st+St+New+York+NY", official:"https://greenacrepark.org/"},
@@ -1632,15 +1645,16 @@ const dailySchedule = [
             { time: "16:15", nameHe: "Museum of Ice Cream אל Harry Potter Shop", nameEn: "Museum of Ice Cream to Harry Potter Shop", descHe: "🚇/🚕 ממשיכות מ-558 Broadway לכיוון Flatiron. תכננו בערך 15–25 דק׳ עד 935 Broadway.", descEn: "🚇/🚕 Continue from 558 Broadway toward Flatiron. Allow roughly 15–25 min to 935 Broadway.", type: "transit", icon: "fa-train-subway", places: ["Museum of Ice Cream", "Harry Potter Shop New York"] },
                         { time: "16:40–17:15", nameHe: "Harry Potter Shop New York ⚡", nameEn: "Harry Potter Shop New York ⚡", descHe: "⚡ <b>כניסה לחנות חינם:</b> 935 Broadway. שומרות בערך 30–35 דק׳ לחנות, נקודות צילום ו-Butterbeer אם בא לכן.", descEn: "⚡ Free store entry at 935 Broadway. Allow about 30–35 min for the shop, photo spots and Butterbeer if you want.", type: "custom", icon: "fa-wand-sparkles", places: ["Harry Potter Shop New York"] },
             { time: "17:15", nameHe: "Harry Potter Shop אל FRIENDS Experience", nameEn: "Harry Potter Shop to FRIENDS Experience", descHe: "🚶 כ-8–12 דק׳ הליכה ל-130 E 23rd St.", descEn: "🚶 About 8–12 min on foot to 130 E 23rd St.", type: "transit", icon: "fa-person-walking", places: ["Harry Potter Shop New York", "The FRIENDS Experience"] },
-            { time: "17:30–18:30", nameHe: "The FRIENDS Experience ☕", nameEn: "The FRIENDS Experience ☕", descHe: "☕ <b>חוויה מלאה:</b> 130 E 23rd St. שומרות כשעה לסטים, Central Perk והצילומים. זה משתלב טוב ממש לפני Flatiron / Madison Square Park.", descEn: "☕ Full experience at 130 E 23rd St. Allow about an hour for the sets, Central Perk and photos. It fits naturally before Flatiron / Madison Square Park.", type: "mustsee", icon: "fa-couch", places: ["The FRIENDS Experience"] },
+            { time: "17:30–18:30", nameHe: "The FRIENDS Experience ☕", nameEn: "The FRIENDS Experience ☕", descHe: "☕ <b>חוויה מלאה:</b> 130 E 23rd St. שומרות כשעה לסטים, Central Perk והצילומים. זה משתלב טוב ממש לפני Flatiron / Madison Square Park. <div class='revisit-note'>🛒 <b>אופציונלי — Kalustyan’s:</b> 123 Lexington Ave, בערך 10–15 דק׳ הליכה/סטייה מ-Madison Square Park. חנות specialty foods ותיקה עם מוצרים מהמזרח התיכון, כולל מוצרים פרסיים/איראניים, תבלינים, אגוזים, פירות יבשים ועוד. פתוח ביום ה׳ עד 20:00. אם נכנסות — לשמור 15–20 דק׳ בלבד כדי לא לפגוע בהמשך היום.</div>", descEn: "☕ Full experience at 130 E 23rd St. Allow about an hour for the sets, Central Perk and photos. It fits naturally before Flatiron / Madison Square Park.", type: "mustsee", icon: "fa-couch", places: ["The FRIENDS Experience", "Kalustyan's"] },
 { time: "18:35", nameHe: "🔥 CORE — Flatiron + Madison Square Park", nameEn: "Flatiron + Madison Square Park", descHe: "🔥 MUST: FRIENDS Experience → Flatiron/Madison Square Park: 🚶 כ-5–10 דק׳. 35–45 דק׳ באזור.", descEn: "🔥 MUST: 35–45 min in the area.", type: "mustsee", icon: "fa-building", places: ["Flatiron Building", "Madison Square Park"] },
             { time: "19:15", nameHe: "🛍️ FLEX — Marshalls + Burlington – אותו בניין", nameEn: "Marshalls + Burlington – Same Building", descHe: "⭐ NICE: Flatiron → 620 Avenue of the Americas: 🚶 כ-10–12 דק׳. שתיהן ב-620 Avenue of the Americas. משאירות 35–45 דק׳ לשתיהן ביחד; אם נמאס משופינג פשוט מדלגות.", descEn: "⭐ NICE: both are at 620 Avenue of the Americas. Allow 35–45 min total, or skip if you have had enough shopping.", type: "custom", icon: "fa-bag-shopping", places: ["Marshalls Chelsea", "Burlington Chelsea"] },
             { time: "20:20", nameHe: "מנוחה קצרה", nameEn: "Short Rest", descHe: "🍽️ Marshalls/Burlington → המלון: 🚇/🚶 כ-15–20 דק׳. חלון רגוע במלון לפני ערב Downtown. אם עייפות — זה המקום להחליט שמוותרים על הערב וחוזרים אליו יום אחר.", descEn: "A relaxed hotel buffer before the Downtown evening. Skip the evening if energy is low.", type: "custom", icon: "fa-bed", places: ["Delta Hotels Times Square"] },
-            { time: "21:00", nameHe: "East Village – St. Mark’s Place", nameEn: "East Village – St. Mark’s Place", descHe: "🔥 <b>NICE חזק:</b> ערב שכונתי ולא עוד אטרקציה. St. Mark’s Place → הרחובות של East Village, חנויות קטנות, מוזיקה ואווירה. ביום ה׳ אין סגירת Sunday-style; רוב הרחוב פעיל בערב.", descEn: "Strong neighborhood evening: St. Mark’s Place and the East Village streets, small shops, music and atmosphere.", type: "mustsee", icon: "fa-city", places: ["St. Mark's Place", "East Village"] },
-            { time: "21:40", nameHe: "Tompkins Square Park + Alphabet City", nameEn: "Tompkins Square Park + Alphabet City", descHe: "⭐ St. Mark’s Place → Tompkins Square Park: 🚶 כ-7–10 דק׳. 20–30 דק׳ בפארק ואז ממשיכות דרומה/מערבה לכיוון LES. זה רצף גיאוגרפי טבעי, לא נסיעה נפרדת.", descEn: "20–30 min in the park, then continue naturally toward the Lower East Side.", type: "custom", icon: "fa-tree", places: ["Tompkins Square Park", "East Village"] },
-            { time: "22:10", nameHe: "Lower East Side – שיטוט חופשי לפי החשק", nameEn: "Lower East Side – Flexible Food / Dessert / Bar", descHe: "🔥 <b>חוויה ולא משימה:</b> Orchard / Ludlow / Rivington והאזור. פותחות את Food Must ובוחרות מה קרוב — למשל Katz’s / Russ & Daughters / Scarr’s / Golden Diner / Supermoon לפי שעות ותור. לא נוסעות במיוחד למקום אחד.", descEn: "Treat it as an experience, not a checklist: Orchard / Ludlow / Rivington, then choose a nearby Food Must based on hours and queue.", type: "food", icon: "fa-utensils", places: ["Lower East Side", "Katz's Delicatessen", "Russ & Daughters Cafe", "Scarr's Pizza", "Golden Diner"] },
-            { time: "22:35", nameHe: "Pier 35 — אופציונלי 🌉", nameEn: "Pier 35 — Optional 🌉", descHe: "⭐ <b>אם נשאר כוח:</b> Pier 35 יושב על ה-East River ב-Jefferson St, קרוב יחסית ל-Lower East Side. חינם, עם נוף ל-Manhattan Bridge + Brooklyn Bridge. שומרות 20–30 דק׳. ⚠️ ב-2026 היו דיווחים שהנדנדות הוסרו/בטיפול, לכן לא בונות עליהן — בודקות ביום עצמו; גם בלי הנדנדות הנוף עדיין שווה.", descEn: "⭐ If you still have energy: free East River pier at Jefferson St with Manhattan/Brooklyn Bridge views. Keep it to 20–30 min. 2026 reports say the swings may be removed/under maintenance, so verify day-of.", type: "custom", icon: "fa-water", places: ["Pier 35"] },
-            { time: "23:15", nameHe: "חזרה לפי האנרגיה", nameEn: "Return When Ready", descHe: "⭐ Lower East Side → המלון: 🚇 כ-25–35 דק׳ מדלת לדלת. אין הזמנה קשיחה. אם כיף נשארות קצת; אם עייפות חוזרות למלון. המטרה היא לקבל ערב NYC מקומי בלי להעמיס.", descEn: "No fixed booking. Stay a little longer if it feels good, or head back early.", type: "custom", icon: "fa-moon", places: ["Lower East Side", "Delta Hotels Times Square"] }
+            { time: "21:00", nameHe: "East Village – St. Mark’s Place", nameEn: "East Village – St. Mark’s Place", descHe: "🔥 <b>NICE חזק:</b> ערב שכונתי ולא עוד אטרקציה. St. Mark’s Place → הרחובות של East Village, חנויות קטנות, מוזיקה ואווירה. כל האוכל באזור נשאר גמיש לפי רעב.", descEn: "Strong neighborhood evening around St. Mark’s Place and East Village. Food stays flexible based on hunger.", type: "mustsee", icon: "fa-city", places: ["St. Mark's Place", "East Village"] },
+            { time: "21:25", nameHe: "Tompkins Square Park + Alphabet City", nameEn: "Tompkins Square Park + Alphabet City", descHe: "⭐ הליכה קצרה דרך Tompkins Square / Avenue A לכיוון LES. לא נשארות כאן יותר מדי כדי להספיק AUTOPHOTO לפני הסגירה.", descEn: "Short walk through Tompkins Square / Avenue A toward the LES. Keep it brief so you reach AUTOPHOTO before closing.", type: "custom", icon: "fa-tree", places: ["Tompkins Square Park", "East Village"] },
+            { time: "21:45–21:58", nameHe: "AUTOPHOTO — Photobooth Gallery + Museum 📸", nameEn: "AUTOPHOTO — Photobooth Gallery + Museum 📸", descHe: "📍 <b>121 Orchard St</b>. כניסה למוזיאון <b>חינם</b>; אפשר להצטלם במכונות photobooth אנלוגיות בתשלום נפרד. המקום נסגר ב-22:00, לכן זו עצירה קצרה וממוקדת של 10–15 דק׳.", descEn: "📍 121 Orchard St. Museum admission is free; analog photobooth strips cost extra. Closes at 10 PM, so keep this to a focused 10–15 minute stop.", type: "custom", icon: "fa-camera-retro", places: ["AUTOPHOTO"] },
+            { time: "22:00", nameHe: "Lower East Side – שיטוט חופשי לפי החשק", nameEn: "Lower East Side – Free Wander", descHe: "אחרי AUTOPHOTO ממשיכות ב-LES בלי יעד קשיח — פשוט לפי האווירה והאנרגיה.", descEn: "After AUTOPHOTO, continue through the LES without a fixed target — just follow the vibe and energy.", type: "custom", icon: "fa-person-walking", places: ["Lower East Side"] },
+            { time: "22:30", nameHe: "Pier 35 — אופציונלי 🌉", nameEn: "Pier 35 — Optional 🌉", descHe: "⭐ <b>רק אם נשאר כוח:</b> ממשיכות ל-Pier 35 ל-20–30 דקות בשביל הנוף ל-Manhattan Bridge + Brooklyn Bridge. חינם. אם עייפות — מדלגות וחוזרות למלון.", descEn: "⭐ Only if you still have energy: continue to Pier 35 for 20–30 minutes for Manhattan/Brooklyn Bridge views. Free. Skip it if tired.", type: "custom", icon: "fa-water", places: ["Pier 35"] },
+            { time: "23:10", nameHe: "חזרה לפי האנרגיה", nameEn: "Head Back Based on Energy", descHe: "חזרה למלון אחרי LES / Pier 35. לא חייבות למשוך אם היום כבר מרגיש מלא.", descEn: "Head back after the LES / Pier 35. No need to force the late stop if the day already feels full.", type: "custom", icon: "fa-hotel", places: ["Delta Hotels Times Square"] }
         ]
     },
     {
@@ -1756,7 +1770,7 @@ const flowList = [
             ["Central Park", "סנטרל פארק ונקודות ציון חינמיות", "Central Park spots", "mustsee", "fa-tree", ["Central Park", "Bethesda Terrace", "Bow Bridge", "Strawberry Fields", "Belvedere Castle"]],
             ["West Village", "West Village + הבית של Friends + Washington Sq Park", "West Village + Friends + Washington Sq Park", "mustsee", "fa-mug-hot", ["West Village", "Greenwich Village", "Friends Apartment Building", "Washington Square Park"]],
             ["High Line + Pier 57", "🔥 MUST — High Line + Pier 57 כבלוק אחד רציף; לא חוזרות ל-Pier 57 שוב", "🔥 MUST — High Line + Pier 57 as one continuous block; no second visit to Pier 57", "mustsee", "fa-route", ["High Line", "Pier 57"]],
-            ["Pier 97", "➕ BONUS — לא בלו״ז כרגע. חינמי ב-Hudson River Park ליד W55–W59, עם sunset deck, lawn ו-overlook. אם תרצו לשלב, הכי הגיוני כחלופה ל-Carnegie Hall ב-30.9 ולא בנוסף.", "➕ BONUS — not currently scheduled. Free Hudson River Park pier near W55–W59 with a sunset deck, lawn and overlook. Best used as an alternative to Carnegie Hall on Sep 30, not in addition.", "custom", "fa-water", ["Pier 97"]],
+            ["Pier 97", "➕ BONUS — Hudson River Park ליד W55–W59. חינמי, עם sunset deck, lawn ו-overlook. לא שובץ כרגע כדי לא לדחוס את הימים; אם רוצים אותו, הוא הכי הגיוני כחלופה ל-Carnegie Hall ב-30.9.", "➕ BONUS — free Hudson River Park pier near W55–W59 with sunset deck, lawn and overlook. Not scheduled to avoid overpacking; best as an alternative to Carnegie Hall on Sep 30.", "custom", "fa-water", ["Pier 97"]],
                 ["Hunter's Point South Park", "⭐ NICE — אופציית Skyline ב-Queens; הכי הגיוני אחרי Roosevelt Island רק אם נשארים כוח וזמן", "⭐ NICE — Queens skyline option; best after Roosevelt Island only if time and energy allow", "custom", "fa-camera", ["Hunter's Point South Park"]],
             ["Exchange Place", "הנוף הפנורמי מ-Exchange Place (נסיעת PATH אחת)", "Exchange Place", "mustsee", "fa-camera", ["Exchange Place"]],
             ["SoHo", "SoHo + NoHo", "SoHo + NoHo", "mustsee", "fa-store", ["SoHo", "NoHo"]],
@@ -1828,6 +1842,7 @@ const coffeeMorningList = [
 ];
 
 const foodMustList = [
+    ["Kalustyan's", "⭐ NICE — 123 Lexington Ave (28th/29th). חנות specialty foods ותיקה ומפורסמת עם תבלינים, פירות יבשים, אגוזים, רטבים ומוצרים מהמזרח התיכון/פרס/דרום אסיה ועוד. לא סופר פרסי בלבד, אבל יש מוצרים איראניים/פרסיים. מתאים במיוחד ל-1.10 ליד Flatiron/Madison Square Park; 10–15 דק׳ סטייה לכל כיוון.", "⭐ NICE — 123 Lexington Ave. Famous specialty-food emporium for Middle Eastern, Persian/Iranian, South Asian and global ingredients. Best fit is Oct 1 near Flatiron/Madison Square Park; roughly a 10–15 min detour each way.", "fa-basket-shopping", ["Kalustyan's"]],
     ["Greenacre Park", "⭐ NICE — לא מסעדה: פארק מפל קטן ב-217 E 51st St. פתוח 08:00–20:00; מקום מעולה לקחת אליו takeaway/קפה ולאכול מול המפל. הכי קרוב ל-Midtown East / יום 2.10.", "⭐ NICE — not a restaurant: a small waterfall park at 217 E 51st St. Open 8 AM–8 PM; great for takeaway/coffee near Midtown East on Oct 2.", "fa-tree", ["Greenacre Park"]],
     ["Commerce Inn", "⭐ NICE — 50 Commerce St, West Village. Early-American tavern של Rita Sodi/Jody Williams; MICHELIN-listed. האתר הרשמי מציג Daily 09:00–23:00 עם breakfast/lunch באמצע שבוע, brunch בסופ״ש ו-dinner nightly. ממש קרוב ל-Via Carota/I Sodi ומתאים ל-29.9.", "⭐ NICE — 50 Commerce St, West Village. Early-American tavern by Rita Sodi/Jody Williams, MICHELIN-listed. Official site lists daily 9 AM–11 PM with weekday breakfast/lunch, weekend brunch and nightly dinner.", "fa-utensils", ["Commerce Inn"]],
     ["Gnoccheria East Village", "⭐ NICE — 234 E 4th St, East Village. מסעדת gnocchi עם וריאציות כמו pesto, quattro formaggi ו-ragù. לפי עדכון 17.9.26: ב׳–ו׳ 16:00–23:00, ש׳–א׳ 12:00–23:00. מתאים מאוד לערב 1.10.", "⭐ NICE — 234 E 4th St. Gnocchi-focused Italian spot; current hours Mon–Fri 4–11 PM, Sat–Sun noon–11 PM. Great for Oct 1 East Village.", "fa-utensils", ["Gnoccheria East Village"]],
@@ -1979,6 +1994,12 @@ const foodMustList = [
 ]
 
 const foodMapPoints = [
+    {name:"Kalustyan's", category:"⭐ NICE", type:"Specialty grocery / spices", address:"123 Lexington Ave, New York, NY 10016", lat:40.74283, lng:-73.98214, note:"לא סופר פרסי בלבד — חנות ענקית למוצרי Middle Eastern / Persian / South Asian ועוד. הכי נוח ב-1.10 ליד Flatiron.", q:"Kalustyan's 123 Lexington Ave New York"},
+    {name:"Nems Japandi Bistro", lat:40.7197, lng:-73.9611, category:"⭐ NICE", type:"Brunch / Asian", note:"80 N 6th St, Williamsburg • brunch/Asian • ליד Artists & Fleas.", q:"Nems Japandi Bistro 80 N 6th St Brooklyn NY"},
+    {name:"The Water Tower Bar", lat:40.7216, lng:-73.9588, category:"➕ BONUS", type:"Rooftop bar", note:"96 Wythe Ave • rooftop at Arlo Williamsburg • BONUS.", q:"The Water Tower Bar 96 Wythe Ave Brooklyn NY"},
+    {name:"L'Industrie Pizzeria Little Italy", lat:40.7189, lng:-73.9972, category:"🔥 MUST FOOD", type:"Pizza", note:"197 Grand St • Little Italy/Nolita • MUST FOOD.", q:"L'Industrie Pizzeria 197 Grand St New York NY"},
+    {name:"Edith's Sandwich Counter West Village", lat:40.7341, lng:-74.0048, category:"⭐ NICE", type:"Sandwiches / breakfast", note:"64 Charles St • West Village • daily breakfast/lunch/dinner counter.", q:"Edith's Sandwich Counter 64 Charles St New York NY"},
+    {name:"Patsy's Pizzeria UWS", lat:40.7785, lng:-73.9768, category:"➕ BONUS", type:"Pizza / verify closed", note:"61 W 74th St • ⚠️ הסניף UWS דווח כסגור ב-2026; לא לבנות עליו.", q:"Patsy's Pizzeria 61 W 74th St New York NY"},
     {name:"Greenacre Park", category:"⭐ NICE", type:"Takeaway / picnic spot", address:"217 E 51st St, New York, NY 10022", lat:40.7569, lng:-73.9707, note:"לא מסעדה — פארק קטן עם מפל. קחו takeaway/קפה ושבו שם; מתאים במיוחד ל-Midtown East/2.10.", q:"Greenacre Park 217 E 51st St New York"},
     {name:"Commerce Inn", category:"⭐ NICE", type:"American tavern", address:"50 Commerce St, New York, NY 10014", note:"MICHELIN-listed; by Rita Sodi/Jody Williams; ideal West Village fit.", q:"The Commerce Inn 50 Commerce St New York"},
     {name:"Gnoccheria East Village", category:"⭐ NICE", type:"Gnocchi / Italian", address:"234 E 4th St, New York, NY 10009", note:"Gnocchi-focused dinner option; excellent fit for 1.10 evening.", q:"Gnoccheria 234 E 4th St New York"},
@@ -2512,6 +2533,7 @@ const dayMapRoutes = {
         "620 Avenue of the Americas, New York, NY",
         "St Marks Place, New York, NY",
         "Tompkins Square Park, New York, NY",
+        "AUTOPHOTO, 121 Orchard St, New York, NY",
         "Lower East Side, New York, NY",
         "Pier 35, FDR Drive at Jefferson Street, New York, NY"
     ],
@@ -2586,6 +2608,8 @@ function openAirportMap() {
 
 
 const placeHours = {
+    "Kalustyan's": {he:"123 Lexington Ave • חנות specialty foods ותיקה מ-1944 • מ׳–ש׳ 10:00–20:00, א׳/חגים 11:00–19:00 • תבלינים ומוצרים מהמזרח התיכון, דרום אסיה ועוד", en:"123 Lexington Ave • specialty food store since 1944 • Mon–Sat 10 AM–8 PM, Sun/holidays 11 AM–7 PM • Middle Eastern, South Asian and global foods"},
+    "AUTOPHOTO": {he:"121 Orchard St • LES • כניסה למוזיאון חינם • ג׳–א׳ 12:00–22:00 • photobooth בתשלום נפרד", en:"121 Orchard St • LES • museum admission free • Tue–Sun 12 PM–10 PM • photobooth strips cost extra"},
     "Pier 35": {he:"East River / Jefferson St • חינם • נוף Manhattan + Brooklyn Bridges • לפי מקורות עדכניים פתוח בערך 06:00–00:00; סטטוס הנדנדות לא ודאי ב-2026 ולכן לבדוק ביום עצמו", en:"East River / Jefferson St • free • Manhattan + Brooklyn Bridge views • roughly 6 AM–midnight; swing status uncertain in 2026, verify day-of"},
     "Pier 97": {he:"Hudson River Park ליד W55–W59 • חינם • sunset deck + lawn + overlook • פארק Hudson River פתוח בדרך כלל 06:00–01:00", en:"Hudson River Park near W55–W59 • free • sunset deck, lawn and overlook • Hudson River Park generally 6 AM–1 AM"},
     "Greenacre Park": {he:"217 E 51st St • פארק מפל קטן, לא מסעדה • 08:00–20:00 מדי יום • מקום טוב לשבת עם takeaway", en:"217 E 51st St • small waterfall park, not a restaurant • daily 8 AM–8 PM • good takeaway/picnic stop"},
@@ -2838,8 +2862,151 @@ function toggleSimpleDayList(dayDate) {
     el.classList.toggle("open");
 }
 
+
+const dayFoodMapCenters = {
+    "2026-09-25": {lat:40.7580, lng:-73.9855, radius:2.1},
+    "2026-09-26": {lat:40.7425, lng:-73.9955, radius:3.0},
+    "2026-09-27": {lat:40.7193, lng:-73.9973, radius:2.7},
+    "2026-09-28": {lat:40.7108, lng:-74.0048, radius:3.2},
+    "2026-09-29": {lat:40.7377, lng:-74.0035, radius:2.7},
+    "2026-09-30": {lat:40.7505, lng:-73.9934, radius:2.3},
+    "2026-10-01": {lat:40.7337, lng:-73.9897, radius:2.8},
+    "2026-10-02": {lat:40.7605, lng:-73.9745, radius:2.8},
+    "2026-10-03": {lat:40.7105, lng:-73.9750, radius:4.5},
+    "2026-10-04": {lat:40.7720, lng:-73.9780, radius:2.8}
+};
+const dayFoodMapStates = {};
+const dayFoodLeafletMaps = {};
+
+function foodPointCoords(p) {
+    const fallback = foodCoordFallbacks[p.name];
+    const lat = Number.isFinite(p.lat) ? p.lat : (fallback ? fallback[0] : null);
+    const lng = Number.isFinite(p.lng) ? p.lng : (fallback ? fallback[1] : null);
+    return (Number.isFinite(lat) && Number.isFinite(lng)) ? [lat,lng] : null;
+}
+function foodDistanceKm(aLat,aLng,bLat,bLng) {
+    const R=6371, dLat=(bLat-aLat)*Math.PI/180, dLng=(bLng-aLng)*Math.PI/180;
+    const q=Math.sin(dLat/2)**2 + Math.cos(aLat*Math.PI/180)*Math.cos(bLat*Math.PI/180)*Math.sin(dLng/2)**2;
+    return 2*R*Math.asin(Math.sqrt(q));
+}
+function dayFoodCategoryMatch(p, filter) {
+    if (filter === "all" || filter === "near") return true;
+    const txt = combinedText([p.category || "", p.note || "", p.type || "", p.name || ""]);
+    if (filter === "must_nyc") return txt.includes("must nyc experience");
+    if (filter === "must_food") return txt.includes("must food");
+    if (filter === "nice") return txt.includes("nice");
+    if (filter === "bonus") return txt.includes("bonus");
+    return true;
+}
+function getDayFoodPoints(date, filter) {
+    const center = dayFoodMapCenters[date] || {lat:40.744, lng:-73.987, radius:3};
+    return foodMapPoints.filter(p => {
+        const coords = foodPointCoords(p);
+        if (!coords) return false;
+        if (!dayFoodCategoryMatch(p, filter)) return false;
+        if (filter === "near") {
+            return foodDistanceKm(center.lat, center.lng, coords[0], coords[1]) <= center.radius;
+        }
+        return true;
+    });
+}
+function buildDayFoodPanel(date) {
+    const safe = date.replaceAll("-","");
+    const labels = currentLang === "he"
+        ? {near:"📍 קרוב למסלול", all:"הכל", must_nyc:"🔥 MUST NYC", must_food:"🔥 MUST FOOD", nice:"⭐ NICE", bonus:"➕ BONUS"}
+        : {near:"📍 Near route", all:"All", must_nyc:"🔥 MUST NYC", must_food:"🔥 MUST FOOD", nice:"⭐ NICE", bonus:"➕ BONUS"};
+    const order=["near","all","must_nyc","must_food","nice","bonus"];
+    if (!dayFoodMapStates[date]) dayFoodMapStates[date]="near";
+    const filter=dayFoodMapStates[date];
+    return `<div id="day-food-panel-${safe}" class="day-food-map-panel">
+        <div class="day-food-map-title">🍴 ${currentLang==="he"?"מפת אוכל ליום הזה":"Food map for this day"}</div>
+        <div class="day-food-map-sub">${currentLang==="he"
+            ?"אותם מקומות שכבר נמצאים ב-FOODMUST. ברירת המחדל מציגה מה שקרוב למסלול של היום; אפשר לעבור ל-MUST / NICE / BONUS או להציג הכול. In-N-Out לא מקבל פין כי אין לו סניף NYC."
+            :"The same spots already in FOODMUST. Default shows food near today's route; switch to MUST / NICE / BONUS or show everything. In-N-Out has no NYC pin."}</div>
+        <div class="day-food-filter-row">
+            ${order.map(k=>`<button class="day-food-filter-btn ${filter===k?"active":""}" data-day="${date}" data-filter="${k}" onclick="setDayFoodFilter('${date}','${k}')">${labels[k]}</button>`).join("")}
+        </div>
+        <div id="day-food-map-${safe}" class="day-food-map-canvas"></div>
+        <div id="day-food-count-${safe}" class="day-food-map-count"></div>
+    </div>`;
+}
+function clearDayFoodMaps() {
+    Object.keys(dayFoodLeafletMaps).forEach(k => {
+        try { dayFoodLeafletMaps[k].remove(); } catch(e) {}
+        delete dayFoodLeafletMaps[k];
+    });
+}
+function toggleDayFoodMap(date) {
+    const safe=date.replaceAll("-","");
+    const panel=document.getElementById(`day-food-panel-${safe}`);
+    if (!panel) return;
+    panel.classList.toggle("open");
+    if (panel.classList.contains("open")) {
+        setTimeout(()=>renderDayFoodMap(date),80);
+    } else if (dayFoodLeafletMaps[date]) {
+        try { dayFoodLeafletMaps[date].remove(); } catch(e) {}
+        delete dayFoodLeafletMaps[date];
+    }
+}
+function setDayFoodFilter(date, filter) {
+    dayFoodMapStates[date]=filter;
+    document.querySelectorAll(`.day-food-filter-btn[data-day="${date}"]`).forEach(btn=>{
+        btn.classList.toggle("active", btn.dataset.filter===filter);
+    });
+    const safe=date.replaceAll("-","");
+    const panel=document.getElementById(`day-food-panel-${safe}`);
+    if (panel && panel.classList.contains("open")) renderDayFoodMap(date);
+}
+function renderDayFoodMap(date) {
+    const safe=date.replaceAll("-","");
+    const mapEl=document.getElementById(`day-food-map-${safe}`);
+    const countEl=document.getElementById(`day-food-count-${safe}`);
+    if (!mapEl) return;
+
+    if (!window.L) {
+        mapEl.innerHTML=`<div style="padding:18px;text-align:center;color:#cbd5e1;">${currentLang==="he"?"המפה לא נטענה כרגע. אפשר עדיין לפתוח כל מקום דרך FOODMUST.":"Map library did not load. You can still open places from FOODMUST."}</div>`;
+        return;
+    }
+
+    if (dayFoodLeafletMaps[date]) {
+        try { dayFoodLeafletMaps[date].remove(); } catch(e) {}
+        delete dayFoodLeafletMaps[date];
+    }
+    mapEl.innerHTML="";
+    const center=dayFoodMapCenters[date] || {lat:40.744,lng:-73.987,radius:3};
+    const map=L.map(mapEl,{scrollWheelZoom:false}).setView([center.lat,center.lng],13);
+    dayFoodLeafletMaps[date]=map;
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+        maxZoom:19, attribution:'&copy; OpenStreetMap contributors'
+    }).addTo(map);
+
+    const filter=dayFoodMapStates[date] || "near";
+    const pts=getDayFoodPoints(date,filter);
+    const bounds=[];
+    pts.forEach(p=>{
+        const coords=foodPointCoords(p);
+        if (!coords) return;
+        const googleQuery=p.q || p.address || (p.name+" New York");
+        const googleUrl='https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(googleQuery);
+        const popup=`<b>${p.name}</b>${p.category?`<br>${p.category}`:""}${p.type?` • ${p.type}`:""}<br>${p.note||""}${p.address?`<br>${p.address}`:""}<br><a href="${googleUrl}" target="_blank" rel="noopener">📍 Google Maps</a>`;
+        L.marker(coords).addTo(map).bindPopup(popup);
+        bounds.push(coords);
+    });
+
+    if (filter==="near") {
+        map.setView([center.lat,center.lng],13);
+    } else if (bounds.length) {
+        map.fitBounds(bounds,{padding:[24,24],maxZoom:14});
+    }
+    if (countEl) countEl.textContent = currentLang==="he"
+        ? `${pts.length} מקומות מוצגים • לחיצה על פין פותחת פרטים + Google Maps`
+        : `${pts.length} places shown • tap a pin for details + Google Maps`;
+    setTimeout(()=>map.invalidateSize(),100);
+}
+
 function renderDailySchedule() {
     const container = document.getElementById("daily-tab");
+    clearDayFoodMaps();
     container.innerHTML = "";
 
     if (!isDuringTrip && selectedDayIndex === 'all') {
@@ -2889,6 +3056,9 @@ function renderDailySchedule() {
                         <button class="simple-list-btn" onclick="toggleSimpleDayList('${day.date}')">
                             👀 ${currentLang === 'he' ? 'היום בקצרה' : 'Today at a glance'}
                         </button>
+                        <button class="food-map-btn" style="width:auto;margin:0;padding:7px 11px;font-size:.78rem;" onclick="toggleDayFoodMap('${day.date}')">
+                            🍴 ${currentLang === 'he' ? 'מפת אוכל ליום' : 'Food Map'}
+                        </button>
                         ${day.date === '2026-10-04' ? `
                         <button class="day-map-btn" onclick="openAirportMap()">
                             ✈️ ${currentLang === 'he' ? 'מסלול לשדה' : 'Airport Route'}
@@ -2898,6 +3068,7 @@ function renderDailySchedule() {
                 </div>
                 ${renderDayGuidance(day)}
                 ${buildSimpleDayList(day)}
+                ${buildDayFoodPanel(day.date)}
                 <div class="event-list">
         `;
 
